@@ -1,0 +1,415 @@
+fileFormatVersion: 2
+guid: af3b3dfeaa91098469d9a8d6b9823653
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 1
+    100002: Box069
+    100004: Box069.001
+    100006: Box069.002
+    100008: Box069.003
+    100010: Box071.Box073
+    100012: Box071.Box073.001
+    100014: Box071.Box073.002
+    100016: Box071.Box073.003
+    100018: Circle
+    100020: Circle.001
+    100022: Circle.004
+    100024: Circle.005
+    100026: Circle.006
+    100028: Cube
+    100030: Cube.001
+    100032: Cube.002
+    100034: Cube.003
+    100036: Cube.004
+    100038: Cube.005
+    100040: Cube.006
+    100042: Cube.007
+    100044: Cube.008
+    100046: Cube.012
+    100048: Cube.013
+    100050: Cube.016
+    100052: Cube.030
+    100054: Cube.031
+    100056: Cube.032
+    100058: Cylinder
+    100060: Cylinder.001
+    100062: Cylinder.010
+    100064: default056
+    100066: default059
+    100068: default060
+    100070: default061
+    100072: default062
+    100074: default063
+    100076: default064
+    100078: default065
+    100080: default066
+    100082: default067
+    100084: default068
+    100086: default069
+    100088: default070
+    100090: default071
+    100092: default072
+    100094: default073
+    100096: default074
+    100098: default075
+    100100: default076
+    100102: default079
+    100104: //RootNode
+    100106: Rectangle2_1
+    100108: skp153_1
+    400000: 1
+    400002: Box069
+    400004: Box069.001
+    400006: Box069.002
+    400008: Box069.003
+    400010: Box071.Box073
+    400012: Box071.Box073.001
+    400014: Box071.Box073.002
+    400016: Box071.Box073.003
+    400018: Circle
+    400020: Circle.001
+    400022: Circle.004
+    400024: Circle.005
+    400026: Circle.006
+    400028: Cube
+    400030: Cube.001
+    400032: Cube.002
+    400034: Cube.003
+    400036: Cube.004
+    400038: Cube.005
+    400040: Cube.006
+    400042: Cube.007
+    400044: Cube.008
+    400046: Cube.012
+    400048: Cube.013
+    400050: Cube.016
+    400052: Cube.030
+    400054: Cube.031
+    400056: Cube.032
+    400058: Cylinder
+    400060: Cylinder.001
+    400062: Cylinder.010
+    400064: default056
+    400066: default059
+    400068: default060
+    400070: default061
+    400072: default062
+    400074: default063
+    400076: default064
+    400078: default065
+    400080: default066
+    400082: default067
+    400084: default068
+    400086: default069
+    400088: default070
+    400090: default071
+    400092: default072
+    400094: default073
+    400096: default074
+    400098: default075
+    400100: default076
+    400102: default079
+    400104: //RootNode
+    400106: Rectangle2_1
+    400108: skp153_1
+    2100000: 24 - Default
+    2100002: in
+    2100004: tur
+    2100006: 14 - Default.003
+    2100008: 14 - Default.004
+    2100010: rrs_stp1__env_5.002
+    2100012: rrs_eng2__spec_.002
+    2100014: No Name
+    2100016: 14 - Default.005
+    2100018: 14 - Default.002
+    2300000: Box069
+    2300002: Box069.001
+    2300004: Box069.002
+    2300006: Box069.003
+    2300008: Box071.Box073
+    2300010: Box071.Box073.001
+    2300012: Box071.Box073.002
+    2300014: Box071.Box073.003
+    2300016: Circle
+    2300018: Circle.001
+    2300020: Circle.004
+    2300022: Circle.005
+    2300024: Circle.006
+    2300026: Cube
+    2300028: Cube.001
+    2300030: Cube.002
+    2300032: Cube.003
+    2300034: Cube.004
+    2300036: Cube.005
+    2300038: Cube.006
+    2300040: Cube.007
+    2300042: Cube.008
+    2300044: Cube.012
+    2300046: Cube.013
+    2300048: Cube.016
+    2300050: Cube.030
+    2300052: Cube.031
+    2300054: Cube.032
+    2300056: Cylinder
+    2300058: Cylinder.001
+    2300060: Cylinder.010
+    2300062: default056
+    2300064: default059
+    2300066: default060
+    2300068: default061
+    2300070: default062
+    2300072: default063
+    2300074: default064
+    2300076: default065
+    2300078: default066
+    2300080: default067
+    2300082: default068
+    2300084: default069
+    2300086: default070
+    2300088: default071
+    2300090: default072
+    2300092: default073
+    2300094: default074
+    2300096: default075
+    2300098: default076
+    2300100: default079
+    3300000: Box069
+    3300002: Box069.001
+    3300004: Box069.002
+    3300006: Box069.003
+    3300008: Box071.Box073
+    3300010: Box071.Box073.001
+    3300012: Box071.Box073.002
+    3300014: Box071.Box073.003
+    3300016: Circle
+    3300018: Circle.001
+    3300020: Circle.004
+    3300022: Circle.005
+    3300024: Circle.006
+    3300026: Cube
+    3300028: Cube.001
+    3300030: Cube.002
+    3300032: Cube.003
+    3300034: Cube.004
+    3300036: Cube.005
+    3300038: Cube.006
+    3300040: Cube.007
+    3300042: Cube.008
+    3300044: Cube.012
+    3300046: Cube.013
+    3300048: Cube.016
+    3300050: Cube.030
+    3300052: Cube.031
+    3300054: Cube.032
+    3300056: Cylinder
+    3300058: Cylinder.001
+    3300060: Cylinder.010
+    3300062: default056
+    3300064: default059
+    3300066: default060
+    3300068: default061
+    3300070: default062
+    3300072: default063
+    3300074: default064
+    3300076: default065
+    3300078: default066
+    3300080: default067
+    3300082: default068
+    3300084: default069
+    3300086: default070
+    3300088: default071
+    3300090: default072
+    3300092: default073
+    3300094: default074
+    3300096: default075
+    3300098: default076
+    3300100: default079
+    4300000: default056
+    4300002: default059
+    4300004: default060
+    4300006: default061
+    4300008: default062
+    4300010: default063
+    4300012: default064
+    4300014: default065
+    4300016: default066
+    4300018: default067
+    4300020: default068
+    4300022: default069
+    4300024: default070
+    4300026: default071
+    4300028: default073
+    4300030: default074
+    4300032: default075
+    4300034: default076
+    4300036: default079
+    4300038: default072
+    4300040: Box071.Box073
+    4300042: Box069
+    4300044: Box071.Box073.001
+    4300046: Box069.001
+    4300048: Cube.004
+    4300050: Cylinder.010
+    4300052: Box071.Box073.002
+    4300054: Box069.002
+    4300056: Box071.Box073.003
+    4300058: Box069.003
+    4300060: Cube.001
+    4300062: Cube.002
+    4300064: Cube.003
+    4300066: Cube.005
+    4300068: Cube.006
+    4300070: Cube.007
+    4300072: Cube.008
+    4300074: Cube
+    4300076: Cube.012
+    4300078: Cube.013
+    4300080: Circle
+    4300082: Circle.004
+    4300084: Circle.005
+    4300086: Cube.016
+    4300088: Cube.030
+    4300090: Cube.031
+    4300092: Cube.032
+    4300094: Circle.001
+    4300096: Circle.006
+    4300098: Cylinder
+    4300100: Cylinder.001
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 14 - Default.002
+    second: {fileID: 2100000, guid: 0649ef143ec06b447a5940fe41730a78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 14 - Default.003
+    second: {fileID: 2100000, guid: 0649ef143ec06b447a5940fe41730a78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 14 - Default.004
+    second: {fileID: 2100000, guid: 0649ef143ec06b447a5940fe41730a78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 14 - Default.005
+    second: {fileID: 2100000, guid: 0649ef143ec06b447a5940fe41730a78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 24 - Default
+    second: {fileID: 2100000, guid: 0649ef143ec06b447a5940fe41730a78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 0649ef143ec06b447a5940fe41730a78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: in
+    second: {fileID: 2100000, guid: 0649ef143ec06b447a5940fe41730a78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rrs_eng2__spec_.002
+    second: {fileID: 2100000, guid: 634128d71aedf574191babba18fdf435, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rrs_stp1__env_5.002
+    second: {fileID: 2100000, guid: 634128d71aedf574191babba18fdf435, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tur
+    second: {fileID: 2100000, guid: 0649ef143ec06b447a5940fe41730a78, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

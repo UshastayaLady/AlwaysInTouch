@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ef67f24ce3058b943a157498785195db
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Reload Alt Cyrilic by STELORQ
+  fontNames:
+  - Reload Alt Cyrilic by STELORQ
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 78c1e77174e689e4c9ac3311315b34b5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

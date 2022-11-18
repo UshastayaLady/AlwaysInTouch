@@ -1,0 +1,148 @@
+fileFormatVersion: 2
+guid: 7a31c08d0200857499ce7ab9092dc554
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: GasMask2
+    100002: GasMask5
+    100004: GasMaskAFront_L
+    100006: GasMaskAFront_R
+    100008: GasMaskAmMid_L
+    100010: GasMaskAmMid_R
+    100012: GasMaskARear_L
+    100014: GasMaskARear_R
+    100016: GasMaskBFont_L
+    100018: GasMaskBFont_R
+    100020: GasMaskBMid_L
+    100022: GasMaskBMid_R
+    100024: GasMaskBRear_L
+    100026: GasMaskBRear_R
+    100028: GasMaskFILTER
+    100030: //RootNode
+    100032: GasMaskRear
+    100034: GasMaskRear 1
+    100036: GasMaskROOT
+    100038: GasMaskSpine1_L
+    100040: GasMaskSpine1_R
+    100042: GasMaskSpine2_L
+    100044: GasMaskSpine2_R
+    100046: GasMaskSpine3_L
+    100048: GasMaskSpine3_R
+    100050: MaskRetopo3
+    400000: GasMask2
+    400002: GasMask5
+    400004: GasMaskAFront_L
+    400006: GasMaskAFront_R
+    400008: GasMaskAmMid_L
+    400010: GasMaskAmMid_R
+    400012: GasMaskARear_L
+    400014: GasMaskARear_R
+    400016: GasMaskBFont_L
+    400018: GasMaskBFont_R
+    400020: GasMaskBMid_L
+    400022: GasMaskBMid_R
+    400024: GasMaskBRear_L
+    400026: GasMaskBRear_R
+    400028: GasMaskFILTER
+    400030: //RootNode
+    400032: GasMaskRear
+    400034: GasMaskRear 1
+    400036: GasMaskROOT
+    400038: GasMaskSpine1_L
+    400040: GasMaskSpine1_R
+    400042: GasMaskSpine2_L
+    400044: GasMaskSpine2_R
+    400046: GasMaskSpine3_L
+    400048: GasMaskSpine3_R
+    400050: MaskRetopo3
+    2100000: lambert1
+    4300000: MaskRetopo3
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: MaskRetopo3
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

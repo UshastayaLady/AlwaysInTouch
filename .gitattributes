@@ -63,6 +63,6 @@
 *.prefab merge=unityyamlmerge
 *.physicsMaterial2D merge=unityyamlmerge
 *.physicsMaterial merge=unityyamlmerge
-*.asset merge=unityyamlmerge
+*.asset eol=lf -text
 *.meta merge=unityyamlmerge
 *.controller merge=unityyamlmerge

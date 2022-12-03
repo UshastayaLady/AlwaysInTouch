@@ -223,24 +223,24 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 1c850000
-      m_LastClickedID: 34076
-      m_ExpandedIDs: 20fbffff1c850000
+      scrollPos: {x: 0, y: 1744}
+      m_SelectedIDs: a0720000
+      m_LastClickedID: 29344
+      m_ExpandedIDs: 20fbffff645c000032660000a0720000f07e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: MarkerGroup
+        m_OriginalName: MarkerGroup
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 26162
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -535,9 +535,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 550.5, y: 312, z: 4.12875}
+    m_Target: {x: 337.35144, y: 100.98711, z: 176.64072}
     speed: 2
-    m_Value: {x: 550.5, y: 312, z: 4.12875}
+    m_Value: {x: 337.35144, y: 100.98711, z: 176.64072}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -584,13 +584,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.11779278, y: -0.5057141, z: 0.069895886, w: -0.8517867}
+    m_Target: {x: 0.087855436, y: -0.79818773, z: 0.1201552, w: 0.5837854}
     speed: 2
-    m_Value: {x: -0.117789954, y: -0.505702, z: 0.06989421, w: -0.8517663}
+    m_Value: {x: 0.08785259, y: -0.79816186, z: 0.1201513, w: 0.58376646}
   m_Size:
-    m_Target: 632.7806
+    m_Target: 36.52989
     speed: 2
-    m_Value: 632.7806
+    m_Value: 36.52989
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -696,9 +696,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 32}
-    m_SelectedIDs: c09f0000
-    m_LastClickedID: 40896
-    m_ExpandedIDs: 00000000be9f0000
+    m_SelectedIDs: ba9d0000
+    m_LastClickedID: 40378
+    m_ExpandedIDs: 00000000b89d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -751,8 +751,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 1c850000
-    m_LastClickedInstanceID: 34076
+    m_SelectedInstanceIDs: a0720000
+    m_LastClickedInstanceID: 29344
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -829,13 +829,14 @@ MonoBehaviour:
     y: 0
     width: 454
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
+  - {fileID: 14}
   m_Selected: 0
-  m_LastSelected: 0
+  m_LastSelected: 1
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -871,9 +872,37 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 1231
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
+--- !u!114 &14
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RenameChildren
+  m_MinSize: {x: 250, y: 100}
+  m_MaxSize: {x: 250, y: 100}
+  m_TitleContent:
+    m_Text: RenameChildren
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 1466
+    y: 73
+    width: 453
+    height: 926
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []

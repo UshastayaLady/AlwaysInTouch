@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TriggerVideo : MonoBehaviour
 {
-    bool enter;
-    public GameObject Text, Button_sceap;
+    public bool enter;
+    public GameObject Text, Button_skip;
     public GameObject video_start;
+
 
     private void Update()
     {
@@ -14,9 +15,10 @@ public class TriggerVideo : MonoBehaviour
         {
             video_start.SetActive(true);
             Text.SetActive(false);
-            Button_sceap.SetActive(true);
+            Button_skip.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            gameObject.SetActive(false);
         }
     }
     private void OnTriggerEnter(Collider other)

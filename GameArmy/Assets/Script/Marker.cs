@@ -11,7 +11,9 @@ public class Marker : MonoBehaviour
         {
             MarkerMassiv.Markers[MarkerMassiv.i + 1].SetActive(true);
             MarkerMassiv.i += 1;
-            gameObject.SetActive(false);
+            if (MarkerMassiv.i != 10) {
+                    gameObject.SetActive(false);
+                }
         }
     }
 }

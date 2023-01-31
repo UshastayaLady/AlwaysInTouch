@@ -13,7 +13,7 @@ public class MarkerMassiv : MonoBehaviour
         Debug.Log(Markers.Length);
         for(int i  = 1; i < Markers.Length; i++)
         {
-            Markers[i].SetActive(false);
+             Markers[i].SetActive(false);
 
             
         }

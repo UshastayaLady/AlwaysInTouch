@@ -26,9 +26,9 @@ public class FPSCONROL : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftShift))
-            speed = 15.0f;
+            speed = 18.0f;
         else
-            speed = 6.0f;
+            speed = 12.0f;
 
         //endground = Physics.CheckSphere(Check.position, Dis, Mask);
 

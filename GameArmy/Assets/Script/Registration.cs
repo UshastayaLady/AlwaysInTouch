@@ -46,5 +46,7 @@ public class Registration : MonoBehaviour
         Registr.SetActive(false);
         FPS.setFreeze(false);
         Cursor.lockState = CursorLockMode.Locked;
+        Achievements achievement = FindObjectOfType<Achievements>();
+        achievement.showAchieve("Зарегистрироваться", 0);
     } 
 }

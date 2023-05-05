@@ -12,7 +12,7 @@ public class AchievementsMenu : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         GlobalCs.print();
         for (int i = 0; i < GlobalCs.arrIsGotAch.Length; i++)

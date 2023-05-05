@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using static Strings;
+
 public class WeaponRezult : MonoBehaviour
 {
     public GameObject rezult, rezult_text, rezult_text_finish, barer;
@@ -52,7 +54,7 @@ public class WeaponRezult : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         barer.SetActive(false);
         Achievements achievement = FindObjectOfType<Achievements>();
-        achievement.showAchieve("Пройти \n стрелковый \n полигон", 4);
+        achievement.showAchieve(Strings.shoot_arena, 4);
     }
     private void OnTriggerEnter(Collider other)
     {

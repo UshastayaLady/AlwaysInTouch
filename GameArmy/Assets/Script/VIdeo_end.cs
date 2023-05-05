@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using static Strings;
+
 public class VIdeo_end : MonoBehaviour
 {
     public GameObject[] video_mass;
@@ -23,7 +25,7 @@ public class VIdeo_end : MonoBehaviour
             Room_KID.enter = false;
             i++;
             Achievements achievement = FindObjectOfType<Achievements>();
-            achievement.showAchieve("Пройти \n инструктаж", 2);
+            achievement.showAchieve(Strings.instruction, 2);
         }
 
         else

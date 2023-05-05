@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using static Strings;
+
 public class Finish_polosa_zachet : MonoBehaviour
 {
     int fin_sec, fin_min;
@@ -102,7 +104,7 @@ public class Finish_polosa_zachet : MonoBehaviour
         gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Achievements achievement = FindObjectOfType<Achievements>();
-        achievement.showAchieve("Пройти \n полосу \n препятствий", 3);
+        achievement.showAchieve(Strings.lane_obstacles, 3);
     }
     private void OnTriggerExit(Collider other)
     {

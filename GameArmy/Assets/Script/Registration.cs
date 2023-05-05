@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+using static Strings;
+
 public class Registration : MonoBehaviour
 {
     public GameObject Registr;
@@ -47,6 +49,6 @@ public class Registration : MonoBehaviour
         FPS.setFreeze(false);
         Cursor.lockState = CursorLockMode.Locked;
         Achievements achievement = FindObjectOfType<Achievements>();
-        achievement.showAchieve("Зарегистрироваться", 0);
+        achievement.showAchieve(Strings.registration, 0);
     } 
 }

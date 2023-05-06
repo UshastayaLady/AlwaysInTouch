@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using static Strings;
+
 public class RayCastCamera : MonoBehaviour
 {
     public Camera Golova;
@@ -15,6 +17,7 @@ public class RayCastCamera : MonoBehaviour
     public Transform Rotat0;
     float speed = 1;
     int k = 0;
+    bool flag = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +58,12 @@ public class RayCastCamera : MonoBehaviour
             trigger_ojeda.SetActive(false);
 
             room_KID.SetActive(true);
+            if (flag)
+            {
+                flag = false;
+                Achievements achievement = FindObjectOfType<Achievements>();
+                achievement.showAchieve(Strings.get_clothe, 1);
+            }
         }
     }
 

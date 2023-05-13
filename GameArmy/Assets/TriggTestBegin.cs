@@ -11,7 +11,7 @@ public class TriggTestBegin : MonoBehaviour
     public void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(Player);
+ 
     }
     public void Update()
     {

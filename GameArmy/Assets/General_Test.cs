@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class General_Test : MonoBehaviour
 {
-    public GameObject[] ButtonTest;
+    public GameObject[] ButtonTest, RangHerou;
+    public Text lvl, expoint;
     GameObject SelectButton;
-    int good;
+    int good, exp;
     
     public void PutOn(GameObject button)
     {
@@ -36,6 +37,8 @@ public class General_Test : MonoBehaviour
             Debug.Log("The BEST !!!");
             SelectButton.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.green;
             SelectButton.GetComponent<Button>().enabled = false;
+            exp += 120;
+            expoint.text = "Умение " + exp;
         }
         good = 0;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TriggTestBegin : MonoBehaviour
 {
-    public GameObject TestBeginButton, TestGeneral ;
+    public GameObject TestBeginButton, TestGeneral, CameraFlyAround ;
     GameObject Player;
     bool enter;
 
@@ -17,9 +17,11 @@ public class TriggTestBegin : MonoBehaviour
     {
         if (enter && Input.GetKeyDown(KeyCode.E))
         {
+            CameraFlyAround.GetComponent<Camera>().enabled = true;
             TestBeginButton.SetActive(false);
             TestGeneral.SetActive(true);
-            Player.GetComponent<FPSCONROL>().enabled = false;
+            //Player.GetComponent<FPSCONROL>().enabled = false;
+            Player.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
@@ -40,5 +42,14 @@ public class TriggTestBegin : MonoBehaviour
             TestBeginButton.SetActive(false);
             enter = false;
         }
+    }
+
+    public void ExitTest()
+    {
+        Player.SetActive(true);
+        TestBeginButton.SetActive(true);
+        TestGeneral.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        CameraFlyAround.GetComponent<Camera>().enabled = false;
     }
 }

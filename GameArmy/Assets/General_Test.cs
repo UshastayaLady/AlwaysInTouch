@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class General_Test : MonoBehaviour
 {
     public GameObject[] ButtonTest, RangHerou;
+    GameObject Player;
     public Text lvl, expoint;
     GameObject SelectButton;
-    int good, exp;
-    
+    int good, exp, level = 1;
+
     public void PutOn(GameObject button)
     {
          for (int i = 0; i < ButtonTest.Length; i++)
@@ -35,13 +36,23 @@ public class General_Test : MonoBehaviour
         if(good == 5)
         {
             Debug.Log("The BEST !!!");
+
             SelectButton.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.green;
             SelectButton.GetComponent<Button>().enabled = false;
+
             exp += 120;
             expoint.text = "Умение " + exp;
+
+            RangHerou[level - 1].SetActive(false);
+            RangHerou[level].SetActive(true);
+
+            level++;
+            lvl.text = "Умение " + level;
+
         }
         good = 0;
     }
 
+    
 
 }

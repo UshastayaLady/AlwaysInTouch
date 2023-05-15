@@ -13,6 +13,7 @@ TagManager:
   - Odejda
   - Marker
   - TestButton
+  - CameraFly
   layers:
   - Default
   - TransparentFX

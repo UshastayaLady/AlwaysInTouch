@@ -6,11 +6,17 @@ using UnityEngine.UI;
 public class General_Test : MonoBehaviour
 {
     public GameObject[] ButtonTest, RangHerou;
-    GameObject Player;
     public Text lvl, expoint;
     GameObject SelectButton;
     int good, exp, level = 1;
 
+    public AudioClip din;
+    AudioSource AudioCameraFly;
+
+    public void Start()
+    {
+        AudioCameraFly = GameObject.FindGameObjectWithTag("CameraFly").gameObject.GetComponent<AudioSource>();
+    }
     public void PutOn(GameObject button)
     {
          for (int i = 0; i < ButtonTest.Length; i++)
@@ -35,8 +41,8 @@ public class General_Test : MonoBehaviour
     {
         if(good == 5)
         {
-            Debug.Log("The BEST !!!");
-
+            AudioCameraFly.PlayOneShot(din);
+            SelectButton.transform.tag = "Untagged";
             SelectButton.transform.GetChild(0).gameObject.GetComponent<Text>().color = Color.green;
             SelectButton.GetComponent<Button>().enabled = false;
 

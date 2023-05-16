@@ -19,6 +19,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
+
     width: 1536
     height: 730.8
   m_MinSize: {x: 300, y: 200}

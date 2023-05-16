@@ -53,7 +53,7 @@ public class General_Test : MonoBehaviour
             RangHerou[level].SetActive(true);
 
             level++;
-            lvl.text = "Умение " + level;
+            lvl.text = "Уровень " + level;
 
         }
         good = 0;

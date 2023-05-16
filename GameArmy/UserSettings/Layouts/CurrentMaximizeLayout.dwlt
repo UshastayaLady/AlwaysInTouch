@@ -223,10 +223,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 151.6}
-      m_SelectedIDs: 92d7fdff
-      m_LastClickedID: -141422
-      m_ExpandedIDs: 92d7fdff4afcfdffde04feffd409feff5222feffe62afeff302dfeff1c49feff20fbffff68550000c45500001a580000f8580000465900008659000090590000b6590000f25b0000cc5c0000565d0000dc5d0000a05e0000045f0000ae5f0000f65f0000f46400008266000088660000bc660000c06600000067000030680000d2680000046900006c690000306a0000626a0000d66a0000ec6b00001a6c00001e6c00009a6c0000de6c0000c86e0000126f00001c6f0000706f0000986f00001c710000a4e906003097070036f207007aff0700
+      scrollPos: {x: 0, y: 175.6}
+      m_SelectedIDs: 1e660000
+      m_LastClickedID: 26142
+      m_ExpandedIDs: 20fbffff206b0000f46c0000a66d0000387a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -536,9 +536,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 191.89714, y: 4.896371, z: 523.6425}
+    m_Target: {x: 219.56474, y: 4.5879445, z: 539.9339}
     speed: 2
-    m_Value: {x: 191.89714, y: 4.896371, z: 523.6425}
+    m_Value: {x: 219.56474, y: 4.5879445, z: 539.9339}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -585,9 +585,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.042516235, y: 0.7853532, z: 0.05427553, w: -0.6151988}
+    m_Target: {x: -0.0063643907, y: 0.89693606, z: -0.012916607, w: -0.4419307}
     speed: 2
-    m_Value: {x: 0.04251618, y: 0.7853522, z: 0.05427546, w: -0.61519796}
+    m_Value: {x: -0.006364377, y: 0.89693415, z: -0.012916579, w: -0.44192976}
   m_Size:
     m_Target: 1.2274085
     speed: 2
@@ -737,7 +737,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: rot
+    m_NameFilter: 
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -749,13 +749,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Assets_dowloaded/#NVJOB Dynamic Sky/Example Scenes/Environment/Scripts
     m_Globs: []
-    m_OriginalText: rot
+    m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Assets_dowloaded/#NVJOB Dynamic Sky/Example Scenes/Environment/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\sikor\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439
     \u0441\u0442\u043E\u043B\\Mksp\\SNUS\\GameArmy"
@@ -763,9 +763,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: a0890000
-    m_LastClickedID: 35232
-    m_ExpandedIDs: 00000000a0890000468a000000ca9a3bffffff7f
+    m_SelectedIDs: c48b0000
+    m_LastClickedID: 35780
+    m_ExpandedIDs: 00000000d28a0000888b0000c68b0000c88b0000ca8b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -793,7 +793,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a089000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000d28a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -818,9 +818,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 92d7fdff
-    m_LastClickedInstanceID: -141422
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 1e660000
+    m_LastClickedInstanceID: 26142
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000d8920200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -907,7 +907,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -141422
+  m_LastSelectedObjectID: 26142
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52

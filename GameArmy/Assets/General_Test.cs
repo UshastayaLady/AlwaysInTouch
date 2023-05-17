@@ -9,13 +9,14 @@ public class General_Test : MonoBehaviour
     public Text lvl, expoint;
     GameObject SelectButton;
     int good, exp, level = 1;
-
+    public GameObject Teleport;
     public AudioClip din;
     AudioSource AudioCameraFly;
 
     public void Start()
     {
         AudioCameraFly = GameObject.FindGameObjectWithTag("CameraFly").gameObject.GetComponent<AudioSource>();
+       
     }
     public void PutOn(GameObject button)
     {
@@ -54,6 +55,9 @@ public class General_Test : MonoBehaviour
 
             level++;
             lvl.text = "Уровень " + level;
+
+            if (level == 7)
+                Teleport.SetActive(true);
 
         }
         good = 0;

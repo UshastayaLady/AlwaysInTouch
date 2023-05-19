@@ -98,7 +98,7 @@ public class GreenTarget : MonoBehaviour
             oldscore = scores;
         }
         
-        Debug.Log("!!!");
+
 
 
 

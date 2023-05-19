@@ -105,6 +105,11 @@ public class Finish_polosa_zachet : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Achievements achievement = FindObjectOfType<Achievements>();
         achievement.showAchieve(Strings.lane_obstacles, 3);
+
+        if (GlobalCs.arrIsGotAch[4]){
+            ActivateTeleport teleport = FindObjectOfType<ActivateTeleport>();
+            teleport.ActivaTeteleport();
+        }
     }
     private void OnTriggerExit(Collider other)
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using static Strings;
+using static GlobalCs;
 
 public class WeaponRezult : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class WeaponRezult : MonoBehaviour
     public Text six, seven, eight, nine, ten, sum;
     public GreenTarget GreenTarget;
     bool enter;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +32,12 @@ public class WeaponRezult : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
-            six.text = "��������� � '6': " + GreenTarget.six;
-            seven.text = "��������� � '7': " + GreenTarget.sev;
-            eight.text = "��������� � '8': " + GreenTarget.vos;
-            nine.text = "��������� � '9': " + GreenTarget.nine;
-            ten.text = "��������� � '10': " + GreenTarget.ten;
-            sum.text = GreenTarget.scores + " �����";
+            six.text = "Попаданий в '6': " + GreenTarget.six;
+            seven.text = "Попаданий в '7': " + GreenTarget.sev;
+            eight.text = "Попаданий в '8': " + GreenTarget.vos;
+            nine.text = "Попаданий в '9': " + GreenTarget.nine;
+            ten.text = "Попаданий в '10': " + GreenTarget.ten;
+            sum.text = GreenTarget.scores + " очков";
 
             Weapon_trigg.ammo_bool = false;
             rezult.SetActive(true);
@@ -55,6 +57,11 @@ public class WeaponRezult : MonoBehaviour
         barer.SetActive(false);
         Achievements achievement = FindObjectOfType<Achievements>();
         achievement.showAchieve(Strings.shoot_arena, 4);
+
+        if (GlobalCs.arrIsGotAch[3]){
+            ActivateTeleport teleport = FindObjectOfType<ActivateTeleport>();
+            teleport.ActivaTeteleport();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

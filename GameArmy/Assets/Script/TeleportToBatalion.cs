@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class TeleportToBatalion : MonoBehaviour
 {
     public GameObject Marker;
+
     private void OnTriggerEnter(Collider col)
     {
-        if(col.tag == "Player")
-        {
+         if(col.tag == "Player")
+         {
+            Debug.Log("DFisdfisdjfisdfisdjfisdjf");
             SceneManager.LoadScene(1);
-        }
+         }
     }
 }

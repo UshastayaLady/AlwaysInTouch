@@ -42,14 +42,6 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 2
-  - logo: {fileID: 21300000, guid: 6cea0cde0ed2d74419766f30c008ec5d, type: 3}
-    duration: 2
-  - logo: {fileID: 21300000, guid: 10231279f9f1b104bb900e071ebe0ca6, type: 3}
-    duration: 2
-  - logo: {fileID: 21300000, guid: 03856e6ea5bb15740a5c62246353eade, type: 3}
-    duration: 2
-  - logo: {fileID: 21300000, guid: 92e7b2ca2526f2f43a3ed52fb272619d, type: 3}
-    duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -165,7 +157,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.DefaultCompany.GameArmy
+    Standalone: com.DefaultCompany.Game-Army
   buildNumber:
     Standalone: 0
     iPhone: 0

@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
 
-    public Text dialogueText;
-    public Text nameText;
+    [SerializeField] private Text dialogueText;
+    [SerializeField] private Text nameText;
 
-    public Animator boxAnim;
-    public Animator startAnim;
+    [SerializeField] private Animator boxAnim;
+    [SerializeField] private Animator startAnim;
 
     //The queue of our dialogues
     private Queue<string> sentences;

@@ -7,6 +7,8 @@ public class DialogueAnimation : MonoBehaviour
     [SerializeField] private Animator startAnim;
     [SerializeField] private DialogueManager dm;
 
+    [SerializeField] private Dialogue dialogue;
+
     private CursorMenager cursorMenager;
 
     private void Start()
@@ -18,6 +20,7 @@ public class DialogueAnimation : MonoBehaviour
     {
         startAnim.SetBool("startOpen", true);
         cursorMenager.cursorWork = true;
+        FindObjectOfType<DialogueManager>().StartDialogText(dialogue);
     }
 
     public void OnTriggerExit(Collider other)

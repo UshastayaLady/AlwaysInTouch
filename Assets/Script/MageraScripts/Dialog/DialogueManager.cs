@@ -24,11 +24,14 @@ public class DialogueManager : MonoBehaviour
     }
 
     //Starting a dialogue
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue()
     {
         boxAnim.SetBool("boxOpen", true);
-        startAnim.SetBool("startOpen", false);
+        startAnim.SetBool("startOpen", false);        
+    }
 
+    public void StartDialogText(Dialogue dialogue)
+    {
         nameText.text = dialogue.name;
         sentences.Clear();
 

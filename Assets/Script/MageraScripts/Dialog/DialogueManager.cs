@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
     {
         boxAnim.SetBool("boxOpen", true);
         startAnim.SetBool("startOpen", false);
-        InicializateMonologue.instance.startScene();
+        InstantiateMonologue.instance.startScene();
     }    
 
     //Closing the dialog box

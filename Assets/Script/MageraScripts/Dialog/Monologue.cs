@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Xml.Serialization;
 using System.IO;
-using UnityEditor.Experimental.GraphView;
-using System.Diagnostics;
 
 [XmlRoot ("Monologue")]
 public class Monologue

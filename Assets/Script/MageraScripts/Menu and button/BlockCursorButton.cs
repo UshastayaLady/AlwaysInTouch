@@ -6,10 +6,8 @@ using UnityEngine.UI;
 
 public class BlockCursorButton : MonoBehaviour
 {
-    private CursorMenager cursorMenager;
     private void Start()
     { 
-        cursorMenager = FindObjectOfType<CursorMenager>();
         Button blockCursor = GetComponent<Button>();
 
         if (blockCursor != null)
@@ -26,6 +24,6 @@ public class BlockCursorButton : MonoBehaviour
     // Метод, вызываемый при нажатии кнопки
     private void BlockCursor()
     {
-        cursorMenager.cursorWork = false;
+        CursorMenager.instance.cursorWork = false;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     [SerializeField] private Animator startAnim;
+   
 
     public void OnTriggerEnter(Collider other)
     {

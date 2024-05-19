@@ -8,8 +8,8 @@ using System.IO;
 public class Dialogue
 {
 
-    [XmlElement("text")]
-    public string text;
+    //[XmlElement("text")]
+    public string name;
 
     [XmlElement("node")]
     public Node[] nodes;
@@ -19,7 +19,20 @@ public class Dialogue
         XmlSerializer serializer = new XmlSerializer(typeof(Dialogue));
         StringReader reader = new StringReader(_xml.text);
         Dialogue dial = serializer.Deserialize(reader) as Dialogue;
+        Debug.Log("hello there");
         return dial;
+    }
+
+    public void Remove()
+    {
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            for (int j = 0; j < nodes[i].answers.Length; j++)
+            {
+                nodes[i].answers[j].text = "";
+            }
+            nodes[i].Npctext = "";
+        }
     }
 }
 
@@ -32,6 +45,7 @@ public class Node
     [XmlArray("answers")]
     [XmlArrayItem("answer")]
     public Answer[] answers;
+
 }
 
 public class Answer
@@ -42,5 +56,13 @@ public class Answer
     public string text;
     [XmlElement("dialend")]
     public string end;
+    [XmlElement("quest")]
+    public string quest;
+    [XmlElement("questDone")]
+    public string questDone;
+    [XmlElement("after")]
+    public string after;
+    [XmlElement("motion")]
+    public string motion;
 
 }

@@ -4,42 +4,75 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InstantiateDialogue : MonoBehaviour
-{   
-    public Text text;
-    public Text firstAnswer;
-    public Text secondAnswer;
-    public Text thirdAnswer;
-    public Button firstButton;
-    public Button secondButton;
+{
+    public GameObject Window;
+    public Sprite Avatar;
+        
+    public Text nodeText;
+    public Text firstAnswer;    
+    public Text secondAnswer;    
+    public Text thirdAnswer;    
+    public Button firstButton;    
+    public Button secondButton;    
     public Button thirdButton;
 
-    bool dialogueEnded = false;
-   
-    public TextAsset xmlDialogue;
+    public bool dialogueEnded = false;
 
-    [SerializeField]
+    
+    public TextAsset[] ta;
+    public int currentTa = 0;
+
+    private bool firstNodeShown = false;
+
     public int currentNode = 0;
+    [HideInInspector]
     public int butClicked;
-    bool textSet = false;
-    Node[] nd;
     Dialogue dialogue;
+    DialogueObjects list;
+    public static int index;
+    public string Quest = "";
+    public Quests quest;
+    public GameObject replaceNPC;
+
+    private bool canButton = true;
 
     void Start()
     {
-
+        
         secondButton.enabled = false;
         thirdButton.enabled = false;
-        dialogue = Dialogue.Load(xmlDialogue);
-        nd = dialogue.nodes;
-
-        text.text = nd[currentNode].Npctext;
-        firstAnswer.text = nd[currentNode].answers[currentNode].text;
+       
+        list = FindObjectOfType<DialogueObjects>();
 
         firstButton.onClick.AddListener(but1);
         secondButton.onClick.AddListener(but2);
         thirdButton.onClick.AddListener(but3);
 
-        AnswerClicked(14);  //14 - для присвоения начальных значений в диалоге что бы не создавать новую функцию
+    }
+
+    private void Update()
+    {
+
+
+        if (DialogueManager.instance.dialogueClosed == false)
+        {
+            
+            Window.transform.GetChild(4).GetComponent<Image>().sprite = Avatar;
+            if (!firstNodeShown)
+            {
+                firstStart();
+            }
+
+        }
+        else
+        {
+            if (dialogue != null)
+                dialogue.Remove();
+
+            deleteDialogue();
+            firstNodeShown = false;
+        }
+
     }
 
     private void but1()
@@ -58,50 +91,125 @@ public class InstantiateDialogue : MonoBehaviour
         AnswerClicked(2);
     }
 
+    private void firstStart()
+    {
+        dialogue = null;
+        dialogue = Dialogue.Load(ta[currentTa]);
+        list.AddDialogue(dialogue);
+        index = --list.index;
+        AnswerClicked(14);  //14 - для присвоения начальных значений в диалоге что бы не создавать новую функцию
+    }
+
+    private void deleteDialogue()
+    {
+        nodeText.text = "";
+        firstAnswer.text = "";
+        secondAnswer.text = "";
+        thirdAnswer.text = "";
+    }
+
 
     public void AnswerClicked(int numberOfButton)
     {
 
         if (numberOfButton == 14)
-            currentNode = 0;
+        {
+            if (!firstNodeShown)
+            {
+                currentNode = 0;
+                firstNodeShown = true;
+            }
+        }
         else
         {
-            if (dialogue.nodes[currentNode].answers[numberOfButton].end == "true")
+            checkingThings(numberOfButton);
+
+            currentNode = list.dialObj[index].nodes[currentNode].answers[numberOfButton].nextNode;
+        }
+
+        nodeText.text = "";                             //скидываем текст ответа каждый раз перед началом печати нового ответа НПС
+        StartCoroutine(printMachineEffect(0.01f));        //красивая отрисовка нода НПС
+
+        if (canButton)
+        {
+            firstAnswer.text = list.dialObj[index].nodes[currentNode].answers[0].text;     //первый ответ будет всегда
+
+            if (list.dialObj[index].nodes[currentNode].answers.Length >= 2)                //если ответов два
             {
-                DialogueManager.instance.EndDialogue();
+                secondButton.enabled = true;
+                secondAnswer.text = list.dialObj[index].nodes[currentNode].answers[1].text;    //показываем 
+            }
+            else
+            {
+                secondButton.enabled = false;                                       //иначе скрываем
+                secondAnswer.text = "";
             }
 
-            currentNode = dialogue.nodes[currentNode].answers[numberOfButton].nextNode;
+            if (list.dialObj[index].nodes[currentNode].answers.Length == 3)
+            {
+                thirdButton.enabled = true;
+                thirdAnswer.text = list.dialObj[index].nodes[currentNode].answers[2].text;
+            }
+            else
+            {
+                thirdButton.enabled = false;
+                thirdAnswer.text = "";
+            }
         }
+       
+    }
 
-
-
-        text.text = dialogue.nodes[currentNode].Npctext;
-
-        firstAnswer.text = dialogue.nodes[currentNode].answers[0].text;
-        if (dialogue.nodes[currentNode].answers.Length == 2)
+    public IEnumerator printMachineEffect(float time)
+    {
+        if (!DialogueManager.instance.dialogueClosed)
         {
-            secondButton.enabled = true;
-            secondAnswer.text = dialogue.nodes[currentNode].answers[1].text;
+            canButton = false;
+            for (int i = 0; i < list.dialObj[index].nodes[currentNode].Npctext.Length; i++)
+            {
+                nodeText.text += list.dialObj[index].nodes[currentNode].Npctext[i];
+                yield return new WaitForSeconds(time);
+            }
+            canButton = true;
         }
-        else
-        {
-            secondButton.enabled = false;
-            secondAnswer.text = "";
-        }
+    }
 
-        if (dialogue.nodes[currentNode].answers.Length == 3)
+    public IEnumerator waitFor(float time)
+    {
+        yield return new WaitForSeconds(time);
+        dialogueEnded = false;
+    }
+
+    public void checkingThings(int numberOfButton)
+    {
+        if (!DialogueManager.instance.dialogueClosed)
         {
-            thirdButton.enabled = true;
-            thirdAnswer.text = dialogue.nodes[currentNode].answers[2].text;
-        }
-        else
-        {
-            thirdButton.enabled = false;
-            thirdAnswer.text = "";
-        }
+            if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].end == "true")
+                dialogueEnded = true;
+
+            if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest != null)
+                quest.Ques(list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest, gameObject);
+
+            if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone != null)
+                quest.awardForQuest(list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone);
+
+            if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].after == "true")
+            {
+                dialogueEnded = true;
+                StartCoroutine(waitFor(2f));
+            }
 
 
+            if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].motion != null)
+               quest.motions(list.dialObj[index].nodes[currentNode].answers[numberOfButton].motion, gameObject, replaceNPC);
+        }
+    }
+
+
+
+    public void changeDialogue()
+    {
+        currentTa++;
+        dialogueEnded = false;
     }
 
 }

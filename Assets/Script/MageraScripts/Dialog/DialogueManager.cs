@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Animator boxAnim;
     [SerializeField] private Animator startAnim;
 
+    [SerializeField] public bool dialogueClosed = true;
+
     public static DialogueManager instance = null;
     public void Start()
     {
@@ -22,6 +24,7 @@ public class DialogueManager : MonoBehaviour
     {
         boxAnim.SetBool("boxOpen", true);
         startAnim.SetBool("startOpen", false);
+        dialogueClosed = false;
         InstantiateMonologue.instance.startScene();
     }    
 
@@ -29,5 +32,6 @@ public class DialogueManager : MonoBehaviour
    public void EndDialogue()
     {
         boxAnim.SetBool("boxOpen", false);
+        dialogueClosed = true;
     }
 }

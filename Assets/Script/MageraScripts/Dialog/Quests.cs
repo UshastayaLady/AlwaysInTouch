@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Quests : MonoBehaviour
 {
-    public Inventory inventory;
-    public StatusScript status;
+    public static Quests instance = null;
+
+    //public Inventory inventory;
+    //public StatusScript status;
     [SerializeField]
     public string objectName = "";
     [SerializeField]
@@ -15,73 +21,85 @@ public class Quests : MonoBehaviour
     public GameObject NPC;
     bool dialogueChanged = false;
 
+        
+    //public Text questStatus;
+    public GameObject questPrefab;
+    public GameObject scrollViewPrefab;
+
+    public GameObject [] questsPrefab;
+
     public void Start()
     {
+        if (instance == null)
+        { instance = this; }
     }
+       
 
     public void Update()
     {
         if (questActive)
-        {
-            for (int i = 0; i < inventory.items.Length; i++)
-            {
-                if (inventory.items[i] != null)
-                {
-                    if (inventory.items[i].name == objectName + type)
-                    {
-                        if (dialogueChanged == false)
-                        {
-                            status.Message("Принесите склянку зомби");
-                            dialogueChanged = true;
-                            NPC.GetComponent<InstantiateDialogue>().changeDialogue();
-                        }
+        {                        
 
-                    }
-                }
+            //for (int i = 0; i < questsPrefab.Length; i++)
+            //{
+
+            //    if (dialogueChanged == false)
+            //    {
+            //        status.Message("Принесите склянку зомби");
+            //        dialogueChanged = true;
+            //        NPC.GetComponent<InstantiateDialogue>().changeDialogue();
+            //    }
+
+
+            //}
+        }
+    }
+
+    public void AddQuest(string questText)
+    {
+        // Создаем новый экземпляр Text
+        GameObject newText = Instantiate(questPrefab);
+
+        // Устанавливаем родителем для нового текста Scroll View
+        newText.transform.SetParent(scrollViewPrefab.transform, false);
+
+        // Добавляем текст в новый объект Text
+        newText.GetComponent<Text>().text = questText;
+
+        questsPrefab.Append(newText);
+
+        InstantiateDialogue.instance.changeDialogue();
+
+    }
+
+    public void MakeQuest(string make)
+    {
+        for (int i = 0; i < questsPrefab.Length; i++)
+        {
+            if (questsPrefab[i].GetComponent<Text>().text == make)
+            {                
+                questsPrefab[i].GetComponent<Text>().text = "<del>" + questsPrefab[i].GetComponent<Text>().text + "</del>";
+                break; // выход из цикла после удаления элемента
             }
         }
     }
 
-    public void Ques(string quest, GameObject npc)
+    public void RemoveQuest(string delete)
     {
-        if (npc.name == "DennisZ")
+       
+        List<GameObject> questsList = new List<GameObject>(questsPrefab);
+
+        for (int i = 0; i < questsList.Count; i++)
         {
-            if (quest == "find")
+            if (questsList[i].GetComponent<Text>().text == delete)
             {
-                status.Message("Найдите склянку с жидкостью и принесите зомби");
-                objectName = npc.name;
-                type = quest;
-                NPC = npc;
-                questActive = true;
+                questsList.RemoveAt(i);
+                questsPrefab = questsList.ToArray(); // преобразование List обратно в массив
+                break; // выход из цикла после удаления элемента
             }
         }
+
+        InstantiateDialogue.instance.changeDialogue();
     }
 
-    public void awardForQuest(string quest)
-    {
-        if (quest == "find")
-        {
-            int exp = 30;
-            status.Message("Вы получили !" + exp + "! опыта за выполнение задания");
-        }
-    }
-
-    public IEnumerator replaceNPC(GameObject oldNPC, GameObject newNPC)
-    {
-        oldNPC.GetComponent<InstantiateDialogue>().dialogueEnded = true;
-        yield return new WaitForSeconds(1f);
-        Instantiate(newNPC, new Vector3(oldNPC.transform.position.x, oldNPC.transform.position.y, oldNPC.transform.position.z), Quaternion.identity);
-        oldNPC.GetComponent<InstantiateDialogue>().Window.SetActive(true);
-        newNPC.GetComponent<InstantiateDialogue>().Window = oldNPC.GetComponent<InstantiateDialogue>().Window;
-        oldNPC.GetComponent<InstantiateDialogue>().Window.SetActive(false);
-        oldNPC.SetActive(false);
-    }
-
-    public void motions(string motion, GameObject oldNPC, GameObject newNPC)
-    {
-        if (motion == "replaceNPC")
-        {
-            StartCoroutine(replaceNPC(oldNPC, newNPC));
-        }
-    }
 }

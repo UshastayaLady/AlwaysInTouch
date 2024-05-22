@@ -1,5 +1,9 @@
+using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+
 
 public class InstantiateMonologue : MonoBehaviour
 {
@@ -52,7 +56,16 @@ public class InstantiateMonologue : MonoBehaviour
         
     }
 
-
+    public IEnumerator printEffect(float time)
+    {
+        IntroButton.enabled = false;
+        for (int i = 0; i < monologue.nodes[currentNode].Npctext.Length; i++)
+        {
+            IntroText.text += monologue.nodes[currentNode].Npctext[i];
+            yield return new WaitForSeconds(time);
+        }
+        IntroButton.enabled = true;
+    }
     public void NextIntroNode()
     {
         if (currentNode == monologue.nodes.Length)
@@ -61,8 +74,8 @@ public class InstantiateMonologue : MonoBehaviour
         }
         else 
         {
-            IntroText.text = "";
-            StartCoroutine(PrintMachineEffect.instance.printMachineEffect(IntroText, monologue.nodes[currentNode].Npctext, IntroButton));
+            IntroText.text = "";            
+            StartCoroutine(printEffect(0.01f));
             currentNode++;
         }
         

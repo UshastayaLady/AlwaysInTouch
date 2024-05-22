@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InstantiateDialogue : MonoBehaviour
 {
+    public static InstantiateDialogue instance = null;
+
     public GameObject Window;
     public Sprite Avatar;
         
@@ -36,9 +38,13 @@ public class InstantiateDialogue : MonoBehaviour
 
     private bool canButton = true;
 
+    public string questText;
+
     void Start()
     {
-        
+        if (instance == null)
+        { instance = this; }
+
         secondButton.enabled = false;
         thirdButton.enabled = false;
        
@@ -55,9 +61,8 @@ public class InstantiateDialogue : MonoBehaviour
 
 
         if (DialogueManager.instance.dialogueClosed == false)
-        {
+        {            
             
-            Window.transform.GetChild(4).GetComponent<Image>().sprite = Avatar;
             if (!firstNodeShown)
             {
                 firstStart();
@@ -187,20 +192,17 @@ public class InstantiateDialogue : MonoBehaviour
                 dialogueEnded = true;
 
             if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest != null)
-                quest.Ques(list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest, gameObject);
+                quest.AddQuest(list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest);            
 
             if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone != null)
-                quest.awardForQuest(list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone);
+                quest.RemoveQuest(list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone);
 
             if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].after == "true")
             {
                 dialogueEnded = true;
                 StartCoroutine(waitFor(2f));
             }
-
-
-            if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].motion != null)
-               quest.motions(list.dialObj[index].nodes[currentNode].answers[numberOfButton].motion, gameObject, replaceNPC);
+            
         }
     }
 

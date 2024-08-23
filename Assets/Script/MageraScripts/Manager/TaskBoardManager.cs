@@ -13,12 +13,6 @@ public class TaskBoardManager : MonoBehaviour
     public TaskBoard taskBoard;
     public List<Task> tasks = new List<Task>();
 
-
-    //public Text questStatus;
-    //public GameObject questPrefab;
-    //public GameObject scrollViewPrefab;
-    //public GameObject[] questsPrefab;
-
     private void Awake()
     {
         if (instance == null)
@@ -46,18 +40,6 @@ public class TaskBoardManager : MonoBehaviour
         tasks.Add(newTask);
         taskBoard.AddTaskToBoard(newTask);
 
-        //// Создаем новый экземпляр Text
-        //GameObject newText = Instantiate(questPrefab);
-
-        //// Устанавливаем родителем для нового текста Scroll View
-        //newText.transform.SetParent(scrollViewPrefab.transform, false);
-
-        //// Добавляем текст в новый объект Text
-        //newText.GetComponent<Text>().text = questText;
-
-        //questsPrefab.Append(newText);
-
-        //InstantiateDialogue.instance.changeDialogue();
     }
 
     // Метод для обновления статуса задания

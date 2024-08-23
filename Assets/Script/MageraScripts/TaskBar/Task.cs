@@ -8,6 +8,6 @@ public class Task
     public Task(string name)
     {
         taskName = name;
-        status = "Pending";
+        status = "Не выполнен";
     }
 }

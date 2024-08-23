@@ -32,7 +32,7 @@ public class InstantiateDialogue : MonoBehaviour
     DialogueObjects list;
     public static int index;
     public string Quest = "";
-    public Quests quest;
+    public TaskBoardManager quest;
     public GameObject replaceNPC;
 
     public string questText;
@@ -176,10 +176,10 @@ public class InstantiateDialogue : MonoBehaviour
             }
 
             if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest != null)
-                quest.AddQuest(list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest);            
+                quest.AddTask(list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest);                        
 
             if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone != null)
-                quest.RemoveQuest(list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone);
+                //quest.RemoveQuest(list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone);
 
             if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].after == "true")
             {

@@ -8,9 +8,16 @@ using UnityEngine.UI;
 public class TaskBoardManager : MonoBehaviour
 {
     public static TaskBoardManager instance;
+
     public GameObject taskBoardPrefab;
     public TaskBoard taskBoard;
     public List<Task> tasks = new List<Task>();
+
+
+    //public Text questStatus;
+    //public GameObject questPrefab;
+    //public GameObject scrollViewPrefab;
+    //public GameObject[] questsPrefab;
 
     private void Awake()
     {
@@ -33,11 +40,24 @@ public class TaskBoardManager : MonoBehaviour
         }
     }
     // Метод для добавления нового задания на доску
-    public void AddTask(string taskName)
+    public void AddTask(string questText)
     {
-        Task newTask = new Task(taskName);
+        Task newTask = new Task(questText);
         tasks.Add(newTask);
         taskBoard.AddTaskToBoard(newTask);
+
+        //// Создаем новый экземпляр Text
+        //GameObject newText = Instantiate(questPrefab);
+
+        //// Устанавливаем родителем для нового текста Scroll View
+        //newText.transform.SetParent(scrollViewPrefab.transform, false);
+
+        //// Добавляем текст в новый объект Text
+        //newText.GetComponent<Text>().text = questText;
+
+        //questsPrefab.Append(newText);
+
+        //InstantiateDialogue.instance.changeDialogue();
     }
 
     // Метод для обновления статуса задания

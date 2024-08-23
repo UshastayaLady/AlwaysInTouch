@@ -18,8 +18,7 @@ public class Dialogue
     {
         XmlSerializer serializer = new XmlSerializer(typeof(Dialogue));
         StringReader reader = new StringReader(_xml.text);
-        Dialogue dial = serializer.Deserialize(reader) as Dialogue;
-        Debug.Log("hello there");
+        Dialogue dial = serializer.Deserialize(reader) as Dialogue;        
         return dial;
     }
 

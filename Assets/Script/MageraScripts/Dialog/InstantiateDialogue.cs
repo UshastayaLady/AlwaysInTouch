@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,8 +35,6 @@ public class InstantiateDialogue : MonoBehaviour
     public Quests quest;
     public GameObject replaceNPC;
 
-    private bool canButton = true;
-
     public string questText;
 
     void Start()
@@ -71,13 +68,14 @@ public class InstantiateDialogue : MonoBehaviour
         }
         else
         {
+            
             if (dialogue != null)
-                dialogue.Remove();
-
+            {
+                dialogue.Remove();            
+            }
             deleteDialogue();
             firstNodeShown = false;
-        }
-
+        }          
     }
 
     private void but1()
@@ -107,7 +105,8 @@ public class InstantiateDialogue : MonoBehaviour
 
     private void deleteDialogue()
     {
-        nodeText.text = "";
+         
+        nodeText.text = ""; 
         firstAnswer.text = "";
         secondAnswer.text = "";
         thirdAnswer.text = "";
@@ -131,52 +130,34 @@ public class InstantiateDialogue : MonoBehaviour
 
             currentNode = list.dialObj[index].nodes[currentNode].answers[numberOfButton].nextNode;
         }
+        
+        nodeText.text = ""; //скидываем текст ответа каждый раз перед началом печати нового ответа НПС
+        nodeText.text = list.dialObj[index].nodes[currentNode].Npctext;        
 
-        nodeText.text = "";                             //скидываем текст ответа каждый раз перед началом печати нового ответа НПС
-        StartCoroutine(printMachineEffect(0.01f));        //красивая отрисовка нода НПС
-
-        if (canButton)
+        firstAnswer.text = list.dialObj[index].nodes[currentNode].answers[0].text;     //первый ответ будет всегда            
+        if (list.dialObj[index].nodes[currentNode].answers.Length >= 2)                //если ответов два
         {
-            firstAnswer.text = list.dialObj[index].nodes[currentNode].answers[0].text;     //первый ответ будет всегда
-
-            if (list.dialObj[index].nodes[currentNode].answers.Length >= 2)                //если ответов два
-            {
-                secondButton.enabled = true;
-                secondAnswer.text = list.dialObj[index].nodes[currentNode].answers[1].text;    //показываем 
-            }
-            else
-            {
-                secondButton.enabled = false;                                       //иначе скрываем
-                secondAnswer.text = "";
-            }
-
-            if (list.dialObj[index].nodes[currentNode].answers.Length == 3)
-            {
-                thirdButton.enabled = true;
-                thirdAnswer.text = list.dialObj[index].nodes[currentNode].answers[2].text;
-            }
-            else
-            {
-                thirdButton.enabled = false;
-                thirdAnswer.text = "";
-            }
+            secondButton.enabled = true;
+            secondAnswer.text = list.dialObj[index].nodes[currentNode].answers[1].text;    //показываем 
         }
-       
-    }
-
-    public IEnumerator printMachineEffect(float time)
-    {
-        if (!DialogueManager.instance.dialogueClosed)
+        else
         {
-            canButton = false;
-            for (int i = 0; i < list.dialObj[index].nodes[currentNode].Npctext.Length; i++)
-            {
-                nodeText.text += list.dialObj[index].nodes[currentNode].Npctext[i];
-                yield return new WaitForSeconds(time);
-            }
-            canButton = true;
+            secondButton.enabled = false;                                       //иначе скрываем
+            secondAnswer.text = "";
         }
-    }
+
+        if (list.dialObj[index].nodes[currentNode].answers.Length == 3)
+        {
+            thirdButton.enabled = true;
+            thirdAnswer.text = list.dialObj[index].nodes[currentNode].answers[2].text;
+        }
+        else
+        {
+            thirdButton.enabled = false;
+            thirdAnswer.text = "";
+        }
+
+    }    
 
     public IEnumerator waitFor(float time)
     {
@@ -189,7 +170,10 @@ public class InstantiateDialogue : MonoBehaviour
         if (!DialogueManager.instance.dialogueClosed)
         {
             if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].end == "true")
+            { 
                 dialogueEnded = true;
+                DialogueManager.instance.EndDialogue();
+            }
 
             if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest != null)
                 quest.AddQuest(list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest);            
@@ -200,6 +184,7 @@ public class InstantiateDialogue : MonoBehaviour
             if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].after == "true")
             {
                 dialogueEnded = true;
+                DialogueManager.instance.EndDialogue();
                 StartCoroutine(waitFor(2f));
             }
             

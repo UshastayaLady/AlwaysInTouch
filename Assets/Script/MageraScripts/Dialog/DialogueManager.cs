@@ -25,7 +25,8 @@ public class DialogueManager : MonoBehaviour
         boxAnim.SetBool("boxOpen", true);
         startAnim.SetBool("startOpen", false);
         dialogueClosed = false;
-        InstantiateMonologue.instance.startScene();
+        //InstantiateMonologue.instance.startScene();
+
     }    
 
     //Closing the dialog box

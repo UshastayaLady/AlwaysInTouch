@@ -8,13 +8,13 @@ public class AddTaskOnEvent : MonoBehaviour
     public string taskName;
     public UnityEvent onEvent;
 
-    private void OnEnable()
+    private void OnTriggerEnter(Collider other)
     {
         onEvent.AddListener(AddTask);
     }
 
-    private void OnDisable()
-    {
+    private void OnTriggerExit(Collider other)
+    { 
         onEvent.RemoveListener(AddTask);
     }
 

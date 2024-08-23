@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using System;
+using UnityEngine.UI;
 
 public class TaskBoardManager : MonoBehaviour
 {
     public static TaskBoardManager instance;
-
+    public GameObject taskBoardPrefab;
     public TaskBoard taskBoard;
     public List<Task> tasks = new List<Task>();
 
@@ -21,6 +24,14 @@ public class TaskBoardManager : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            // Переключаем состояние объекта
+            taskBoardPrefab.SetActive(!taskBoardPrefab.activeSelf);
+        }
+    }
     // Метод для добавления нового задания на доску
     public void AddTask(string taskName)
     {

@@ -1,0 +1,12 @@
+<dialogue>
+	<node>
+		<npctext> Приветствую тебя, призывник. Назови свою Фамилию, Имя.</npctext>
+		<answers>
+			<answer>
+				<text> Меня зовут ... </text>
+				<dialend>true</dialend>
+				<del>true</del>
+			</answer>
+		</answers>
+	</node>
+</dialogue>

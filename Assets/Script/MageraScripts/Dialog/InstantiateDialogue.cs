@@ -4,38 +4,32 @@ using UnityEngine.UI;
 
 public class InstantiateDialogue : MonoBehaviour
 {
+
+    #region variables
     public static InstantiateDialogue instance = null;
 
-    public GameObject Window;
-    public Sprite Avatar;
+    [SerializeField] private GameObject Window;
         
-    public Text nodeText;
-    public Text firstAnswer;    
-    public Text secondAnswer;    
-    public Text thirdAnswer;    
-    public Button firstButton;    
-    public Button secondButton;    
-    public Button thirdButton;
+    [SerializeField] private Text nodeText;
+    [SerializeField] private Text firstAnswer;
+    [SerializeField] private Text secondAnswer;
+    [SerializeField] private Text thirdAnswer;
+    [SerializeField] private Button firstButton;
+    [SerializeField] private Button secondButton;
+    [SerializeField] private Button thirdButton;
 
-    public bool dialogueEnded = false;
+    [HideInInspector] public bool dialogueEnded = false; //«акончен ли диалог?
+    private bool firstNodeShown = false; //1 нод был показан?
+        
+    [HideInInspector]public TextAsset ta;
 
-    
-    public TextAsset[] ta;
-    public int currentTa = 0;
-
-    private bool firstNodeShown = false;
-
-    public int currentNode = 0;
-    [HideInInspector]
-    public int butClicked;
+    private int currentNode = 0;    
+    [HideInInspector] public int butClicked;
     Dialogue dialogue;
-    DialogueObjects list;
-    public static int index;
-    public string Quest = "";
-    public TaskBoardManager quest;
-    public GameObject replaceNPC;
+        
+    [HideInInspector] public TaskBoardManager quest;
 
-    public string questText;
+    #endregion
 
     void Start()
     {
@@ -45,39 +39,28 @@ public class InstantiateDialogue : MonoBehaviour
         secondButton.enabled = false;
         thirdButton.enabled = false;
        
-        list = FindObjectOfType<DialogueObjects>();
-
         firstButton.onClick.AddListener(but1);
         secondButton.onClick.AddListener(but2);
         thirdButton.onClick.AddListener(but3);
-
     }
 
     private void Update()
     {
-
-
-        if (DialogueManager.instance.dialogueClosed == false)
-        {            
-            
-            if (!firstNodeShown)
-            {
-                firstStart();
-            }
-
-        }
-        else
+        if (ta!=null)
         {
-            
-            if (dialogue != null)
+            if (dialogueEnded == false)
             {
-                dialogue.Remove();            
+                if (!firstNodeShown)
+                {
+                    firstStart();
+                }
+
             }
-            deleteDialogue();
-            firstNodeShown = false;
-        }          
+        }
+                   
     }
 
+    #region // Buttons
     private void but1()
     {
         butClicked = 0;
@@ -93,26 +76,16 @@ public class InstantiateDialogue : MonoBehaviour
         butClicked = 2;
         AnswerClicked(2);
     }
-
+    #endregion
+        
     private void firstStart()
     {
-        dialogue = null;
-        dialogue = Dialogue.Load(ta[currentTa]);
-        list.AddDialogue(dialogue);
-        index = --list.index;
+        dialogue = null;       
+        dialogue = Dialogue.Load(ta);       
         AnswerClicked(14);  //14 - дл€ присвоени€ начальных значений в диалоге что бы не создавать новую функцию
     }
 
-    private void deleteDialogue()
-    {
-         
-        nodeText.text = ""; 
-        firstAnswer.text = "";
-        secondAnswer.text = "";
-        thirdAnswer.text = "";
-    }
-
-
+    
     public void AnswerClicked(int numberOfButton)
     {
 
@@ -127,18 +100,17 @@ public class InstantiateDialogue : MonoBehaviour
         else
         {
             checkingThings(numberOfButton);
-
-            currentNode = list.dialObj[index].nodes[currentNode].answers[numberOfButton].nextNode;
+            currentNode = dialogue.nodes[currentNode].answers[numberOfButton].nextNode;
         }
         
         nodeText.text = ""; //скидываем текст ответа каждый раз перед началом печати нового ответа Ќѕ—
-        nodeText.text = list.dialObj[index].nodes[currentNode].Npctext;        
+        nodeText.text = dialogue.nodes[currentNode].Npctext;        
 
-        firstAnswer.text = list.dialObj[index].nodes[currentNode].answers[0].text;     //первый ответ будет всегда            
-        if (list.dialObj[index].nodes[currentNode].answers.Length >= 2)                //если ответов два
+        firstAnswer.text = dialogue.nodes[currentNode].answers[0].text;     //первый ответ будет всегда            
+        if (dialogue.nodes[currentNode].answers.Length >= 2)                //если ответов два
         {
             secondButton.enabled = true;
-            secondAnswer.text = list.dialObj[index].nodes[currentNode].answers[1].text;    //показываем 
+            secondAnswer.text = dialogue.nodes[currentNode].answers[1].text;    //показываем 
         }
         else
         {
@@ -146,10 +118,10 @@ public class InstantiateDialogue : MonoBehaviour
             secondAnswer.text = "";
         }
 
-        if (list.dialObj[index].nodes[currentNode].answers.Length == 3)
+        if (dialogue.nodes[currentNode].answers.Length == 3)
         {
             thirdButton.enabled = true;
-            thirdAnswer.text = list.dialObj[index].nodes[currentNode].answers[2].text;
+            thirdAnswer.text = dialogue.nodes[currentNode].answers[2].text;
         }
         else
         {
@@ -157,46 +129,60 @@ public class InstantiateDialogue : MonoBehaviour
             thirdAnswer.text = "";
         }
 
-    }    
-
-    public IEnumerator waitFor(float time)
-    {
-        yield return new WaitForSeconds(time);
-        dialogueEnded = false;
-    }
+    }      
 
     public void checkingThings(int numberOfButton)
     {
         if (!DialogueManager.instance.dialogueClosed)
-        {
-            if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].end == "true")
-            { 
-                dialogueEnded = true;
-                DialogueManager.instance.EndDialogue();
-            }
+        {            
 
-            if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest != null)
-                quest.AddTask(list.dialObj[index].nodes[currentNode].answers[numberOfButton].quest);                        
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quest != null)
+                quest.AddTask(dialogue.nodes[currentNode].answers[numberOfButton].quest);                        
 
-            if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone != null)
+            if (dialogue.nodes[currentNode].answers[numberOfButton].questDone != null)
                 //quest.RemoveQuest(list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone);
 
-            if (list.dialObj[index].nodes[currentNode].answers[numberOfButton].after == "true")
-            {
-                dialogueEnded = true;
+            if (dialogue.nodes[currentNode].answers[numberOfButton].after == "true")
+            {                
                 DialogueManager.instance.EndDialogue();
                 StartCoroutine(waitFor(2f));
             }
-            
+
+            if (dialogue.nodes[currentNode].answers[numberOfButton].end == "true")
+            {
+                dialogueEnded = true;
+                DialogueManager.instance.EndDialogue();
+            }
+
         }
     }
 
-
-
-    public void changeDialogue()
+    public IEnumerator waitFor(float time)
     {
-        currentTa++;
-        dialogueEnded = false;
+        yield return new WaitForSeconds(time);     
+    }  
+
+    public void CloseDialogue()
+    {
+
+        if (dialogue != null)
+        {            
+            dialogue = null;
+        }
+        deleteDialogue();
+        currentNode = 0; // Ќачинаем с первого узла
+        firstNodeShown = false; // —брасываем флаг показа первого узла
+        secondButton.enabled = false;
+        thirdButton.enabled = false;
     }
+
+    private void deleteDialogue()
+    {
+         
+        nodeText.text = ""; 
+        firstAnswer.text = "";
+        secondAnswer.text = "";
+        thirdAnswer.text = "";
+    }    
 
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Xml.Serialization;     //запись и чтение xml файла
 using System.IO;

@@ -25,6 +25,7 @@
 				<text> Хорошо, поищу. Спасибо! </text>
 				<quest> Найди еду. </quest>
 				<dialend>true</dialend>
+				<del>true</del>
 			</answer>
 		</answers>
 	</node>

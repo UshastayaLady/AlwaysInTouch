@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] public bool dialogueClosed = true;
 
     public static DialogueManager instance = null;
+
     public void Start()
     {
         if (instance == null)
@@ -25,14 +26,13 @@ public class DialogueManager : MonoBehaviour
         boxAnim.SetBool("boxOpen", true);
         startAnim.SetBool("startOpen", false);
         dialogueClosed = false;
-        //InstantiateMonologue.instance.startScene();
-
     }    
 
     //Closing the dialog box
    public void EndDialogue()
     {
         boxAnim.SetBool("boxOpen", false);
-        dialogueClosed = true;
+        InstantiateDialogue.instance.CloseDialogue();
+        dialogueClosed = true;       
     }
 }

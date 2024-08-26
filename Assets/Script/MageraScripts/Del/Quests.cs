@@ -68,7 +68,7 @@ public class Quests : MonoBehaviour
 
         questsPrefab.Append(newText);
 
-        InstantiateDialogue.instance.changeDialogue();
+        //InstantiateDialogue.instance.changeDialogue();
 
     }
 
@@ -99,7 +99,7 @@ public class Quests : MonoBehaviour
             }
         }
 
-        InstantiateDialogue.instance.changeDialogue();
+        //InstantiateDialogue.instance.changeDialogue();
     }
 
 }

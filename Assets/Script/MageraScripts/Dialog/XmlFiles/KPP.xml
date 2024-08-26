@@ -4,8 +4,7 @@
 		<answers>
 			<answer>
 				<text> Меня зовут ... </text>
-				<dialend>true</dialend>
-				<del>true</del>
+				<dialend>true</dialend>				
 			</answer>
 		</answers>
 	</node>

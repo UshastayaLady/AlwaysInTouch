@@ -134,10 +134,15 @@ public class InstantiateDialogue : MonoBehaviour
     public void checkingThings(int numberOfButton)
     {
         if (!DialogueManager.instance.dialogueClosed)
-        {            
-
-            if (dialogue.nodes[currentNode].answers[numberOfButton].quest != null)
-                quest.AddTask(dialogue.nodes[currentNode].answers[numberOfButton].quest);                        
+        {
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests != null)
+            {
+                for (int i =0; i< dialogue.nodes[currentNode].answers[numberOfButton].quests.Length; i++)
+                {                    
+                    quest.AddTask(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textQuest); 
+                }
+            }
+                                       
 
             if (dialogue.nodes[currentNode].answers[numberOfButton].questDone != null)
                 //quest.RemoveQuest(list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone);

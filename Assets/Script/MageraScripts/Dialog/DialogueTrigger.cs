@@ -15,6 +15,7 @@ public class DialogueTrigger : MonoBehaviour
             if (currentTa < ta.Length - 1)
             {
                 currentTa++;
+                InstantiateDialogue.instance.dialogueEnded = false;
             }
             else
             {

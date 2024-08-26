@@ -41,7 +41,7 @@ public class Node
 
     [XmlArray("answers")]
     [XmlArrayItem("answer")]
-    public Answer[] answers;
+    public Answer[] answers;   
 
 }
 
@@ -53,13 +53,23 @@ public class Answer
     public string text;
     [XmlElement("dialend")]
     public string end;
-    [XmlElement("quest")]
-    public string quest;
+
+    [XmlArray("quests")]
+    [XmlArrayItem("quest")]
+    public Quests[] quests;
+
     [XmlElement("questDone")]
     public string questDone;
     [XmlElement("after")]
     public string after;
     [XmlElement("motion")]
     public string motion;
+
+}
+
+public class Quests
+{
+    [XmlElement("textQuest")]
+    public string textQuest;
 
 }

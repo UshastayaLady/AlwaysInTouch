@@ -1,0 +1,28 @@
+<dialogue>
+	<node>
+		<npctext> Подожди минутку. Сейчас проверю списки.</npctext>
+		<answers>
+			<answer tonode = "1">
+				<text> ... </text>			
+			</answer>
+		</answers>
+	</node>
+	
+	<node>
+		<npctext> Да. Ты есть. Проходи и иди получай форму. Как получишь форму, сразу на инструктаж.</npctext>
+		<answers>
+			<answer tonode = "0">
+				<text> Хорошо. Спасибо. </text>
+				<quests>
+					<quest>
+						<textQuest>Взять форму </textQuest>							
+					</quest>
+					<quest>
+						<textQuest>Придти на инструктаж </textQuest>
+					</quest>
+				</quests>
+				<dialend>true</dialend>
+			</answer>
+		</answers>
+	</node>
+</dialogue>

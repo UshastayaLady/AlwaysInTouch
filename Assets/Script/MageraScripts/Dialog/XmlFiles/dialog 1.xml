@@ -23,7 +23,7 @@
 		<answers>
 			<answer tonode="0">
 				<text> Хорошо, поищу. Спасибо! </text>
-				<quest> Найди еду. </quest>
+				<quest> Найди еду </quest>
 				<dialend>true</dialend>
 				<del>true</del>
 			</answer>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+//Клас для работы с панелью тасков
 public class TaskBoard : MonoBehaviour
 {
     public Text taskTextPrefab;
@@ -12,7 +14,7 @@ public class TaskBoard : MonoBehaviour
     public void AddTaskToBoard(Task task)
     {
         Text newTaskText = Instantiate(taskTextPrefab, taskListPanel);
-        newTaskText.text = task.taskName + " - " + task.status;
+        newTaskText.text = task.textQuest + " - " + task.statusQuest;
     }
 
     // Метод для обновления статуса задания на доске
@@ -21,9 +23,22 @@ public class TaskBoard : MonoBehaviour
         foreach (Transform taskTextTransform in taskListPanel)
         {
             Text taskText = taskTextTransform.GetComponent<Text>();
-            if (taskText.text.Contains(task.taskName))
+            if (taskText.text.Contains(task.textQuest))
             {
-                taskText.text = task.taskName + " - " + task.status;
+                taskText.text = task.textQuest + " - " + task.statusQuest;
+            }
+        }
+    }
+
+    public void RemoveTaskFromBoard(Task task)
+    {
+        foreach (Transform taskTextTransform in taskListPanel)
+        {
+            Text taskText = taskTextTransform.GetComponent<Text>();
+            if (taskText.text.Contains(task.textQuest))
+            {
+                Destroy(taskText.gameObject);
+                break;
             }
         }
     }

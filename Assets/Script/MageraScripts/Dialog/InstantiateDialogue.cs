@@ -82,14 +82,14 @@ public class InstantiateDialogue : MonoBehaviour
     {
         dialogue = null;       
         dialogue = Dialogue.Load(ta);       
-        AnswerClicked(14);  //14 - для присвоения начальных значений в диалоге что бы не создавать новую функцию
+        AnswerClicked(-14);  //14 - для присвоения начальных значений в диалоге что бы не создавать новую функцию
     }
 
     
-    public void AnswerClicked(int numberOfButton)
+    private void AnswerClicked(int numberOfButton)
     {
 
-        if (numberOfButton == 14)
+        if (numberOfButton == -14)
         {
             if (!firstNodeShown)
             {
@@ -131,21 +131,14 @@ public class InstantiateDialogue : MonoBehaviour
 
     }      
 
-    public void checkingThings(int numberOfButton)
+    private void checkingThings(int numberOfButton)
     {
         if (!DialogueManager.instance.dialogueClosed)
         {
             if (dialogue.nodes[currentNode].answers[numberOfButton].quests != null)
             {
-                for (int i =0; i< dialogue.nodes[currentNode].answers[numberOfButton].quests.Length; i++)
-                {                    
-                    quest.AddTask(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textQuest); 
-                }
-            }
-                                       
-
-            if (dialogue.nodes[currentNode].answers[numberOfButton].questDone != null)
-                //quest.RemoveQuest(list.dialObj[index].nodes[currentNode].answers[numberOfButton].questDone);
+                WorkWithQuests(numberOfButton);
+            }  
 
             if (dialogue.nodes[currentNode].answers[numberOfButton].after == "true")
             {                
@@ -162,7 +155,35 @@ public class InstantiateDialogue : MonoBehaviour
         }
     }
 
-    public IEnumerator waitFor(float time)
+    private void WorkWithQuests(int numberOfButton)
+    {
+        for (int i = 0; i < dialogue.nodes[currentNode].answers[numberOfButton].quests.Length; i++)
+        {
+            // Создание квеста
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textQuest != null)
+            {
+                quest.AddTask(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textQuest);
+            }
+            // Если цель квеста поговорить с НПС и на этом квест закончен
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questEndAndDelete != null)
+            {
+                quest.TaskDoneDialogue(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questEndAndDelete);
+            }
+            // Если необходимо сдать выполненный квест НПС со статусом "Выполнено"
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone != null)
+            {
+                quest.TaskDone(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone, "Выполнен");
+            }
+            // Если нужно поменять статус квеста после диалога
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textNewStatus != null)
+            {
+                quest.UpdateTaskStatus(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questChangeStatus,
+                    dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textNewStatus);
+            }
+        }
+    }
+
+    private IEnumerator waitFor(float time)
     {
         yield return new WaitForSeconds(time);     
     }  

@@ -58,18 +58,23 @@ public class Answer
     [XmlArrayItem("quest")]
     public Quests[] quests;
 
-    [XmlElement("questDone")]
-    public string questDone;
     [XmlElement("after")]
-    public string after;
-    [XmlElement("motion")]
-    public string motion;
+    public string after; 
 
 }
 
 public class Quests
 {
-    [XmlElement("textQuest")]
-    public string textQuest;
-
+    [XmlElement("textQuest")] // Текст для создания квеста
+    public string textQuest;    
+    [XmlElement("questDone")] // Текст квеста для проверки, что он выполнен (рядом статус "выполнен")
+    public string questDone;
+    [XmlElement("questEndAndDelete")] // Текст квеста, который сдается во время диалога
+    public string questEndAndDelete;
+    [XmlElement("questChangeStatus")] // Текст квеста, для которого меняется статус
+    public string questChangeStatus;
+    [XmlElement("textNewStatus")] // Для смены статуса
+    public string textNewStatus;
+    [XmlElement("motion")] // Опты
+    public string motion;
 }

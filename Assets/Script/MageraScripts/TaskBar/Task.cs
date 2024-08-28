@@ -2,12 +2,12 @@ using System.Collections.Generic;
 
 public class Task
 {
-    public string taskName;
-    public string status;
+    public string textQuest;
+    public string statusQuest;
 
-    public Task(string name)
+    public Task(string text, string status)
     {
-        taskName = name;
-        status = "Не выполнен";
+        textQuest = text;
+        statusQuest = status;
     }
 }

@@ -9,7 +9,7 @@ public class VideoTrigger : MonoBehaviour
 
     public GameObject _newvideo;
      VideoPlayer _videoPlayer;
-     int i = 0;
+     
     void Start()
     {
 

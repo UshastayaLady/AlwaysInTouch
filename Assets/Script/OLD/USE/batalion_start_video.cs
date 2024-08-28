@@ -13,8 +13,7 @@ public class batalion_start_video : MonoBehaviour
     public GameObject start_video_cam;
     public GameObject start_video_canv;
     public GameObject LordCanvas;
-    bool flag = true;
-
+    
   /*  void Start()
     {
        FPS.SetActive(false);
@@ -32,8 +31,7 @@ public class batalion_start_video : MonoBehaviour
         FPS.SetActive(true);
         Kamen.GetComponent<SphereCollider>().enabled = false;
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        flag = false;
+        Cursor.lockState = CursorLockMode.Locked;        
         KamDis.FPSNIK.GetComponent<FPSCONROL>().enabled = true;
         KamDis.FPSNIK.GetComponent<тело>().enabled = true;
         KamDis.FPSNIK_camera.GetComponent<тело>().enabled = true;
@@ -66,8 +64,7 @@ public class batalion_start_video : MonoBehaviour
 
     IEnumerator video_stop()
     {
-        yield return new WaitForSeconds(180.0f);
-        flag = false;
+        yield return new WaitForSeconds(180.0f);        
         start_video_cam.SetActive(false);
         start_video_canv.SetActive(false);
         FPS.SetActive(true);

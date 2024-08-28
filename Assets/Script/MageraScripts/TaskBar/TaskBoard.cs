@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +28,7 @@ public class TaskBoard : MonoBehaviour
         }
     }
 
+    // Метод для удаления статуса задания на доске
     public void RemoveTaskFromBoard(Task task)
     {
         foreach (Transform taskTextTransform in taskListPanel)
@@ -38,8 +37,10 @@ public class TaskBoard : MonoBehaviour
             if (taskText.text.Contains(task.textQuest))
             {
                 Destroy(taskText.gameObject);
+                GameObject go = taskTextTransform.gameObject;
+                Destroy(go);
                 break;
             }
         }
-    }
+    }    
 }

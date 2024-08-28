@@ -16,7 +16,7 @@ public class FPSCONROL : MonoBehaviour
 
    // public GameObject cam1, cam2;
     Vector3 velocity;
-    bool endground;
+    //bool endground;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -32,7 +32,7 @@ public class FPSCONROL : MonoBehaviour
 
         //endground = Physics.CheckSphere(Check.position, Dis, Mask);
 
-        if (endground && velocity.y < 0)
+        if (velocity.y < 0)
             velocity.y = -1.25f;
 
         float deltaX = Input.GetAxis("Horizontal") * speed;
@@ -47,7 +47,7 @@ public class FPSCONROL : MonoBehaviour
         movement = transform.TransformDirection(movement);
         controller.Move(movement);
 
-        if (Input.GetKeyDown(KeyCode.Space) && endground)
+        if (Input.GetKeyDown(KeyCode.Space))
             velocity.y += Mathf.Sqrt(h * -1.25f * gravitat);
 
         velocity.y += gravitat * Time.deltaTime;

@@ -17,8 +17,7 @@ public class Polosa_start : MonoBehaviour
     bool zachet = false;
     public static bool trennirovka = false;
     public static  bool start = false;
-    public static int koef;
-    int k = 1;
+    public static int koef;    
     public static int sec, min;
     public Text timerText;
     // Start is called before the first frame update

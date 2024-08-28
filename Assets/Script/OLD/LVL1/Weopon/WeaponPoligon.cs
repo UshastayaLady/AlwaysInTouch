@@ -5,21 +5,8 @@ using UnityEngine;
 public class WeaponPoligon : MonoBehaviour
 {
 
-    public GameObject Welcome;
-    bool enter;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
+    public GameObject Welcome;   
+    
     public void Contine()
     {
         Welcome.SetActive(false);
@@ -35,7 +22,7 @@ public class WeaponPoligon : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player") {
-            enter = true;
+            
 
             Welcome.SetActive(true);
 
@@ -48,9 +35,4 @@ public class WeaponPoligon : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-            enter = false;
-    }
 }

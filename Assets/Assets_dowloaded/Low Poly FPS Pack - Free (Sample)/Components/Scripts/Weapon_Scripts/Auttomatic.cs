@@ -127,8 +127,7 @@ public class Auttomatic : MonoBehaviour
     public Text timescaleText;
     public Text currentWeaponText;
     public Text currentAmmoText;
-    public Text totalAmmoText;
-    int a = 1;
+    public Text totalAmmoText;    
     [System.Serializable]
     public class prefabs
     {

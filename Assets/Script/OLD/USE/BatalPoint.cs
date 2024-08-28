@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class BatalPoint : MonoBehaviour
 {
-    public Text name;
-    public Text fename;
-    public Text xp;
-    public Text lvl;
+    private Text name;
+    private Text fename;
+    private Text xp;
+    private Text lvl;
     void Start()
     {
         

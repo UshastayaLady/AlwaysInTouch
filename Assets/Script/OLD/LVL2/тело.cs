@@ -29,9 +29,6 @@ public class тело : MonoBehaviour
    // public Transform Body;
 
 
-
-    float xRot = 0f;
-
     void Start()
     {
        /* Rigidbody body = GetComponent<Rigitbody>();

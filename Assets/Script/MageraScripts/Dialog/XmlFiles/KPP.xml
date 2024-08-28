@@ -2,12 +2,15 @@
 	<node>
 		<npctext> Приветствую тебя, призывник. Назови свою Фамилию, Имя.</npctext>
 		<answers>
-			<answer>
+			<answer tonode = "0">
 				<text> Меня зовут ... </text>
 				<quests>
 					<quest>
 						<questEndAndDelete> Необходимо явиться в Академию связи для прохождения военной службы </questEndAndDelete>
-					</quest> 				
+					</quest>
+					<quest>
+						<textQuest> Регистрация </textQuest>
+					</quest>
 				</quests>
 				<dialend>true</dialend>				
 			</answer>

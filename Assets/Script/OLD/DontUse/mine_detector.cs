@@ -5,7 +5,7 @@ using UnityEngine;
 public class mine_detector : MonoBehaviour
 { public GameObject detector;
     public GameObject mine_det;
-    private GameObject[] mine;
+   private GameObject[] mine;
     private float[] Distanation;
     public GameObject zvuk_mine_det;
     public int number_mine;

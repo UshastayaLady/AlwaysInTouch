@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using System;
-using UnityEngine.UI;
 
 //Клас для работы с квестами
 public class TaskBoardManager : MonoBehaviour
@@ -60,13 +56,14 @@ public class TaskBoardManager : MonoBehaviour
             Debug.Log("Задание не найдено");
         }
     }
-    public void TaskDone(string questText, string status)
+    public void TaskDone(string questText, string questStatus)
     {
         questText = questText.Trim();
+        questStatus = questStatus.Trim();
         Task taskToUpdate = tasks.Find(task => task.textQuest == questText);
         if (taskToUpdate != null)
         {
-            if (taskToUpdate.statusQuest == status)
+            if (taskToUpdate.statusQuest == questStatus)
             {
                 taskBoard.RemoveTaskFromBoard(taskToUpdate);
             }
@@ -77,7 +74,7 @@ public class TaskBoardManager : MonoBehaviour
         }
     }
 
-    public void TaskDoneDialogue(string questText)
+    public void TaskEndAndDelete(string questText)
     {
         questText = questText.Trim();
         Task taskToUpdate = tasks.Find(task => task.textQuest == questText);
@@ -88,6 +85,22 @@ public class TaskBoardManager : MonoBehaviour
         else
         {
             Debug.Log("Задание не найдено");
+        }
+    }
+
+    // Метод для поиска квеста
+    public bool FindTaskFromBoard(string questText)
+    {
+        questText = questText.Trim();
+        Task taskToUpdate = tasks.Find(task => task.textQuest == questText);
+        if (taskToUpdate != null)
+        {
+            return true;
+        }
+        else
+        {            
+            Debug.Log("Задание не найдено");
+            return false;
         }
     }
 

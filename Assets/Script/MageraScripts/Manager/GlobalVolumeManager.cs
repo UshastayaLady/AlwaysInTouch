@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GlobalVolumeManager : MonoBehaviour
@@ -23,3 +21,4 @@ public class GlobalVolumeManager : MonoBehaviour
         }
     }
 }
+

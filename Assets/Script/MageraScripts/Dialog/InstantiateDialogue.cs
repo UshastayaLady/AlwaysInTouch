@@ -167,7 +167,7 @@ public class InstantiateDialogue : MonoBehaviour
             // Если цель квеста поговорить с НПС и на этом квест закончен
             if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questEndAndDelete != null)
             {
-                quest.TaskDoneDialogue(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questEndAndDelete);
+                quest.TaskEndAndDelete(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questEndAndDelete);
             }
             // Если необходимо сдать выполненный квест НПС со статусом "Выполнено"
             if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone != null)

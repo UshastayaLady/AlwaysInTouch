@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,7 +40,6 @@ public class PlaneBlack : MonoBehaviour
         Time.timeScale = 1f;
         GameObject script;
         script = GameObject.Find("MainCanvas");
-        script.GetComponent<Cursor_StarMain>().enabled = false;
         FPS.setFreeze(false);
         PressStart = true;
         Cursor.lockState = CursorLockMode.Locked;

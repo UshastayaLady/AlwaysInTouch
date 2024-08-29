@@ -29,8 +29,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         InstantiateDialogue.instance.dialogueEnded = false;
         startAnim.SetBool("startOpen", true);
-        CursorMenager.instance.cursorWork = true;
-        //InstantiateDialogue.instance.ta = ta[currentTa];        
+        CursorMenager.instance.cursorWork = true;       
     }
 
     public void OnTriggerExit(Collider other)

@@ -129,7 +129,6 @@ public class AutomaticGunScriptLPFP : MonoBehaviour
     public Text currentWeaponText;
     public Text currentAmmoText;
     public Text totalAmmoText;
-    int a = 1;
     [System.Serializable]
     public class prefabs
     {

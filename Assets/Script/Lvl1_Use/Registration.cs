@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-
-using static Strings;
 
 public class Registration : MonoBehaviour
 {    
@@ -47,8 +43,5 @@ public class Registration : MonoBehaviour
         zapuskRaz = true;
         FPS.setFreeze(false);
         DialogueManager.instance.StartDialogue();
-        //cursorMenager.cursorWork = false;
-        //Achievements achievement = FindObjectOfType<Achievements>();
-        //achievement.showAchieve(Strings.registration, 0);
     } 
 }

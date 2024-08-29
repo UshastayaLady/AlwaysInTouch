@@ -6,43 +6,35 @@ using UnityEngine;
 using static Strings;
 
 public class Registration : MonoBehaviour
-{
-    private CursorMenager cursorMenager;
-    public FirstPersonController FPS;
+{    
+    private FirstPersonController FPS;
 
-    public GameObject Registr;    
-    public Text text_name, text_sename;
-    public Text text_name_reg, text_sename_reg;
-    public GameObject Person;
+    [SerializeField] private GameObject Registr;
+    [SerializeField] private Text text_name, text_sename;
+    [SerializeField] private Text text_name_reg, text_sename_reg;
+    [SerializeField] private GameObject Person;
+    private bool zapuskRaz=false;
 
     
     private void Start()
-    {
-        cursorMenager = FindObjectOfType<CursorMenager>();
-    }
-    
-    private void OnTriggerEnter(Collider col)
-    {
-        //if (col.tag == "Player")
-        //{            
-        //    FPS.setFreeze(true);
-        //    Registr.SetActive(true);         
-        //}
+    {        
+        FPS = FindObjectOfType<FirstPersonController>();
     }
 
     private void OnTriggerStay(Collider col)
     {
-        if (TaskBoardManager.instance.FindTaskFromBoard("Регистрация"))
+        if (TaskBoardManager.instance.FindTaskFromBoard("Регистрация") & !zapuskRaz)
         {
             if (col.tag == "Player")
             {
                 FPS.setFreeze(true);
                 Registr.SetActive(true);
+                TaskBoardManager.instance.TaskEndAndDelete("Регистрация");
             }
         }
         if (col.tag == "Player")
         {            
-            cursorMenager.cursorWork = true;            
+            CursorMenager.instance.cursorWork = true;            
         }
     }
 
@@ -52,8 +44,10 @@ public class Registration : MonoBehaviour
         text_sename_reg.text = text_sename.text;
         Person.SetActive(true);               
         Registr.SetActive(false);
-        FPS.setFreeze(false);        
-        cursorMenager.cursorWork = false;
+        zapuskRaz = true;
+        FPS.setFreeze(false);
+        DialogueManager.instance.StartDialogue();
+        //cursorMenager.cursorWork = false;
         //Achievements achievement = FindObjectOfType<Achievements>();
         //achievement.showAchieve(Strings.registration, 0);
     } 

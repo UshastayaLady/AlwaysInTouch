@@ -22,6 +22,7 @@ public class DialogueTrigger : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        InstantiateDialogue.instance.ta = ta[currentTa];
     }
 
     public void OnTriggerEnter(Collider other)
@@ -29,7 +30,7 @@ public class DialogueTrigger : MonoBehaviour
         InstantiateDialogue.instance.dialogueEnded = false;
         startAnim.SetBool("startOpen", true);
         CursorMenager.instance.cursorWork = true;
-        InstantiateDialogue.instance.ta = ta[currentTa];        
+        //InstantiateDialogue.instance.ta = ta[currentTa];        
     }
 
     public void OnTriggerExit(Collider other)

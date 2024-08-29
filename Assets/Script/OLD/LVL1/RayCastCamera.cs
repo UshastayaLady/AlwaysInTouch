@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-using static Strings;
 
 public class RayCastCamera : MonoBehaviour
 {
@@ -62,7 +58,6 @@ public class RayCastCamera : MonoBehaviour
             {
                 flag = false;
                 Achievements achievement = FindObjectOfType<Achievements>();
-                achievement.showAchieve(Strings.get_clothe, 1);
             }
         }
     }

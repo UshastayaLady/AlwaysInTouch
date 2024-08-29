@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
-{
+{  
     [SerializeField] private Animator startAnim;
     [SerializeField] private TextAsset[] ta;
     [SerializeField] private int currentTa = 0;
-
+    
     public void OnTriggerStay(Collider other)
     {
         if (InstantiateDialogue.instance.dialogueEnded == true)

@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-using static Strings;
-using static GlobalCs;
 
 public class WeaponRezult : MonoBehaviour
 {
@@ -56,7 +51,6 @@ public class WeaponRezult : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         barer.SetActive(false);
         Achievements achievement = FindObjectOfType<Achievements>();
-        achievement.showAchieve(Strings.shoot_arena, 4);
 
         if (GlobalCs.arrIsGotAch[3]){
             ActivateTeleport teleport = FindObjectOfType<ActivateTeleport>();

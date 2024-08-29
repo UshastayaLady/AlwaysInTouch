@@ -4,9 +4,10 @@ using UnityEngine.UI;
 
 public class InstantiateDialogue : MonoBehaviour
 {
-
     #region variables
     public static InstantiateDialogue instance = null;
+    [HideInInspector] public Dialogue dialogue;
+    [HideInInspector] public TaskBoardManager quest;
 
     [SerializeField] private GameObject Window;
         
@@ -24,17 +25,14 @@ public class InstantiateDialogue : MonoBehaviour
     [HideInInspector]public TextAsset ta;
 
     private int currentNode = 0;    
-    [HideInInspector] public int butClicked;
-    Dialogue dialogue;
+    [HideInInspector] public int butClicked;    
         
-    [HideInInspector] public TaskBoardManager quest;
-
     #endregion
 
     void Start()
     {
         if (instance == null)
-        { instance = this; }
+        { instance = this; }        
 
         secondButton.enabled = false;
         thirdButton.enabled = false;

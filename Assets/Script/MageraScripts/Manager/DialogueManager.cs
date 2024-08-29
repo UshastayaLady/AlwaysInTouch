@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    private FirstPersonController FPS;
+
     [SerializeField] private Animator boxAnim;
     [SerializeField] private Animator startAnim;
 
@@ -18,6 +16,7 @@ public class DialogueManager : MonoBehaviour
         if (instance == null)
         { instance = this; }
 
+        FPS = FindObjectOfType<FirstPersonController>();
     }        
 
     //Starting a dialogue
@@ -26,6 +25,7 @@ public class DialogueManager : MonoBehaviour
         boxAnim.SetBool("boxOpen", true);
         startAnim.SetBool("startOpen", false);
         dialogueClosed = false;
+        FPS.setFreeze(true);
     }    
 
     //Closing the dialog box
@@ -33,6 +33,7 @@ public class DialogueManager : MonoBehaviour
     {
         boxAnim.SetBool("boxOpen", false);
         InstantiateDialogue.instance.CloseDialogue();
-        dialogueClosed = true;       
+        dialogueClosed = true;
+        FPS.setFreeze(false);
     }
 }

@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-using static Strings;
 
 public class Finish_polosa_zachet : MonoBehaviour
 {
@@ -13,20 +9,7 @@ public class Finish_polosa_zachet : MonoBehaviour
     public Text Text_time;
     public Transform spawn;
     public GameObject rezult;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(enter == true)
-        {
-            
-        }
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && Polosa_start.trennirovka == false)
@@ -104,7 +87,6 @@ public class Finish_polosa_zachet : MonoBehaviour
         gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Achievements achievement = FindObjectOfType<Achievements>();
-        achievement.showAchieve(Strings.lane_obstacles, 3);
 
         if (GlobalCs.arrIsGotAch[4]){
             ActivateTeleport teleport = FindObjectOfType<ActivateTeleport>();

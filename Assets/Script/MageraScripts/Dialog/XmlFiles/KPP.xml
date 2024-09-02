@@ -1,13 +1,24 @@
 <dialogue>
 	<node>
-		<npctext> Приветствую тебя, призывник. Назови свою Фамилию, Имя.</npctext>
+		<npctext> Добрый день. Чем могу помочь? </npctext>
 		<answers>
-			<answer tonode = "0">
-				<text> Меня зовут ... </text>
+			<answer tonode = "1">
+				<text> Здравствуйте! Я пришел по повестке, вступать в ряды курсантов! </text>
 				<quests>
 					<quest>
 						<questEndAndDelete> Необходимо явиться в Академию связи для прохождения военной службы </questEndAndDelete>
-					</quest>
+					</quest>					
+				</quests>				
+			</answer>
+		</answers>
+	</node>
+	
+	<node>
+		<npctext> Назовите свою Имя и Фамилию и предоставьте документы. .</npctext>
+		<answers>
+			<answer tonode = "0">
+				<text> Меня зовут ... </text>
+				<quests>					
 					<quest>
 						<textQuest> Регистрация </textQuest>
 					</quest>

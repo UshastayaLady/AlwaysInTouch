@@ -7,6 +7,8 @@ public class OpenDoor : MonoBehaviour
     [SerializeField] private Animator _anim;
     [SerializeField] private bool smenaOsy = false;
 
+    
+
     private void Awake()
     {
 
@@ -19,10 +21,7 @@ public class OpenDoor : MonoBehaviour
 
         if (other.tag == "Player")
         {
-            if (!smenaOsy) 
-                _anim.SetBool("isOpenDoor", true);
-            else
-                _anim.SetBool("isOpenDoor1", true);
+            IsOpenDoor();
         }
 
     }
@@ -31,10 +30,21 @@ public class OpenDoor : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            if (!smenaOsy)
-                _anim.SetBool("isOpenDoor", false);
-            else
-                _anim.SetBool("isOpenDoor1", false);            
+            IsCloseDoor();
         }
+    }
+    public void IsOpenDoor()
+    {
+        if (!smenaOsy)
+            _anim.SetBool("isOpenDoor", true);
+        else
+            _anim.SetBool("isOpenDoor1", true);
+    }
+    public void IsCloseDoor()
+    {
+        if (!smenaOsy)
+            _anim.SetBool("isOpenDoor", false);
+        else
+            _anim.SetBool("isOpenDoor1", false);
     }
 }

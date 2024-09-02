@@ -11,7 +11,6 @@ public class Registration : MonoBehaviour
     [SerializeField] private GameObject Person;
     private bool zapuskRaz=false;
 
-    
     private void Start()
     {        
         FPS = FindObjectOfType<FirstPersonController>();
@@ -41,7 +40,7 @@ public class Registration : MonoBehaviour
         Person.SetActive(true);               
         Registr.SetActive(false);
         zapuskRaz = true;
-        FPS.setFreeze(false);
+        FPS.setFreeze(false);       
         DialogueManager.instance.StartDialogue();
     } 
 }

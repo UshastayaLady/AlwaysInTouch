@@ -1,0 +1,29 @@
+<dialogue>
+	<node>
+		<npctext> ... </npctext>
+		<answers>
+			<answer tonode = "1">
+				<text> Добрый день. Меня направили к вам для получения одежды и вещевого имущества. </text>
+			</answer>
+			<answer tonode = "0">
+				<text> *Закончить диалог* </text>
+				<after>true</after>
+			</answer>
+		</answers>
+	</node>
+	
+	<node>
+		<npctext> Здравия желаю! Не так быстро курсант, сначала заполняем бумаги, потом получаем форму. </npctext>
+		<answers>
+			<answer tonode = "0">
+				<text> *Берем бумаги* Спасибо. </text>
+				<quests>					
+					<quest>
+						<textQuest> Заполнить бумаги </textQuest>
+					</quest>
+				</quests>
+				<dialend>true</dialend>
+			</answer>
+		</answers>
+	</node>
+</dialogue>

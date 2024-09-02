@@ -170,7 +170,13 @@ public class InstantiateDialogue : MonoBehaviour
             // Если необходимо сдать выполненный квест НПС со статусом "Выполнено"
             if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone != null)
             {
-                quest.TaskDone(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone, "Выполнен");
+                if (quest.FindStatusTaskFromBoard(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone, "Выполнен"))
+                {
+                    currentNode = currentNode + 2;
+                    quest.TaskDone(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone, "Выполнен");
+                }                   
+                else
+                    currentNode = currentNode + 1;
             }
             // Если нужно поменять статус квеста после диалога
             if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textNewStatus != null)

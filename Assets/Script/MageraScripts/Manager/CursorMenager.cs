@@ -22,4 +22,9 @@ public class CursorMenager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
+    public void ClikButtonFalse()
+    {
+        cursorWork = false;
+    }
 }

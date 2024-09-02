@@ -66,7 +66,7 @@ public class Answer
 public class Quests
 {
     [XmlElement("textQuest")] // “екст дл€ создани€ квеста
-    public string textQuest;    
+    public string textQuest;
     [XmlElement("questDone")] // “екст квеста дл€ проверки, что он выполнен (р€дом статус "выполнен")
     public string questDone;
     [XmlElement("questEndAndDelete")] // “екст квеста, который сдаетс€ во врем€ диалога

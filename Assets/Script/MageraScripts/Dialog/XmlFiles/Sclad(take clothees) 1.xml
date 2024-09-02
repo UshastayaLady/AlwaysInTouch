@@ -1,0 +1,40 @@
+<dialogue>
+	<node>
+		<npctext> ... </npctext>
+		<answers>
+			<answer>
+				<text> *Отдать бумаги* Добрый день. Я заполнил все необходимые документы. </text>
+				<quests>
+					<quest>
+						<questDone> Заполнить бумаги </questDone>
+					</quest>
+				</quests>
+			</answer>
+			
+			<answer tonode = "0">
+				<text> *Закончить диалог* </text>
+				<after>true</after>
+			</answer>
+		</answers>
+	</node>
+	
+	<node>
+		<npctext> Это что за шутки? Как заполнишь анкету нормально - приходи. А сейчас не отвлекай меня.  </npctext>
+		<answers>
+			<answer tonode = "0">
+				<text> *Берем бумаги* </text>
+				<after>true</after>				
+			</answer>
+		</answers>
+	</node>
+
+	<node>
+		<npctext> Вот твоя форма. </npctext>
+		<answers>
+			<answer tonode = "0">
+				<text> Спасибо. </text>
+				<dialend>true</dialend>
+			</answer>
+		</answers>
+	</node>
+</dialogue>

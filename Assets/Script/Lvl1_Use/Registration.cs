@@ -40,7 +40,8 @@ public class Registration : MonoBehaviour
         Person.SetActive(true);               
         Registr.SetActive(false);
         zapuskRaz = true;
-        FPS.setFreeze(false);       
+        FPS.setFreeze(false);
+        CursorMenager.instance.cursorWork = false;
         DialogueManager.instance.StartDialogue();
     } 
 }

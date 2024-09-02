@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.VirtualTexturing.Procedural;
 
 //Клас для работы с квестами
 public class TaskBoardManager : MonoBehaviour
@@ -99,6 +100,24 @@ public class TaskBoardManager : MonoBehaviour
         }
         else
         {            
+            Debug.Log("Задание не найдено");
+            return false;
+        }
+    }
+
+    public bool FindStatusTaskFromBoard(string questText, string questStatus)
+    {
+        questText = questText.Trim();
+        Task taskToUpdate = tasks.Find(task => task.textQuest == questText);
+        if (taskToUpdate != null)
+        {
+            if (taskToUpdate.statusQuest == questStatus)
+                return true;
+            else
+                return false;
+        }
+        else
+        {
             Debug.Log("Задание не найдено");
             return false;
         }

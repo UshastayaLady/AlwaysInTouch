@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BlockCursorButton : MonoBehaviour
-{
-    public FirstPersonController FPS;
-
+{  
     private void Start()
     {
         Button blockCursor = GetComponent<Button>();

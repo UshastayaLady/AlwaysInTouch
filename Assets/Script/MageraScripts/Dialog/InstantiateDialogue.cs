@@ -79,30 +79,24 @@ public class InstantiateDialogue : MonoBehaviour
     private void firstStart()
     {
         dialogue = null;       
-        dialogue = Dialogue.Load(ta);       
-        AnswerClicked(-14);  //14 - для присвоения начальных значений в диалоге что бы не создавать новую функцию
+        dialogue = Dialogue.Load(ta);
+        currentNode = 0;
+        firstNodeShown = true;
+        WriteText();
     }
 
     
     private void AnswerClicked(int numberOfButton)
     {
+        checkingThings(numberOfButton);
+        currentNode = dialogue.nodes[currentNode].answers[numberOfButton].nextNode;
+        WriteText();
+    }
 
-        if (numberOfButton == -14)
-        {
-            if (!firstNodeShown)
-            {
-                currentNode = 0;
-                firstNodeShown = true;
-            }
-        }
-        else
-        {
-            checkingThings(numberOfButton);
-            currentNode = dialogue.nodes[currentNode].answers[numberOfButton].nextNode;
-        }
-        
+    private void WriteText()
+    {
         nodeText.text = ""; //скидываем текст ответа каждый раз перед началом печати нового ответа НПС
-        nodeText.text = dialogue.nodes[currentNode].Npctext;        
+        nodeText.text = dialogue.nodes[currentNode].Npctext;
 
         firstAnswer.text = dialogue.nodes[currentNode].answers[0].text;     //первый ответ будет всегда            
         if (dialogue.nodes[currentNode].answers.Length >= 2)                //если ответов два
@@ -126,8 +120,7 @@ public class InstantiateDialogue : MonoBehaviour
             thirdButton.enabled = false;
             thirdAnswer.text = "";
         }
-
-    }      
+    }
 
     private void checkingThings(int numberOfButton)
     {
@@ -173,10 +166,15 @@ public class InstantiateDialogue : MonoBehaviour
                 if (quest.FindStatusTaskFromBoard(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone, "Выполнен"))
                 {
                     currentNode = currentNode + 2;
+                    WriteText();
                     quest.TaskDone(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone, "Выполнен");
-                }                   
+                }
                 else
-                    currentNode = currentNode + 1;
+                {
+                    currentNode = currentNode + 1; 
+                    WriteText();
+                }
+                    
             }
             // Если нужно поменять статус квеста после диалога
             if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textNewStatus != null)

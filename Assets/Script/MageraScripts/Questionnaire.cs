@@ -4,8 +4,8 @@ using UnityEngine;
 public class Questionnaire : MonoBehaviour
 {
     [SerializeField] private GameObject anketa;
-    [SerializeField] private Text text_name, text_sename;
     [SerializeField] private Text text_name_reg, text_sename_reg;
+    [SerializeField] private Text text_name, text_sename;
     [SerializeField] private Text size1, size2;
 
     void Update()

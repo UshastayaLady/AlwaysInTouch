@@ -26,11 +26,7 @@ public class Registration : MonoBehaviour
                 Registr.SetActive(true);
                 TaskBoardManager.instance.TaskEndAndDelete("Регистрация");
             }
-        }
-        if (col.tag == "Player")
-        {            
-            CursorMenager.instance.cursorWork = true;            
-        }
+        }       
     }
 
     public void Continious()
@@ -41,7 +37,6 @@ public class Registration : MonoBehaviour
         Registr.SetActive(false);
         zapuskRaz = true;
         FPS.setFreeze(false);
-        CursorMenager.instance.cursorWork = false;
         DialogueManager.instance.StartDialogue();
     } 
 }

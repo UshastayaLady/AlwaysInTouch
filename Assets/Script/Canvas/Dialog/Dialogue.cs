@@ -75,6 +75,8 @@ public class Quests
     public string questChangeStatus;
     [XmlElement("textNewStatus")] // Для смены статуса
     public string textNewStatus;
+    [XmlElement("GameObjectSetActiv")] // Для включения или выключения объекта
+    public string GameObjectSetActiv;
     [XmlElement("motion")] // Опты
     public string motion;
 }

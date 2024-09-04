@@ -35,10 +35,9 @@
 				<text> Спасибо. </text>
 				<quests>
 					<quest>
-						<questChangeStatus> Взять форму </questChangeStatus>
-						<textNewStatus> Выполнен </textNewStatus>							
-					</quest>					
-				</quests>
+						<GameObjectSetActiv>true</GameObjectSetActiv>
+					</quest>
+				</quests>				
 				<dialend>true</dialend>
 			</answer>
 		</answers>

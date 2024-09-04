@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
@@ -8,19 +6,26 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private GameObject startOknoDia;
     [SerializeField] private TextAsset[] ta;
     [SerializeField] private int currentTa = 0;
-    
+
+    [SerializeField] private GameObject GameObjectSetActiv;
+
     public void OnTriggerStay(Collider other)
     {
         if (InstantiateDialogue.instance.dialogueEnded == true)
         {
+            if (InstantiateDialogue.instance.objectSetActiv)
+                if (GameObjectSetActiv != null)
+                    GameObjectSetActiv.SetActive(!GameObjectSetActiv.activeSelf);
+
             if (currentTa < ta.Length - 1)
             {
+               
                 currentTa++;
                 InstantiateDialogue.instance.dialogueEnded = false;
             }
             else
             {                
-                CursorMenager.instance.cursorWork = false;
+                CursorMenager.instance.cursorWork = false;                
                 Destroy(this.gameObject);
             }
         }

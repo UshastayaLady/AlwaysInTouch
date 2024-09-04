@@ -25,8 +25,8 @@ public class InstantiateDialogue : MonoBehaviour
     [HideInInspector]public TextAsset ta;
 
     private int currentNode = 0;    
-    [HideInInspector] public int butClicked;    
-        
+    [HideInInspector] public int butClicked;
+    [HideInInspector] public bool objectSetActiv = false;
     #endregion
 
     void Start()
@@ -78,6 +78,7 @@ public class InstantiateDialogue : MonoBehaviour
         
     private void firstStart()
     {
+        objectSetActiv = false;
         dialogue = null;       
         dialogue = Dialogue.Load(ta);
         currentNode = 0;
@@ -181,6 +182,12 @@ public class InstantiateDialogue : MonoBehaviour
             {
                 quest.UpdateTaskStatus(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questChangeStatus,
                     dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textNewStatus);
+            }
+
+            // Создание квеста
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].GameObjectSetActiv == "true")
+            {
+                objectSetActiv = true;
             }
         }
     }

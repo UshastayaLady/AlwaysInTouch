@@ -13,24 +13,16 @@ public class Registration : MonoBehaviour
     [SerializeField] private Text text_name_reg, text_sename_reg;
     [SerializeField] private Text text_name, text_sename;
     [SerializeField] private GameObject Person;
-    private bool zapuskRaz=false;
 
     private void Start()
     {        
         FPS = FindObjectOfType<FirstPersonController>();
+        FPS.setFreeze(true);
     }
 
-    private void OnTriggerStay(Collider col)
-    {
-        if (TaskBoardManager.instance.FindTaskFromBoard("Регистрация") & !zapuskRaz)
-        {
-            if (col.tag == "Player")
-            {
-                FPS.setFreeze(true);
-                Registr.SetActive(true);
-                TaskBoardManager.instance.TaskEndAndDelete("Регистрация");
-            }
-        }
+    private void Update()
+    {     
+
         bool result1 = (Regex.IsMatch(text_name_reg.text, @"^[a-zA-Z]+$")) || (Regex.IsMatch(text_name_reg.text, @"^[а-яА-Я]+$"));
         bool result2 = (Regex.IsMatch(text_name_reg.text, @"^[a-zA-Z]+$")) || (Regex.IsMatch(text_name_reg.text, @"^[а-яА-Я]+$"));
         bool result3 = (text_name_reg.text.Length > 0) & (text_name_reg.text.Length < 20);
@@ -46,8 +38,7 @@ public class Registration : MonoBehaviour
         text_name.text = text_name_reg.text.Trim();
         text_sename.text = text_sename_reg.text.Trim();
         Person.SetActive(true);               
-        Registr.SetActive(false);
-        zapuskRaz = true;
+        Registr.SetActive(false);        
         FPS.setFreeze(false);
         DialogueManager.instance.StartDialogue();
     } 

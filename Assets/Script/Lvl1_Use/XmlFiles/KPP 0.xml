@@ -20,7 +20,7 @@
 				<text> Меня зовут ... </text>
 				<quests>					
 					<quest>
-						<textQuest> Регистрация </textQuest>
+						<GameObjectSetActiv>true</GameObjectSetActiv>
 					</quest>
 				</quests>
 				<dialend>true</dialend>				

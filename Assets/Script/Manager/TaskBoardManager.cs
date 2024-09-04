@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.VirtualTexturing.Procedural;
 
 //Клас для работы с квестами
 public class TaskBoardManager : MonoBehaviour
@@ -68,6 +67,7 @@ public class TaskBoardManager : MonoBehaviour
             {
                 taskBoard.RemoveTaskFromBoard(taskToUpdate);
             }
+            else Debug.Log("Статус не закончен");
         }
         else
         {

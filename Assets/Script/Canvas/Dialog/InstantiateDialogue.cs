@@ -165,9 +165,9 @@ public class InstantiateDialogue : MonoBehaviour
             {
                 if (quest.FindStatusTaskFromBoard(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone, "Выполнен"))
                 {
-                    currentNode = currentNode + 2;
-                    WriteText();
                     quest.TaskDone(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone, "Выполнен");
+                    currentNode = currentNode + 2;
+                    WriteText();                    
                 }
                 else
                 {

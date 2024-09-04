@@ -31,9 +31,12 @@ public class Registration : MonoBehaviour
                 TaskBoardManager.instance.TaskEndAndDelete("–егистраци€");
             }
         }
-        bool result1 = (Regex.IsMatch(text_name_reg.text, @"^[a-zA-Z]+$")) & (text_name_reg.text.Length< 20);
-        bool result2 = (Regex.IsMatch(text_sename_reg.text, @"^[a-zA-Z]+$")) &(text_name_reg.text.Length < 20);
-        if (text_name_reg.text.Length > 0 & text_sename_reg.text.Length > 0 & result1 & result2)        
+        bool result1 = (Regex.IsMatch(text_name_reg.text, @"^[a-zA-Z]+$")) || (Regex.IsMatch(text_name_reg.text, @"^[а-€ј-я]+$"));
+        bool result2 = (Regex.IsMatch(text_name_reg.text, @"^[a-zA-Z]+$")) || (Regex.IsMatch(text_name_reg.text, @"^[а-€ј-я]+$"));
+        bool result3 = (text_name_reg.text.Length > 0) & (text_name_reg.text.Length < 20);
+        bool result4 = (text_sename_reg.text.Length > 0) & (text_sename_reg.text.Length < 20);
+
+        if (result3 & result4 & result1 & result2)        
             buttonNext.SetActive(true);
         else buttonNext.SetActive(false);
     }

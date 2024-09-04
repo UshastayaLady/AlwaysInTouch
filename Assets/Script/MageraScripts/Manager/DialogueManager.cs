@@ -31,8 +31,8 @@ public class DialogueManager : MonoBehaviour
     //Closing the dialog box
    public void EndDialogue()
     {
-        boxAnim.SetBool("boxOpen", false);
         InstantiateDialogue.instance.CloseDialogue();
+        boxAnim.SetBool("boxOpen", false);
         dialogueClosed = true;
         FPS.setFreeze(false);
     }

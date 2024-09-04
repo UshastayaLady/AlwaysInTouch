@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {  
     [SerializeField] private Animator startAnim;
+    [SerializeField] private GameObject startOknoDia;
     [SerializeField] private TextAsset[] ta;
     [SerializeField] private int currentTa = 0;
     
@@ -19,6 +20,7 @@ public class DialogueTrigger : MonoBehaviour
             }
             else
             {
+                startOknoDia.SetActive(false);
                 Destroy(this.gameObject);
             }
         }
@@ -27,6 +29,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        startOknoDia.SetActive(true);
         InstantiateDialogue.instance.dialogueEnded = false;
         startAnim.SetBool("startOpen", true);
         CursorMenager.instance.cursorWork = true;       
@@ -34,6 +37,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
+        startOknoDia.SetActive(false);
         startAnim.SetBool("startOpen", false);
         DialogueManager.instance.EndDialogue();
         CursorMenager.instance.cursorWork = false;

@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class InventoryItem
 {
-    public GameObject Item;
-    public string NameItem;
+    public GameObject item;
+    public string nameItem;
+    public int countItem;
 
     public InventoryItem(GameObject gameObject, string strName)
     {
-        Item = gameObject;
-        NameItem = strName;
+        item = gameObject;
+        nameItem = strName;
+        countItem = 1;
     }
 }

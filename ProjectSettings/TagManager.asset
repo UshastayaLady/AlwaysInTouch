@@ -15,6 +15,11 @@ TagManager:
   - TestButton
   - CameraFly
   - Return
+  - Mina
+  - raketa
+  - Target
+  - TRIGG
+  - TakeObject
   layers:
   - Default
   - TransparentFX

@@ -1,7 +1,5 @@
-﻿// CHANGE LOG
-// 
+﻿// CHANGE LOG 
 // CHANGES || version VERSION
-//
 // "Enable/Disable Headbob, Changed look rotations - should result in reduced camera jitters" || version 1.0.1
 
 using UnityEngine;
@@ -27,13 +25,7 @@ public class FirstPersonController : MonoBehaviour
     public bool cameraCanMove = true;
     public float mouseSensitivity = 2f;
     public float maxLookAngle = 50f;
-
-    // Crosshair
-    public bool lockCursor = true;
-    public bool crosshair = true;
-    public Sprite crosshairImage;
-    public Color crosshairColor = Color.white;
-
+        
     // Internal Variables
     private float yaw = 0.0f;
     private float pitch = 0.0f;
@@ -77,7 +69,6 @@ public class FirstPersonController : MonoBehaviour
     // Sprint Bar
     public bool useSprintBar = true;
     public bool hideBarWhenFull = true;
-    public Image sprintBarBG;
     public Image sprintBar;
     public float sprintBarWidthPercent = .3f;
     public float sprintBarHeightPercent = .015f;
@@ -134,9 +125,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-
-       // crosshairObject = GetComponentInChildren<Image>();
+        rb = GetComponent<Rigidbody>();       
 
         // Set internal variables
         playerCamera.fieldOfView = fov;
@@ -152,28 +141,12 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-        if(lockCursor)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
-        if(crosshair)
-        {
-           // crosshairObject.sprite = crosshairImage;
-            //crosshairObject.color = crosshairColor;
-        }
-        else
-        {
-          //  crosshairObject.gameObject.SetActive(false);
-        }
-
         #region Sprint Bar
+        
+        sprintBarCG = sprintBar.GetComponent<CanvasGroup>();
 
-       // sprintBarCG = GetComponentInChildren<CanvasGroup>();
-
-        if(useSprintBar)
-        {
-            sprintBarBG.gameObject.SetActive(true);
+        if (useSprintBar)
+        {            
             sprintBar.gameObject.SetActive(true);
 
             float screenWidth = Screen.width;
@@ -181,18 +154,17 @@ public class FirstPersonController : MonoBehaviour
 
             sprintBarWidth = screenWidth * sprintBarWidthPercent;
             sprintBarHeight = screenHeight * sprintBarHeightPercent;
-
-            sprintBarBG.rectTransform.sizeDelta = new Vector3(sprintBarWidth, sprintBarHeight, 0f);
+                        
             sprintBar.rectTransform.sizeDelta = new Vector3(sprintBarWidth - 2, sprintBarHeight - 2, 0f);
 
             if(hideBarWhenFull)
             {
-             //   sprintBarCG.alpha = 0;
+                sprintBarCG.alpha = 0;
             }
+            
         }
         else
         {
-            sprintBarBG.gameObject.SetActive(false);
             sprintBar.gameObject.SetActive(false);
         }
 
@@ -284,9 +256,8 @@ public class FirstPersonController : MonoBehaviour
             {
                 isZoomed = false;
                 playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, sprintFOV, sprintFOVStepTime * Time.deltaTime);
-
                 // Drain sprint remaining while sprinting
-                if(!unlimitedSprint)
+                if (!unlimitedSprint)
                 {
                     sprintRemaining -= 1 * Time.deltaTime;
                     if (sprintRemaining <= 0)
@@ -374,9 +345,7 @@ public class FirstPersonController : MonoBehaviour
 
             man.gameObject.GetComponent<CapsuleCollider>().height = 0.01f;
             walkSpeed = 2;
-        }
-       
-           
+        }                 
           
         if (Input.GetKeyUp(KeyCode.X))
         {
@@ -408,7 +377,7 @@ public class FirstPersonController : MonoBehaviour
             }
 
             // All movement calculations shile sprint is active
-            if (enableSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown)
+            if (enableSprint && Input.GetKey(sprintKey) && !isCrouched && sprintRemaining > 0f && !isSprintCooldown)
             {
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
 
@@ -432,7 +401,7 @@ public class FirstPersonController : MonoBehaviour
 
                     if (hideBarWhenFull && !unlimitedSprint)
                     {
-                      //  sprintBarCG.alpha += 5 * Time.deltaTime;
+                        sprintBarCG.alpha += 5 * Time.deltaTime;
                     }
                 }
 
@@ -445,7 +414,7 @@ public class FirstPersonController : MonoBehaviour
 
                 if (hideBarWhenFull && sprintRemaining == sprintDuration)
                 {
-                  //  sprintBarCG.alpha -= 3 * Time.deltaTime;
+                    sprintBarCG.alpha -= 3 * Time.deltaTime;
                 }
 
                 targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
@@ -606,25 +575,6 @@ public class FirstPersonController : MonoBehaviour
         fpc.maxLookAngle = EditorGUILayout.Slider(new GUIContent("Max Look Angle", "Determines the max and min angle the player camera is able to look."), fpc.maxLookAngle, 40, 90);
         GUI.enabled = true;
 
-        fpc.lockCursor = EditorGUILayout.ToggleLeft(new GUIContent("Lock and Hide Cursor", "Turns off the cursor visibility and locks it to the middle of the screen."), fpc.lockCursor);
-
-        fpc.crosshair = EditorGUILayout.ToggleLeft(new GUIContent("Auto Crosshair", "Determines if the basic crosshair will be turned on, and sets is to the center of the screen."), fpc.crosshair);
-
-        // Only displays crosshair options if crosshair is enabled
-        if(fpc.crosshair) 
-        { 
-            EditorGUI.indentLevel++; 
-            EditorGUILayout.BeginHorizontal(); 
-            EditorGUILayout.PrefixLabel(new GUIContent("Crosshair Image", "Sprite to use as the crosshair.")); 
-            fpc.crosshairImage = (Sprite)EditorGUILayout.ObjectField(fpc.crosshairImage, typeof(Sprite), false);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            fpc.crosshairColor = EditorGUILayout.ColorField(new GUIContent("Crosshair Color", "Determines the color of the crosshair."), fpc.crosshairColor);
-            EditorGUILayout.EndHorizontal();
-            EditorGUI.indentLevel--; 
-        }
-
         EditorGUILayout.Space();
 
         #region Camera Zoom Setup
@@ -669,10 +619,10 @@ public class FirstPersonController : MonoBehaviour
         fpc.sprintKey = (KeyCode)EditorGUILayout.EnumPopup(new GUIContent("Sprint Key", "Determines what key is used to sprint."), fpc.sprintKey);
         fpc.sprintSpeed = EditorGUILayout.Slider(new GUIContent("Sprint Speed", "Determines how fast the player will move while sprinting."), fpc.sprintSpeed, fpc.walkSpeed, 20f);
 
-        //GUI.enabled = !fpc.unlimitedSprint;
+        GUI.enabled = !fpc.unlimitedSprint;
         fpc.sprintDuration = EditorGUILayout.Slider(new GUIContent("Sprint Duration", "Determines how long the player can sprint while unlimited sprint is disabled."), fpc.sprintDuration, 1f, 20f);
         fpc.sprintCooldown = EditorGUILayout.Slider(new GUIContent("Sprint Cooldown", "Determines how long the recovery time is when the player runs out of sprint."), fpc.sprintCooldown, .1f, fpc.sprintDuration);
-        //GUI.enabled = true;
+        GUI.enabled = true;
 
         fpc.sprintFOV = EditorGUILayout.Slider(new GUIContent("Sprint FOV", "Determines the field of view the camera changes to while sprinting."), fpc.sprintFOV, fpc.fov, 179f);
         fpc.sprintFOVStepTime = EditorGUILayout.Slider(new GUIContent("Step Time", "Determines how fast the FOV transitions while sprinting."), fpc.sprintFOVStepTime, .1f, 20f);
@@ -689,15 +639,9 @@ public class FirstPersonController : MonoBehaviour
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PrefixLabel(new GUIContent("Bar BG", "Object to be used as sprint bar background."));
-            fpc.sprintBarBG = (Image)EditorGUILayout.ObjectField(fpc.sprintBarBG, typeof(Image), true);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PrefixLabel(new GUIContent("Bar", "Object to be used as sprint bar foreground."));
             fpc.sprintBar = (Image)EditorGUILayout.ObjectField(fpc.sprintBar, typeof(Image), true);
             EditorGUILayout.EndHorizontal();
-
 
             EditorGUILayout.BeginHorizontal();
             fpc.sprintBarWidthPercent = EditorGUILayout.Slider(new GUIContent("Bar Width", "Determines the width of the sprint bar."), fpc.sprintBarWidthPercent, .1f, .5f);

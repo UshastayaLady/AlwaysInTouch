@@ -14,13 +14,13 @@
 	</node>
 	
 	<node>
-		<npctext> Назовите свою Имя и Фамилию и предоставьте документы. .</npctext>
+		<npctext> Назовите свою Имя и Фамилию и предоставьте документы.</npctext>
 		<answers>
 			<answer tonode = "0">
 				<text> Меня зовут ... </text>
 				<quests>					
 					<quest>
-						<GameObjectSetActiv>true</GameObjectSetActiv>
+						<gameObjectSetActiv>true</gameObjectSetActiv>
 					</quest>
 				</quests>
 				<dialend>true</dialend>				

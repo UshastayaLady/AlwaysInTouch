@@ -44,7 +44,7 @@ public class PlayerTakeItem : MonoBehaviour
             // Если есть ближайший объект и была нажата кнопка взаимодействия, уничтожаем его
             if (nearestObject != null)
             {
-                InventoryMenager.instance.AddItem(nearestObject, nearestObject.name);
+                InventoryManager.instance.AddItem(nearestObject, nearestObject.name);
             }
         }
     }

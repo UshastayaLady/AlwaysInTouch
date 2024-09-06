@@ -1,0 +1,35 @@
+<dialogue>
+	<node>
+		<npctext> ... </npctext>
+		<answers>
+			<answer>
+				<text> Здравия желаю, товарищ *** </text>
+				<quests>
+					<quest>
+						<questDone> Взять форму </questDone>
+					</quest>
+				</quests>
+			</answer>
+		</answers>
+	</node>
+	
+	<node>
+		<npctext> Отставить. Твоя одежа не соответсвует уставу. Бегом марш получать форму! </npctext>
+		<answers>
+			<answer tonode = "0">
+				<text> Есть </text>
+				<after>true</after>				
+			</answer>
+		</answers>
+	</node>
+
+	<node>
+		<npctext> Здравия желаю. Занимай свободное место. </npctext>
+		<answers>
+			<answer tonode = "0">
+				<text> Есть. </text>								
+				<dialend>true</dialend>
+			</answer>
+		</answers>
+	</node>
+</dialogue>

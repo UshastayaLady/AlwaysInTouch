@@ -75,8 +75,21 @@ public class Quests
     public string questChangeStatus;
     [XmlElement("textNewStatus")] // Для смены статуса
     public string textNewStatus;
-    [XmlElement("GameObjectSetActiv")] // Для включения или выключения объекта
-    public string GameObjectSetActiv;
-    [XmlElement("motion")] // Опты
+    [XmlElement("gameObjectSetActiv")] // Для включения или выключения объекта
+    public string gameObjectSetActiv;
+
+    [XmlArray("items")]
+    [XmlArrayItem("item")]
+    public Items[] items;
+
+    [XmlElement("motion")] // Опыт
     public string motion;
+}
+
+public class Items
+{     
+    [XmlElement("gameObjectTake")] // Какие вещи должны быть у игрока для сдачи квеста
+    public string gameObjectTake;
+    [XmlElement("gameObjectTakeCount")] // Количество вещей
+    public int gameObjectTakeCount;
 }

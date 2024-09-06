@@ -16,7 +16,7 @@ public class Questionnaire : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 anketa.SetActive(true);
-                CursorMenager.instance.cursorWork = true;
+                CursorManager.instance.cursorWork = true;
             }
 
         }

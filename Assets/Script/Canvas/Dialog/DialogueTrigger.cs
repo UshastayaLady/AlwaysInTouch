@@ -25,7 +25,7 @@ public class DialogueTrigger : MonoBehaviour
             }
             else
             {                
-                CursorMenager.instance.cursorWork = false;                
+                CursorManager.instance.cursorWork = false;                
                 Destroy(this.gameObject);
             }
         }
@@ -35,7 +35,7 @@ public class DialogueTrigger : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         startOknoDia.SetActive(true);
-        CursorMenager.instance.cursorWork = true;
+        CursorManager.instance.cursorWork = true;
         InstantiateDialogue.instance.dialogueEnded = false;
         startAnim.SetBool("startOpen", true);             
     }
@@ -45,7 +45,7 @@ public class DialogueTrigger : MonoBehaviour
         startOknoDia.SetActive(false);
         startAnim.SetBool("startOpen", false);
         DialogueManager.instance.EndDialogue();
-        CursorMenager.instance.cursorWork = false;
+        CursorManager.instance.cursorWork = false;
         InstantiateDialogue.instance.ta = null;
     }
 }

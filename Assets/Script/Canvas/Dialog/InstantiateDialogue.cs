@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,8 +8,9 @@ public class InstantiateDialogue : MonoBehaviour
 {
     #region variables
     public static InstantiateDialogue instance = null;
-    [HideInInspector] public Dialogue dialogue;
-    [HideInInspector] public TaskBoardManager quest;
+    [HideInInspector] public Dialogue dialogue;    
+    public TaskBoardManager questsManager;
+    [HideInInspector] public InventoryManager itemsManager;
 
     [SerializeField] private GameObject Window;
         
@@ -29,6 +32,7 @@ public class InstantiateDialogue : MonoBehaviour
     [HideInInspector] public bool objectSetActiv = false;
     #endregion
 
+    #region 
     void Start()
     {
         if (instance == null)
@@ -40,6 +44,7 @@ public class InstantiateDialogue : MonoBehaviour
         firstButton.onClick.AddListener(but1);
         secondButton.onClick.AddListener(but2);
         thirdButton.onClick.AddListener(but3);
+        
     }
 
     private void Update()
@@ -146,53 +151,89 @@ public class InstantiateDialogue : MonoBehaviour
 
         }
     }
-
+    #endregion
+   
     private void WorkWithQuests(int numberOfButton)
     {
-        for (int i = 0; i < dialogue.nodes[currentNode].answers[numberOfButton].quests.Length; i++)
+
+        for (int questNumber = 0; questNumber < dialogue.nodes[currentNode].answers[numberOfButton].quests.Length; questNumber++)
         {
             // Создание квеста
-            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textQuest != null)
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].textQuest != null)
             {
-                quest.AddTask(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textQuest);
+                if (!questsManager.FindTaskFromBoard(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].textQuest))
+                    questsManager.AddTask(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].textQuest);
             }
             // Если цель квеста поговорить с НПС и на этом квест закончен
-            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questEndAndDelete != null)
-            {
-                quest.TaskEndAndDelete(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questEndAndDelete);
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questEndAndDelete != null)
+            {                
+                if (questsManager.FindTaskFromBoard(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questEndAndDelete))
+                    questsManager.TaskEndAndDelete(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questEndAndDelete);
+                
             }
             // Если необходимо сдать выполненный квест НПС со статусом "Выполнено"
-            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone != null)
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questDone != null)
             {
-                if (quest.FindStatusTaskFromBoard(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone, "Выполнен"))
-                {
-                    quest.TaskDone(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questDone, "Выполнен");
-                    currentNode = currentNode + 2;
-                    WriteText();                    
-                }
-                else
-                {
-                    currentNode = currentNode + 1; 
-                    WriteText();
-                }
-                    
+                if (questsManager.FindTaskFromBoard(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questDone))
+                    if (questsManager.FindStatusTaskFromBoard(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questDone, "Выполнен"))
+                    {
+                        questsManager.TaskDone(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questDone, "Выполнен");
+                        currentNode = currentNode + 2;
+                        WriteText();
+                    }
+                    else
+                    {
+                        currentNode = currentNode + 1;
+                        WriteText();
+                    }
+
             }
             // Если нужно поменять статус квеста после диалога
-            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textNewStatus != null)
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].textNewStatus != null)
             {
-                quest.UpdateTaskStatus(dialogue.nodes[currentNode].answers[numberOfButton].quests[i].questChangeStatus,
-                    dialogue.nodes[currentNode].answers[numberOfButton].quests[i].textNewStatus);
+                if (questsManager.FindTaskFromBoard(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questChangeStatus))
+                    questsManager.UpdateTaskStatus(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questChangeStatus,
+                        dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].textNewStatus);
             }
-
             // Создание квеста
-            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[i].GameObjectSetActiv == "true")
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].gameObjectSetActiv == "true")
             {
                 objectSetActiv = true;
             }
+            // Если нужно поменять статус квеста после диалога
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].items != null)
+            {
+                WorkWithItems(numberOfButton, questNumber);
+            }
+        }
+    }
+    private void WorkWithItems(int numberOfButton, int questNumber)
+    {
+        Dictionary<string, int> items = new Dictionary<string, int>();
+        for (int itemNumber = 0; itemNumber < dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].items.Length; itemNumber++)
+        {
+            if (dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].items[itemNumber].gameObjectTake != null &
+                dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].items[itemNumber].gameObjectTakeCount > 0)
+            {
+                items.Add(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].items[itemNumber].gameObjectTake,
+               dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].items[itemNumber].gameObjectTakeCount);
+            }            
+        }
+        if (itemsManager.FindItems(items))
+        {
+            itemsManager.DeleteItems(items);
+            currentNode = currentNode + 2;
+            WriteText();
+
+        }
+        else
+        {
+            currentNode = currentNode + 1;
+            WriteText();
         }
     }
 
-    private IEnumerator waitFor(float time)
+        private IEnumerator waitFor(float time)
     {
         yield return new WaitForSeconds(time);     
     }  

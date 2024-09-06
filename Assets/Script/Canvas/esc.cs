@@ -15,14 +15,14 @@ public class esc : MonoBehaviour
             if (klavisha)
             {
                 menuCanv.SetActive(true);
-                CursorMenager.instance.cursorWork = true;
+                CursorManager.instance.cursorWork = true;
                 Time.timeScale = 0f;
             }
 
             else if (!klavisha)
             {
                 menuCanv.SetActive(false);
-                CursorMenager.instance.cursorWork = false;
+                CursorManager.instance.cursorWork = false;
                 Time.timeScale = 1f;
             }
         }
@@ -32,7 +32,7 @@ public class esc : MonoBehaviour
     public void Cont()
     {
         menuCanv.SetActive(false);
-        CursorMenager.instance.cursorWork = false;
+        CursorManager.instance.cursorWork = false;
         Time.timeScale = 1f;
         klavisha = !klavisha;
     }

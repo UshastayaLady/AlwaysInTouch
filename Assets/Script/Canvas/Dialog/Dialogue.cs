@@ -59,8 +59,7 @@ public class Answer
     public Quests[] quests;
 
     [XmlElement("after")]
-    public string after; 
-
+    public string after;
 }
 
 public class Quests

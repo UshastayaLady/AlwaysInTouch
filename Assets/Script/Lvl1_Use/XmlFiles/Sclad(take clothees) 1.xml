@@ -2,7 +2,7 @@
 	<node>
 		<npctext> ... </npctext>
 		<answers>
-			<answer>
+			<answer tonode = "2">
 				<text> *Отдать бумаги* Добрый день. Я заполнил все необходимые документы. </text>
 				<quests>
 					<quest>
@@ -27,7 +27,7 @@
 			</answer>
 		</answers>
 	</node>
-
+		
 	<node>
 		<npctext> Вот твоя форма.</npctext>
 		<answers>

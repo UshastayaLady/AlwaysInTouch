@@ -2,7 +2,7 @@
 	<node>
 		<npctext> ... </npctext>
 		<answers>
-			<answer>
+			<answer tonode = "2">
 				<text> Здравия желаю, товарищ *** </text>
 				<quests>
 					<quest>
@@ -27,7 +27,12 @@
 		<npctext> Здравия желаю. Занимай свободное место. </npctext>
 		<answers>
 			<answer tonode = "0">
-				<text> Есть. </text>								
+				<text> Есть. </text>
+				<quests>
+					<quest>
+						<gameObjectSetActiv>true</gameObjectSetActiv>
+					</quest>
+				</quests>
 				<dialend>true</dialend>
 			</answer>
 		</answers>

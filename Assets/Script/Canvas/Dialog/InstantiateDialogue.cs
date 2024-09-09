@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +23,8 @@ public class InstantiateDialogue : MonoBehaviour
 
     [HideInInspector] public bool dialogueEnded = false; //Закончен ли диалог?
     private bool firstNodeShown = false; //1 нод был показан?
-        
+    private bool questFalse = false; //квест не выполнен?
+
     [HideInInspector]public TextAsset ta;
 
     private int currentNode = 0;    
@@ -96,12 +96,15 @@ public class InstantiateDialogue : MonoBehaviour
     {
         checkingThings(numberOfButton);
         currentNode = dialogue.nodes[currentNode].answers[numberOfButton].nextNode;
+        if (questFalse)
+            currentNode = currentNode - 1;
+        questFalse = false;
         WriteText();
     }
 
     private void WriteText()
     {
-        nodeText.text = ""; //скидываем текст ответа каждый раз перед началом печати нового ответа НПС
+        deleteDialogue(); //скидываем текст ответа каждый раз перед началом печати нового ответа НПС
         nodeText.text = dialogue.nodes[currentNode].Npctext;
 
         firstAnswer.text = dialogue.nodes[currentNode].answers[0].text;     //первый ответ будет всегда            
@@ -148,7 +151,6 @@ public class InstantiateDialogue : MonoBehaviour
                 dialogueEnded = true;
                 DialogueManager.instance.EndDialogue();
             }
-
         }
     }
     #endregion
@@ -177,14 +179,11 @@ public class InstantiateDialogue : MonoBehaviour
                 if (questsManager.FindTaskFromBoard(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questDone))
                     if (questsManager.FindStatusTaskFromBoard(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questDone, "Выполнен"))
                     {
-                        questsManager.TaskDone(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questDone, "Выполнен");
-                        currentNode = currentNode + 2;
-                        WriteText();
+                        questsManager.TaskEndAndDelete(dialogue.nodes[currentNode].answers[numberOfButton].quests[questNumber].questDone);                        
                     }
                     else
                     {
-                        currentNode = currentNode + 1;
-                        WriteText();
+                        questFalse = true;
                     }
 
             }
@@ -233,7 +232,7 @@ public class InstantiateDialogue : MonoBehaviour
         }
     }
 
-        private IEnumerator waitFor(float time)
+    private IEnumerator waitFor(float time)
     {
         yield return new WaitForSeconds(time);     
     }  
@@ -248,13 +247,12 @@ public class InstantiateDialogue : MonoBehaviour
         deleteDialogue();
         currentNode = 0; // Начинаем с первого узла
         firstNodeShown = false; // Сбрасываем флаг показа первого узла
-        secondButton.enabled = false;
-        thirdButton.enabled = false;
     }
 
     private void deleteDialogue()
     {
-         
+        secondButton.enabled = false;
+        thirdButton.enabled = false;
         nodeText.text = ""; 
         firstAnswer.text = "";
         secondAnswer.text = "";

@@ -20,8 +20,9 @@
 				<quests>					
 					<quest>
 						<textQuest> Заполнить бумаги </textQuest>
+						<gameObjectSetActiv>true</gameObjectSetActiv>
 					</quest>
-				</quests>
+				</quests>				
 				<dialend>true</dialend>
 			</answer>
 		</answers>

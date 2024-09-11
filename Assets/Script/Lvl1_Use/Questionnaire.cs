@@ -21,8 +21,7 @@ public class Questionnaire : MonoBehaviour
 
 
     void Update()
-    {       
-           
+    {        
         bool parametr1 = Regex.IsMatch(size1.text, @"^[0-9]+$");
         bool parametr2 = Regex.IsMatch(size2.text, @"^[0-9]+$");
         bool parametr3 = size1.text.Length > 1 & size1.text.Length < 3;

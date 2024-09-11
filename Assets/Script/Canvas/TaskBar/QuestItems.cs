@@ -14,6 +14,7 @@ public class QuestItems : MonoBehaviour
 
     [SerializeField] bool changeQuest = false;
     [SerializeField] bool changeStatus = false;
+    [SerializeField] bool deleteQuest = false;
     [SerializeField] bool destroyGameObject = false;
     [SerializeField] private string questText;
     [SerializeField] private string questNextText;
@@ -42,13 +43,22 @@ public class QuestItems : MonoBehaviour
                 {
                     InventoryManager.instance.DeleteItems(itemsQuest);
                     TaskBoardManager.instance.UpdateTaskStatus(questText.Trim(), "Выполнен");
-                    Debug.Log("Поменяли");
                     DestroyObject();
                 }
+                if (deleteQuest)
+                {
+                    TaskBoardManager.instance.TaskDone(questText.Trim(), "Выполнен");
+                    DestroyObject();
+                }
+
     }
 
     private void DestroyObject()
     {
+        if (deleteQuest)
+        {
+            TaskBoardManager.instance.TaskDone(questText.Trim(), "Выполнен");
+        }
         if (destroyGameObject)
             Destroy(this.gameObject);
         else Destroy(this);

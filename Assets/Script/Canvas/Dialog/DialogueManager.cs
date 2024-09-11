@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour
     {
         boxAnim.SetBool("boxOpen", true);
         startAnim.SetBool("startOpen", false);
+        CursorManager.instance.cursorWork = true;
         dialogueClosed = false;
         FPS.setFreeze(true);
     }    
@@ -33,6 +34,7 @@ public class DialogueManager : MonoBehaviour
     {
         InstantiateDialogue.instance.CloseDialogue();
         boxAnim.SetBool("boxOpen", false);
+        CursorManager.instance.cursorWork = false;
         dialogueClosed = true;
         FPS.setFreeze(false);
     }

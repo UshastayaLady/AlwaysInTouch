@@ -7,6 +7,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private GameObject startOknoDia;
     [SerializeField] private TextAsset[] ta;
     [SerializeField] private int currentTa = 0;
+    private bool enter = false;
 
     [System.Serializable]
     public class ObjectSetActiv
@@ -15,6 +16,15 @@ public class DialogueTrigger : MonoBehaviour
         public int dialogueCount;
     }
     [SerializeField] private List<ObjectSetActiv> GameObjectSetActiv;
+
+    private void Update()
+    {
+        if (enter && Input.GetKeyDown(KeyCode.Q))
+        {
+            DialogueManager.instance.StartDialogue();
+            enter = false;
+        }
+    }
 
     public void OnTriggerStay(Collider other)
     {
@@ -28,17 +38,15 @@ public class DialogueTrigger : MonoBehaviour
                         {
                             GameObjectSetActiv[i].GameObjectSetActiv.SetActive(!GameObjectSetActiv[i].GameObjectSetActiv.activeSelf);
                         }
-                    }                   
+                    }
 
             if (currentTa < ta.Length - 1)
-            {
-               
+            {              
                 currentTa++;
-                InstantiateDialogue.instance.dialogueEnded = false;
+                InstantiateDialogue.instance.dialogueEnded = false;                
             }
             else
             {                
-                CursorManager.instance.cursorWork = false;                
                 Destroy(this.gameObject);
             }
         }
@@ -48,7 +56,7 @@ public class DialogueTrigger : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         startOknoDia.SetActive(true);
-        CursorManager.instance.cursorWork = true;
+        enter = true;
         InstantiateDialogue.instance.dialogueEnded = false;
         startAnim.SetBool("startOpen", true);             
     }
@@ -58,7 +66,7 @@ public class DialogueTrigger : MonoBehaviour
         startOknoDia.SetActive(false);
         startAnim.SetBool("startOpen", false);
         DialogueManager.instance.EndDialogue();
-        CursorManager.instance.cursorWork = false;
+        enter = false;
         InstantiateDialogue.instance.ta = null;
     }
 }

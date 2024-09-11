@@ -21,8 +21,7 @@ public class StartVideo : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-        {
-            buttonSkip.SetActive(false);
+        {            
             videoPlayer.loopPointReached += VideoPlayer_loopPointReached;
         }
     }
@@ -37,7 +36,6 @@ public class StartVideo : MonoBehaviour
     private void play()
     {
         videoPlayer.Play();
-        buttonSkip.SetActive(false);
     }
 
    

@@ -15,7 +15,8 @@ public class Registration : MonoBehaviour
     [SerializeField] private GameObject Person;
 
     private void Start()
-    {        
+    {
+        CursorManager.instance.cursorWork = true;
         FPS = FindObjectOfType<FirstPersonController>();
         FPS.setFreeze(true);
     }

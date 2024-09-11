@@ -51,6 +51,8 @@ public class Answer
     public int nextNode;
     [XmlElement("text")]
     public string text;
+    [XmlElement("name")]
+    public string name;
     [XmlElement("dialend")]
     public string end;
 

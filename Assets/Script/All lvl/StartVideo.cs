@@ -30,8 +30,6 @@ public class StartVideo : MonoBehaviour
         Room_KID.enter = false;
         if(nextquest!=null)
             nextquest.SetActive(true);
-        TaskBoardManager.instance.AddTask("явитьс€ на полигон");
-        TaskBoardManager.instance.AddTask("явитьс€ на полосу преп€тсвий");
         gameObject.SetActive(false);
     }
 

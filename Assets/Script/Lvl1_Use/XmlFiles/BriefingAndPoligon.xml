@@ -1,0 +1,51 @@
+<dialogue>
+	0<node>
+		<npctext> ... </npctext>
+		<answers>
+			<answer tonode = "2">
+				<text> Здравия желаю, товарищ *** </text>
+				<quests>
+					<quest>
+						<questDone> Явиться на прохождение полосы препятсвия </questDone>
+					</quest>
+				</quests>
+			</answer>
+		</answers>
+	</node>
+	
+	1<node>
+		<npctext> Отставить. Ты кто такой? </npctext>
+		<answers>
+			<answer tonode = "3">
+				<text> Я <name>name</name>  </text>
+				<after>true</after>				
+			</answer>
+		</answers>
+	</node>
+
+	2<node>
+		<npctext> Здравия желаю, товарищи. Перед тем как начать прохождение полосы припятствий, вы усвоите несколько правил по технике безопаности и сдадите мне тест. Те из вас, кто не пройдет данный тест к практическим зантиям допущены не будут. Всем ясно? </npctext>
+		<answers>
+			<answer tonode = "0">
+				<text> Так точно. </text>
+				<quests>
+					<quest>
+						<questText> Сдать тест по технике безопасности для прохождения полосы препятствий </questText>
+					</quest>
+				</quests>
+				<dialend>true</dialend>
+			</answer>
+		</answers>
+	</node>
+
+	3<node>
+		<npctext> Отставить. Ты кто такой? </npctext>
+		<answers>
+			<answer tonode = "0">
+				<text> Есть </text>
+				<after>true</after>
+			</answer>
+		</answers>
+	</node>
+	
+</dialogue>

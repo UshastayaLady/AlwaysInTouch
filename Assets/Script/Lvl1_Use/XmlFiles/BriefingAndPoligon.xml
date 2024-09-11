@@ -17,7 +17,7 @@
 		<npctext> Отставить. Ты кто такой? </npctext>
 		<answers>
 			<answer tonode = "3">
-				<text> Я <name>name</name>  </text>
+				<text> Я прибыл в академию связи для прохождения службы. </text>
 				<after>true</after>				
 			</answer>
 		</answers>
@@ -39,7 +39,7 @@
 	</node>
 
 	3<node>
-		<npctext> Отставить. Ты кто такой? </npctext>
+		<npctext> Немедленно на инструктаж новобранцев. </npctext>
 		<answers>
 			<answer tonode = "0">
 				<text> Есть </text>

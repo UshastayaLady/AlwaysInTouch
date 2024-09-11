@@ -106,7 +106,7 @@ public class InstantiateDialogue : MonoBehaviour
     {
         deleteDialogue(); //скидываем текст ответа каждый раз перед началом печати нового ответа НПС
         nodeText.text = dialogue.nodes[currentNode].Npctext;
-
+      
         firstAnswer.text = dialogue.nodes[currentNode].answers[0].text;     //первый ответ будет всегда            
         if (dialogue.nodes[currentNode].answers.Length >= 2)                //если ответов два
         {

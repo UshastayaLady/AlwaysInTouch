@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
-    [SerializeField] private Animator _anim;
+    private Animator _anim;
     [SerializeField] private bool smenaOsy = false;
 
     
@@ -12,7 +12,7 @@ public class OpenDoor : MonoBehaviour
     private void Awake()
     {
 
-        _anim = GetComponent<Animator>();
+        _anim = GetComponentInChildren<Animator>();
 
     }
 

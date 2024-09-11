@@ -44,13 +44,7 @@ public class QuestItems : MonoBehaviour
                     InventoryManager.instance.DeleteItems(itemsQuest);
                     TaskBoardManager.instance.UpdateTaskStatus(questText.Trim(), "Выполнен");
                     DestroyObject();
-                }
-                if (deleteQuest)
-                {
-                    TaskBoardManager.instance.TaskDone(questText.Trim(), "Выполнен");
-                    DestroyObject();
-                }
-
+                }        
     }
 
     private void DestroyObject()

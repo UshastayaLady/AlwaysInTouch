@@ -84,6 +84,13 @@ public class FirstPersonController : MonoBehaviour
 
     #endregion
 
+    #region Climb
+
+    public float climbSpeed = 2f;
+    private bool canClimb = false;
+
+    #endregion
+
     #region Jump
 
     public bool enableJump = true;
@@ -313,10 +320,22 @@ public class FirstPersonController : MonoBehaviour
 
         #endregion
 
+        #region Climb
+        // Gets input and calls jump method
+        if (canClimb && Input.GetKey(sprintKey))
+        {
+            float verticalInput = Input.GetAxis("Vertical");
+            if (Mathf.Abs(verticalInput) > 0) // Проверяем, что есть ввод по вертикали (нажатие клавиши)
+            {
+                Climb();
+            }
+        }
+        #endregion
+
         #region Jump
 
         // Gets input and calls jump method
-        if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
+        if (enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
         {
          
             Jump();
@@ -403,7 +422,7 @@ public class FirstPersonController : MonoBehaviour
             }
 
             // All movement calculations shile sprint is active
-            if (enableSprint && Input.GetKey(sprintKey) && !isLie && !isCrouched && sprintRemaining > 0f && !isSprintCooldown)
+            if (enableSprint && Input.GetKey(sprintKey) && !canClimb && !isLie && !isCrouched && sprintRemaining > 0f && !isSprintCooldown)
             {
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
 
@@ -419,11 +438,6 @@ public class FirstPersonController : MonoBehaviour
                 if (velocityChange.x != 0 || velocityChange.z != 0)
                 {
                     isSprinting = true;
-
-                    //if (isCrouched)
-                    //{
-                    //    Crouch();
-                    //}
 
                     if (hideBarWhenFull && !unlimitedSprint)
                     {
@@ -478,8 +492,35 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+    #region Climb
+    private void Climb()
+    {
+        float verticalInput = Input.GetAxis("Vertical");
+        Vector3 climbMovement = new Vector3(0, verticalInput * climbSpeed * Time.deltaTime, 0);
+        rb.MovePosition(transform.position + climbMovement);
 
+        // Остановка движения по горизонтали
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Climb"))
+        {
+            canClimb = true; 
+            rb.useGravity = false; 
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Climb"))
+        {
+            canClimb = false;              
+            rb.useGravity = true;
+        }
+    }
+    #endregion
     private void Jump()
     {
         if (isFreezed || isLie) return;

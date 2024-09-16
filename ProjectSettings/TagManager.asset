@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Polosa
   - Polosa_trenirovka
-  - stena
-  - stena_tren
   - GreenTarget
   - weapon
   - Odejda
@@ -20,6 +18,7 @@ TagManager:
   - Target
   - TRIGG
   - TakeObject
+  - Climb
   layers:
   - Default
   - TransparentFX

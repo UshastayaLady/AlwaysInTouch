@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class TriggerRestart : MonoBehaviour
 {
-    public Polosa_start polosaStart;
+    public PolosaStart polosaStart;
     // Start is called before the first frame update
     void Start()
     {
-        polosaStart = FindObjectOfType<Polosa_start>();
+        polosaStart = FindObjectOfType<PolosaStart>();
     }
 
     private void OnTriggerEnter(Collider other)

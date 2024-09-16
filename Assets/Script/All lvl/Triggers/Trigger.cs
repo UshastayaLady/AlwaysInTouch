@@ -4,10 +4,10 @@ public class Trigger : MonoBehaviour
 {
     private bool enter;
     private bool oneActiveInUpdate = false;
+    [SerializeField] private bool cursor = false;
     [SerializeField] private bool button = false;
-    [SerializeField] private bool close = false;
-    [SerializeField] private bool once = false;
-    [SerializeField] private bool many = false;
+    [SerializeField] private bool onlyClose = false;
+    [SerializeField] private bool onceOpenAndClose = false;    
     [SerializeField] private GameObject gameObjectOpen;
     
     private void Update()
@@ -21,16 +21,22 @@ public class Trigger : MonoBehaviour
         if (gameObjectOpen.activeSelf & button)
         {
             PlayerManager.instance.PlayerFreezTrue();
-            if (Input.GetKeyDown(KeyCode.Q) & close)
+            if (cursor)
+                CursorManager.instance.cursorWork = true;
+            if (Input.GetKeyDown(KeyCode.Q) & onlyClose)
             {
                 PlayerManager.instance.PlayerFreezFalse();
-                gameObjectOpen.SetActive(false);                
+                if (cursor)
+                    CursorManager.instance.cursorWork = false;
+                gameObjectOpen.SetActive(false);
                 Destroy(this);
             }
         }
         else if (!gameObjectOpen.activeSelf & button)
         {
             PlayerManager.instance.PlayerFreezFalse();
+            if (cursor)
+                CursorManager.instance.cursorWork = false;
         }   
     }
     private void OnTriggerEnter(Collider other)
@@ -39,6 +45,7 @@ public class Trigger : MonoBehaviour
         {     
             enter = true;
             oneActiveInUpdate = true;
+            
         }
     }
 
@@ -48,8 +55,8 @@ public class Trigger : MonoBehaviour
         {
             enter = false;
             if (!button)
-                gameObjectOpen.SetActive(!gameObjectOpen.activeSelf);
-            if (once)
+                gameObjectOpen.SetActive(!gameObjectOpen.activeSelf);            
+            if (onceOpenAndClose)
             {
                 gameObjectOpen.SetActive(false);
                 Destroy(this);

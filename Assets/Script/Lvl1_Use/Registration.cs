@@ -1,12 +1,9 @@
 using UnityEngine.UI;
 using UnityEngine;
 using System.Text.RegularExpressions;
-using UnityEngine.Windows;
-using System;
 
 public class Registration : MonoBehaviour
-{    
-    private FirstPersonController FPS;
+{        
 
     [SerializeField] private GameObject Registr;
     [SerializeField] private GameObject buttonNext;
@@ -17,8 +14,7 @@ public class Registration : MonoBehaviour
     private void Start()
     {
         CursorManager.instance.cursorWork = true;
-        FPS = FindObjectOfType<FirstPersonController>();
-        FPS.setFreeze(true);
+        PlayerManager.instance.PlayerFreezTrue();
     }
 
     private void Update()
@@ -39,8 +35,8 @@ public class Registration : MonoBehaviour
         text_name.text = text_name_reg.text.Trim();
         text_sename.text = text_sename_reg.text.Trim();
         Person.SetActive(true);               
-        Registr.SetActive(false);        
-        FPS.setFreeze(false);
+        Registr.SetActive(false);
+        PlayerManager.instance.PlayerFreezFalse();
         DialogueManager.instance.StartDialogue();
     } 
 }

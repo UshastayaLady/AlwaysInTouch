@@ -30,6 +30,7 @@ public class StartVideo : MonoBehaviour
         Room_KID.enter = false;
         if(nextquest!=null)
             nextquest.SetActive(true);
+        buttonSkip.SetActive(false);
         gameObject.SetActive(false);
     }
 

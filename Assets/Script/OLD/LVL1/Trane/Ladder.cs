@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System.Collections;
 
 public class Ladder: MonoBehaviour {
 	bool enter;
@@ -19,12 +17,12 @@ public class Ladder: MonoBehaviour {
 			GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enabled = State2;
 			GameObject.FindGameObjectWithTag("Player").GetComponent<lestnica>().enabled = State3;
 		}
-		if(enter == false && Finish_polosa_zachet.enter == false)
-        {
-			GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().enabled = true;
-			GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enabled = false;
-			GameObject.FindGameObjectWithTag("Player").GetComponent<lestnica>().enabled = false;
-		}
+		//if(enter == false && Finish_polosa_zachet.enter == false)
+  //      {
+		//	GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().enabled = true;
+		//	GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().enabled = false;
+		//	GameObject.FindGameObjectWithTag("Player").GetComponent<lestnica>().enabled = false;
+		//}
     }
     void OnTriggerEnter(Collider other) {
 	

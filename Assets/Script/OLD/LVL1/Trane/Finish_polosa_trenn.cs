@@ -18,7 +18,7 @@ public class Finish_polosa_trenn : MonoBehaviour
             Canvas_finish.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Polosa_start.trennirovka = false;
+            //Polosa_start.trennirovka = false;
             
             
         }

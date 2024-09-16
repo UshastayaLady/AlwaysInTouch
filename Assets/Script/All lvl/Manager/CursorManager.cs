@@ -3,7 +3,7 @@ using UnityEngine;
 public class CursorManager : MonoBehaviour
 {
     [SerializeField] private Texture2D customCursor; // ѕеременна€ дл€ хранени€ текстуры курсора
-    [SerializeField] private Vector2 hotSpot = new Vector2(0, 0); // “очка прив€зки курсора (можно настроить)
+    private Vector2 hotSpot = new Vector2(0, 0); // “очка прив€зки курсора (если хочетс€ настроить добавить SerializeField)
 
     public static CursorManager instance = null;
     public bool cursorWork = true;

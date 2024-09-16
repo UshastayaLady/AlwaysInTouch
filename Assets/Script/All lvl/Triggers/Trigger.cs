@@ -4,26 +4,34 @@ public class Trigger : MonoBehaviour
 {
     private bool enter;
     private bool oneActiveInUpdate = false;
-    [SerializeField] private bool noButton = false;
+    [SerializeField] private bool button = false;
+    [SerializeField] private bool close = false;
     [SerializeField] private bool once = false;
     [SerializeField] private bool many = false;
     [SerializeField] private GameObject gameObjectOpen;
-
-
+    
     private void Update()
     {
-        if ((enter) && ((Input.GetKeyDown(KeyCode.Q) & !noButton) || (noButton & oneActiveInUpdate)))
+        if ((enter) && ((Input.GetKeyDown(KeyCode.Q) & button) || (!button & oneActiveInUpdate)))
         {
-            if (many)
-                gameObjectOpen.SetActive(!gameObjectOpen.activeSelf);
+            gameObjectOpen.SetActive(!gameObjectOpen.activeSelf);
+            oneActiveInUpdate = false;
+        }
 
-            if (once)
+        if (gameObjectOpen.activeSelf & button)
+        {
+            PlayerManager.instance.PlayerFreezTrue();
+            if (Input.GetKeyDown(KeyCode.Q) & close)
             {
-                gameObjectOpen.SetActive(true);
+                PlayerManager.instance.PlayerFreezFalse();
+                gameObjectOpen.SetActive(false);                
                 Destroy(this);
             }
-            oneActiveInUpdate = false;
-        }        
+        }
+        else if (!gameObjectOpen.activeSelf & button)
+        {
+            PlayerManager.instance.PlayerFreezFalse();
+        }   
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -39,8 +47,13 @@ public class Trigger : MonoBehaviour
         if (other.tag == "Player")
         {
             enter = false;
-            if (noButton)
+            if (!button)
                 gameObjectOpen.SetActive(!gameObjectOpen.activeSelf);
+            if (once)
+            {
+                gameObjectOpen.SetActive(false);
+                Destroy(this);
+            }
         }
     }
         

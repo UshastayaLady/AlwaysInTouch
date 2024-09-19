@@ -4,6 +4,7 @@ public class Trigger : MonoBehaviour
 {
     private bool enter;
     private bool oneActiveInUpdate = false;
+    private bool buttonClickOne = false;
     [SerializeField] private bool cursor = false;
     [SerializeField] private bool button = false;
     [SerializeField] private bool onlyClose = false;
@@ -15,28 +16,23 @@ public class Trigger : MonoBehaviour
         if ((enter) && ((Input.GetKeyDown(KeyCode.Q) & button) || (!button & oneActiveInUpdate)))
         {
             gameObjectOpen.SetActive(!gameObjectOpen.activeSelf);
+            buttonClickOne = true;
             oneActiveInUpdate = false;
         }
 
         if (gameObjectOpen.activeSelf & button)
         {
-            PlayerManager.instance.PlayerFreezTrue();
-            if (cursor)
-                CursorManager.instance.cursorWork = true;
+            PlayerManager.instance.PlayerFreezTrue();           
             if (Input.GetKeyDown(KeyCode.Q) & onlyClose)
             {
-                PlayerManager.instance.PlayerFreezFalse();
-                if (cursor)
-                    CursorManager.instance.cursorWork = false;
+                PlayerManager.instance.PlayerFreezFalse();            
                 gameObjectOpen.SetActive(false);
                 Destroy(this);
             }
         }
         else if (!gameObjectOpen.activeSelf & button)
         {
-            PlayerManager.instance.PlayerFreezFalse();
-            if (cursor)
-                CursorManager.instance.cursorWork = false;
+            PlayerManager.instance.PlayerFreezFalse();            
         }   
     }
     private void OnTriggerEnter(Collider other)
@@ -45,7 +41,8 @@ public class Trigger : MonoBehaviour
         {     
             enter = true;
             oneActiveInUpdate = true;
-            
+            if (cursor)
+                CursorManager.instance.cursorWork = true;
         }
     }
 
@@ -55,8 +52,10 @@ public class Trigger : MonoBehaviour
         {
             enter = false;
             if (!button)
-                gameObjectOpen.SetActive(!gameObjectOpen.activeSelf);            
-            if (onceOpenAndClose)
+                gameObjectOpen.SetActive(!gameObjectOpen.activeSelf);
+            if (cursor)
+                CursorManager.instance.cursorWork = false;
+            if (onceOpenAndClose & (buttonClickOne || !button))
             {
                 gameObjectOpen.SetActive(false);
                 Destroy(this);

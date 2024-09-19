@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using System;
 
 public class Timer : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class Timer : MonoBehaviour
             StopCoroutine(timerCoroutine); // Остановить таймер
             timerCoroutine = null; // Обнулить ссылку на корутину
         }
+    }
+
+    public int ReturnTimerSeconds()
+    {        
+        return seconds;
     }
 
     public void ResetTimer()

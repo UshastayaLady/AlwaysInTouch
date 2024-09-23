@@ -10,7 +10,11 @@ public class Trigger : MonoBehaviour
     [SerializeField] private bool onlyClose = false;
     [SerializeField] private bool onceOpenAndClose = false;    
     [SerializeField] private GameObject gameObjectOpen;
-    
+    private FirstPersonController FPS;
+    private void Start()
+    {
+        FPS = FindObjectOfType<FirstPersonController>();
+    }
     private void Update()
     {
         if ((enter) && ((Input.GetKeyDown(KeyCode.Q) & button) || (!button & oneActiveInUpdate)))
@@ -22,17 +26,17 @@ public class Trigger : MonoBehaviour
 
         if (gameObjectOpen.activeSelf & button)
         {
-            PlayerManager.instance.PlayerFreezTrue();           
+            FPS.setFreeze(true);
             if (Input.GetKeyDown(KeyCode.Q) & onlyClose)
             {
-                PlayerManager.instance.PlayerFreezFalse();            
+                FPS.setFreeze(false);
                 gameObjectOpen.SetActive(false);
                 Destroy(this);
             }
         }
         else if (!gameObjectOpen.activeSelf & button)
         {
-            PlayerManager.instance.PlayerFreezFalse();            
+            FPS.setFreeze(false);
         }   
     }
     private void OnTriggerEnter(Collider other)

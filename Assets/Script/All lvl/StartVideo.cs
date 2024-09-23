@@ -4,6 +4,7 @@ public class StartVideo : MonoBehaviour
 {
     [SerializeField] private GameObject nextquest;
     [SerializeField] private GameObject buttonSkip;
+    private bool skip = false;
     VideoPlayer videoPlayer;
      
     void Start()
@@ -20,9 +21,10 @@ public class StartVideo : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !skip)
         {            
             videoPlayer.loopPointReached += VideoPlayer_loopPointReached;
+            skip = true;
         }
     }
     private void VideoPlayer_loopPointReached(VideoPlayer source)

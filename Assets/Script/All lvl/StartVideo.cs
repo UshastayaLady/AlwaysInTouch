@@ -14,17 +14,20 @@ public class StartVideo : MonoBehaviour
 
         videoPlayer.loopPointReached += VideoPlayer_loopPointReached;
 
-        Invoke("play", 1);
-        buttonSkip.SetActive(true);
-
+        Invoke("play", 1);   
     }
-
-    private void Update()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !skip)
-        {            
-            videoPlayer.loopPointReached += VideoPlayer_loopPointReached;
+        buttonSkip.SetActive(true);
+        skip = false;
+    }
+        private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !skip && videoPlayer.isPlaying)
+        {
+            videoPlayer.Stop();
             skip = true;
+            VideoPlayer_loopPointReached(videoPlayer);
         }
     }
     private void VideoPlayer_loopPointReached(VideoPlayer source)

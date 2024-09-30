@@ -45,7 +45,8 @@ public class FinishPolosa : MonoBehaviour
         if (other.tag == "Player")
         {
             FPS.setFreeze(true);
-            enter = true;          
+            enter = true;
+            CursorManager.instance.cursorWork = true;
         }
     }
 }

@@ -51,14 +51,14 @@ public class Answer
     public int nextNode;
     [XmlElement("text")]
     public string text;
-    [XmlElement("dialend")]
+    [XmlElement("dialend")] // Конец диалога и переход на следующий
     public string end;
 
     [XmlArray("quests")]
     [XmlArrayItem("quest")]
     public Quests[] quests;
 
-    [XmlElement("after")]
+    [XmlElement("after")] // Конец диалога без перехода на следующий, т.е. данный диалог будет проигран еще раз
     public string after;
 }
 

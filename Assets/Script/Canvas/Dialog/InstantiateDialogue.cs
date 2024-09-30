@@ -89,19 +89,8 @@ public class InstantiateDialogue : MonoBehaviour
         currentNode = 0;
         firstNodeShown = true;
         WriteText();
-    }
-
-    
-    private void AnswerClicked(int numberOfButton)
-    {
-        checkingThings(numberOfButton);
-        currentNode = dialogue.nodes[currentNode].answers[numberOfButton].nextNode;
-        if (questFalse)
-            currentNode = currentNode - 1;
-        questFalse = false;
-        WriteText();
-    }
-
+    }    
+   
     private void WriteText()
     {
         deleteDialogue(); //скидываем текст ответа каждый раз перед началом печати нового ответа НПС
@@ -131,25 +120,32 @@ public class InstantiateDialogue : MonoBehaviour
         }
     }
 
-    private void checkingThings(int numberOfButton)
+    private void AnswerClicked(int numberOfButton)
     {
         if (!DialogueManager.instance.dialogueClosed)
         {
             if (dialogue.nodes[currentNode].answers[numberOfButton].quests != null)
             {
                 WorkWithQuests(numberOfButton);
-            }  
+            }
 
             if (dialogue.nodes[currentNode].answers[numberOfButton].after == "true")
-            {                
+            {
                 DialogueManager.instance.EndDialogue();
                 StartCoroutine(waitFor(2f));
             }
-
-            if (dialogue.nodes[currentNode].answers[numberOfButton].end == "true")
+            else if (dialogue.nodes[currentNode].answers[numberOfButton].end == "true")
             {
                 dialogueEnded = true;
                 DialogueManager.instance.EndDialogue();
+            }
+            else
+            {
+                currentNode = dialogue.nodes[currentNode].answers[numberOfButton].nextNode;
+                if (questFalse)
+                    currentNode = currentNode - 1;
+                questFalse = false;
+                WriteText();
             }
         }
     }

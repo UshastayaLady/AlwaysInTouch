@@ -4,7 +4,6 @@ using System.Text.RegularExpressions;
 
 public class Questionnaire : MonoBehaviour
 {
-    private FirstPersonController FPS;
     [SerializeField] private Text text_name_reg, text_sename_reg;
     [SerializeField] private Text text_name, text_sename;
     [SerializeField] private Text size1, size2;
@@ -13,17 +12,7 @@ public class Questionnaire : MonoBehaviour
     private bool parametr2 = false;
     private bool parametr3 = false;
     private bool parametr4 = false;
-    
-    private void Awake()
-    {
-        FPS = FindObjectOfType<FirstPersonController>();
-    }
-    private void OnEnable()
-    {
-        FPS.setFreeze(false);
-        CursorManager.instance.cursorWork = true;
-    }
-
+   
     private void Update()
     {
         parametr1 = Regex.IsMatch(size1.text, @"^[0-9]+$");

@@ -4,19 +4,11 @@ using System.Text.RegularExpressions;
 
 public class Registration : MonoBehaviour
 {
-    private FirstPersonController FPS;
     [SerializeField] private GameObject Registr;
     [SerializeField] private GameObject buttonNext;
     [SerializeField] private Text text_name_reg, text_sename_reg;
     [SerializeField] private Text text_name, text_sename;
     [SerializeField] private GameObject Person;
-
-    private void Start()
-    {
-        CursorManager.instance.cursorWork = true;
-        FPS = FindObjectOfType<FirstPersonController>();
-        FPS.setFreeze(true);
-    }
 
     private void Update()
     {     
@@ -37,7 +29,6 @@ public class Registration : MonoBehaviour
         text_sename.text = text_sename_reg.text.Trim();
         Person.SetActive(true);               
         Registr.SetActive(false);
-        FPS.setFreeze(false);
         DialogueManager.instance.StartDialogue();
     } 
 }

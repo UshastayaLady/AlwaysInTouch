@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
-    private FirstPersonController FPS;
-
     [SerializeField] private Animator boxAnim;
     [SerializeField] private Animator startAnim;
-
+    [SerializeField] private GameObject oknoDia;
     [SerializeField] public bool dialogueClosed = true;
 
     public static DialogueManager instance = null;
@@ -15,18 +13,15 @@ public class DialogueManager : MonoBehaviour
     {
         if (instance == null)
         { instance = this; }
-
-        FPS = FindObjectOfType<FirstPersonController>();
     }        
 
     //Starting a dialogue
     public void StartDialogue()
     {
+        oknoDia.SetActive(true);
         boxAnim.SetBool("boxOpen", true);
-        startAnim.SetBool("startOpen", false);
-        CursorManager.instance.cursorWork = true;
+        startAnim.SetBool("startOpen", false);        
         dialogueClosed = false;
-        FPS.setFreeze(true);
     }    
 
     //Closing the dialog box
@@ -34,8 +29,7 @@ public class DialogueManager : MonoBehaviour
     {
         InstantiateDialogue.instance.CloseDialogue();
         boxAnim.SetBool("boxOpen", false);
-        CursorManager.instance.cursorWork = false;
+        oknoDia.SetActive(false);
         dialogueClosed = true;
-        FPS.setFreeze(false);
     }
 }

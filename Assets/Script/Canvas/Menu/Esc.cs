@@ -15,7 +15,6 @@ public class Esc : MonoBehaviour
             if (klavisha)
             {
                 menuCanv.SetActive(true);
-                CursorManager.instance.cursorWork = true;
                 Time.timeScale = 0f;
             }
 
@@ -32,7 +31,6 @@ public class Esc : MonoBehaviour
     public void Cont()
     {
         menuCanv.SetActive(false);
-        CursorManager.instance.cursorWork = false;
         Time.timeScale = 1f;
         klavisha = !klavisha;
     }

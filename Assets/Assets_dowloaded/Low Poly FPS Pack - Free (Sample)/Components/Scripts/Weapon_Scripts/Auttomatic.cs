@@ -15,7 +15,6 @@ public class Auttomatic : MonoBehaviour
     //Main gun camera
     public Camera gunCamera;
 
-
     int proverka = 0;
 
     [Header("Gun Camera Options")]
@@ -34,7 +33,7 @@ public class Auttomatic : MonoBehaviour
     [Header("UI Weapon Name")]
     [Tooltip("Name of the current weapon, shown in the game UI.")]
     public string weaponName;
-    private string storedWeaponName;
+    //private string storedWeaponName;
 
     [Header("Weapon Sway")]
     //Enables weapon sway
@@ -61,8 +60,6 @@ public class Auttomatic : MonoBehaviour
     //Check if reloading
     private bool isReloading;
 
-    //Holstering weapon
-    private bool hasBeenHolstered = false;
     //If weapon is holstered
     private bool holstered;
     //Check if running
@@ -196,12 +193,6 @@ public class Auttomatic : MonoBehaviour
 
     private void Start()
     {
-
-
-      
-
-        //Save the weapon name
-        storedWeaponName = weaponName;
         //Get weapon name from string to text
         currentWeaponText.text = weaponName;
         //Set total ammo text from total ammo int
@@ -283,63 +274,13 @@ public class Auttomatic : MonoBehaviour
             randomMuzzleflashValue = Random.Range(minRandomValue, maxRandomValue);
         }
 
-        //Timescale settings
-        //Change timescale to normal when 1 key is pressed
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Time.timeScale = 1.0f;
-            timescaleText.text = "1.0";
-        }
-        //Change timesccale to 50% when 2 key is pressed
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Time.timeScale = 0.5f;
-            timescaleText.text = "0.5";
-        }
-        //Change timescale to 25% when 3 key is pressed
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Time.timeScale = 0.25f;
-            timescaleText.text = "0.25";
-        }
-        //Change timescale to 10% when 4 key is pressed
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Time.timeScale = 0.1f;
-            timescaleText.text = "0.1";
-        }
-        //Pause game when 5 key is pressed
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            Time.timeScale = 0.0f;
-            timescaleText.text = "0.0";
-        }
-
+      
         //Set current ammo text from ammo int
         currentAmmoText.text = currentAmmo.ToString();
 
         //Continosuly check which animation 
         //is currently playing
         AnimationCheck();
-
-        //Play knife attack 1 animation when Q key is pressed
-        if (Input.GetKeyDown(KeyCode.Q) && !isInspecting)
-        {
-            anim.Play("Knife Attack 1", 0, 0f);
-        }
-        //Play knife attack 2 animation when F key is pressed
-        if (Input.GetKeyDown(KeyCode.F) && !isInspecting)
-        {
-            anim.Play("Knife Attack 2", 0, 0f);
-        }
-
-        //Throw grenade when pressing G key
-        if (Input.GetKeyDown(KeyCode.G) && !isInspecting)
-        {
-            StartCoroutine(GrenadeSpawnDelay());
-            //Play grenade throw animation
-            anim.Play("GrenadeThrow", 0, 0.0f);
-        }
 
         //If out of ammo
 
@@ -463,25 +404,6 @@ public class Auttomatic : MonoBehaviour
             anim.SetTrigger("Inspect");
         }
 
-        //Toggle weapon holster when E key is pressed
-        if (Input.GetKeyDown(KeyCode.E) && !hasBeenHolstered)
-        {
-            holstered = true;
-
-            mainAudioSource.clip = SoundClips.holsterSound;
-            mainAudioSource.Play();
-
-            hasBeenHolstered = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.E) && hasBeenHolstered)
-        {
-            holstered = false;
-
-            mainAudioSource.clip = SoundClips.takeOutSound;
-            mainAudioSource.Play();
-
-            hasBeenHolstered = false;
-        }
         //Holster anim toggle
         if (holstered == true)
         {

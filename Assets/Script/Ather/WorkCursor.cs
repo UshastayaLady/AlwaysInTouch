@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WorkCursor : NewCursorManager
@@ -24,8 +22,7 @@ public class WorkCursor : NewCursorManager
 
     void OnDisable()
     {
-        if (player != null)
-            CloseCursor();
+        CloseCursor();
         player.enabled = true;
     }
 }

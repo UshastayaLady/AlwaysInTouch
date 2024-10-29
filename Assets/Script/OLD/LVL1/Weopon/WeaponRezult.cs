@@ -3,30 +3,15 @@ using UnityEngine.UI;
 
 public class WeaponRezult : MonoBehaviour
 {
-    public GameObject rezult, rezult_text, rezult_text_finish, barer;
-    public Text six, seven, eight, nine, ten, sum;
-    public GreenTarget GreenTarget;
+    [SerializeField] private GameObject rezult, rezult_text, rezult_text_finish;
+    [SerializeField] private Text six, seven, eight, nine, ten, sum;
+    [SerializeField] private GreenTarget GreenTarget;
     bool enter;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if(enter && Input.GetKeyDown(KeyCode.E))
         {
-            GameObject man;
-            man = GameObject.FindGameObjectWithTag("Player");
-            man.GetComponent<FirstPersonController>().enabled = false;
-
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-
             six.text = "Попаданий в '6': " + GreenTarget.six;
             seven.text = "Попаданий в '7': " + GreenTarget.sev;
             eight.text = "Попаданий в '8': " + GreenTarget.vos;
@@ -42,21 +27,6 @@ public class WeaponRezult : MonoBehaviour
         }
     }
 
-    public  void OnClick()
-    {
-        rezult.SetActive(false);
-        GameObject man;
-        man = GameObject.FindGameObjectWithTag("Player");
-        man.GetComponent<FirstPersonController>().enabled = true;
-        Cursor.lockState = CursorLockMode.Locked;
-        barer.SetActive(false);
-        Achievements achievement = FindObjectOfType<Achievements>();
-
-        if (GlobalCs.arrIsGotAch[3]){
-            ActivateTeleport teleport = FindObjectOfType<ActivateTeleport>();
-            teleport.ActivaTeteleport();
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player") { enter = true; rezult_text_finish.SetActive(true); }

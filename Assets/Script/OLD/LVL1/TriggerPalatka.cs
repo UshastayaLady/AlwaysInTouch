@@ -1,23 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerPalatka : MonoBehaviour
 {
-    public bool enter;
+    private bool enter;
     public static bool StayPalatka;
     public static bool strelba;
-    public GameObject TextStart, Instrution, scoreImage;
-    public GameObject[] wall;
-    public Auttomatic Auttomatic;
-    public GameObject Bidvijenie;
-    public GameObject Text_zachet;
-    public GameObject Rezult, Rezult_text;
+    [SerializeField] private GameObject TextStart, Instrution, scoreImage;
+    [SerializeField] private GameObject[] wall;
+    [SerializeField] private Auttomatic Auttomatic;
+    [SerializeField] private GameObject palatka;
+    [SerializeField] private GameObject startPoint;
+    [SerializeField] private GameObject Bidvijenie;
+    [SerializeField] private GameObject Text_zachet;
+    [SerializeField] private GameObject Rezult, Rezult_text;
+    private GameObject man, avtomat;
 
     // Start is called before the first frame update
     void Start()
     {
         StayPalatka = false;
+        man = GameObject.FindGameObjectWithTag("Player");
+        avtomat = GameObject.FindGameObjectWithTag("weapon");
     }
 
     // Update is called once per frame
@@ -25,31 +28,16 @@ public class TriggerPalatka : MonoBehaviour
     {
         if (enter && Input.GetKeyDown(KeyCode.E))
         {
-
             StayPalatka = true;
-
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-
             enter = false;
 
             TextStart.SetActive(false);
-
             Instrution.SetActive(true);
-
             Bidvijenie.SetActive(false);
-
             scoreImage.SetActive(true);
 
-            GameObject man, avtomat;
-            man = GameObject.FindGameObjectWithTag("Player");
-
-            avtomat = GameObject.FindGameObjectWithTag("weapon");
-
-            man.transform.position = Vector3.MoveTowards(man.transform.position, gameObject.transform.position, 100f);
-            man.GetComponent<FirstPersonController>().enabled = false;
-            avtomat.GetComponent<Auttomatic>().enabled = false;
-           
+            man.transform.position = Vector3.MoveTowards(man.transform.position, startPoint.transform.position, 100f);
+                       
             for(int i = 0; i < wall.Length; i++)
             {
                 wall[i].SetActive(true);
@@ -66,6 +54,7 @@ public class TriggerPalatka : MonoBehaviour
             StayPalatka = false;
             strelba = false;
             Text_zachet.SetActive(false);
+            palatka.SetActive(true);
             for (int i = 0; i < wall.Length; i++)
             {
                 wall[i].SetActive(false);
@@ -76,21 +65,11 @@ public class TriggerPalatka : MonoBehaviour
                 Rezult.GetComponent<SphereCollider>().enabled = true;
                 Rezult_text.SetActive(true);
             }
+            this.gameObject.SetActive(false);
         }
        
     }
-   public void OnCli()
-    {
-       
-        Cursor.lockState = CursorLockMode.Locked;
-        GameObject man, avtomat;
-        man = GameObject.FindGameObjectWithTag("Player");
-        avtomat = GameObject.FindGameObjectWithTag("weapon");
-        man.GetComponent<FirstPersonController>().enabled = true;
-        avtomat.GetComponent<Auttomatic>().enabled = true;
-        Instrution.SetActive(false);
-      //  strelba = true;
-    }
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player"){enter = true; TextStart.SetActive(true); }

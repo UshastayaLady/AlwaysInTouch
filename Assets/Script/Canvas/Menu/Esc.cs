@@ -21,11 +21,9 @@ public class Esc : MonoBehaviour
             else if (!klavisha)
             {
                 menuCanv.SetActive(false);
-                CursorManager.instance.cursorWork = false;
                 Time.timeScale = 1f;
             }
         }
-
     }
 
     public void Cont()

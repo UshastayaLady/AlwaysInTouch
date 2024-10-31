@@ -18,7 +18,7 @@ public class Questionnaire : MonoBehaviour
         parametr1 = Regex.IsMatch(size1.text, @"^[0-9]+$");
         parametr2 = Regex.IsMatch(size2.text, @"^[0-9]+$");
         parametr3 = size1.text.Length == 2 && size2.text.Length == 2;
-        parametr4 = text_name.text.Trim() == text_name_reg.text && text_sename.text.Trim() == text_sename_reg.text;
+        parametr4 = text_name.text.Trim().ToLower() == text_name_reg.text.Trim().ToLower() && text_sename.text.Trim().ToLower() == text_sename_reg.text.Trim().ToLower();
         allredy.onClick.AddListener(ProverkaAnketa);
     }
     private void ProverkaAnketa()

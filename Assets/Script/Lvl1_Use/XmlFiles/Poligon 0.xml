@@ -6,7 +6,7 @@
 				<text> Здравия желаю, товарищ *** </text>
 				<quests>
 					<quest>
-						<questEndAndDelete> Явиться на прохождение полосы препятсвия </questEndAndDelete>
+						<questEndAndDelete> Явиться на полигон </questEndAndDelete>
 					</quest>
 				</quests>
 			</answer>
@@ -14,28 +14,46 @@
 	</node>
 	
 	1<node>
-		<npctext> Здравия желаю, товарищи. Перед тем как начать прохождение полосы припятствий, вы усвоите несколько правил по технике безопаности.</npctext>
+		<npctext> Добро пожаловать на стрелковый полигон! Здесь вы получите навыки в эксплуатации автомата АК-74. </npctext>
 		<answers>
 			<answer tonode = "2">
 				<text> *Далее* </text>							
 			</answer>
 		</answers>
 	</node>
-
+	
 	2<node>
-		<npctext> Трали Вали. </npctext>
+		<npctext> Вам предстоит пройти вводный курс стрельб из положений стоя, имея по 30 патрон  (3 магазина по 10).</npctext>
 		<answers>
-			<answer tonode = "0">
-				<text> Есть </text>
-				<quests>
-					<quest>
-						<textQuest> Сдать зачет по прохождению полосы препятствий </textQuest>
-						<gameObjectSetActiv>true</gameObjectSetActiv>
-					</quest>
-				</quests>
-				<dialend>true</dialend>				
+			<answer tonode = "3">
+				<text> *Далее* </text>							
 			</answer>
 		</answers>
 	</node>
 	
+	3<node>
+		<npctext> Подойдите к пункту боепитания. Там Вам выдадут автомат и боезапас к нему. Следом выдвигайтесь на место стрельб, где вы получите навыки в стрельбе из автомата.</npctext>
+		<answers>
+			<answer tonode = "4">
+				<text> *Далее* </text>							
+			</answer>
+		</answers>
+	</node>
+
+	4<node>
+		<npctext> Далее, стрельба на зачет из положения стоя, имея по 10. Как закончите, подойдите ко мне и отчитайтесь.</npctext>
+		<answers>
+			<answer tonode = "0">
+				<text> Есть. </text>
+				<quests>
+					<quest>
+						<textQuest> Сдать зачет по стрельбе </textQuest>
+						<gameObjectSetActiv>true</gameObjectSetActiv>
+					</quest>
+				</quests>
+				<dialend>true</dialend>
+			</answer>
+		</answers>
+	</node>
+		
 </dialogue>

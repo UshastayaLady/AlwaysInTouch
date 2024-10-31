@@ -8,11 +8,7 @@ public class FinishPolosa : MonoBehaviour
     [SerializeField] private GameObject triggersRules, triggersLimitations;
     [SerializeField] private GameObject triggerStart;
     public Transform spawn;
-    private FirstPersonController FPS;
-    private void Start()
-    {
-        FPS = FindObjectOfType<FirstPersonController>();
-    }
+   
     public void Update()
     {
         if(enter == true)
@@ -27,7 +23,7 @@ public class FinishPolosa : MonoBehaviour
             else 
             {
                 timer.StopTimer();
-                if (timer.ReturnTimerSeconds() <= 120)
+                if (timer.ReturnTimerSeconds() <= 200)
                     TaskBoardManager.instance.UpdateTaskStatus("Сдать зачет по прохождению полосы препятствий", "Выполнен");
                 else
                 {
@@ -44,9 +40,7 @@ public class FinishPolosa : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            FPS.setFreeze(true);
             enter = true;
-            CursorManager.instance.cursorWork = true;
         }
     }
 }

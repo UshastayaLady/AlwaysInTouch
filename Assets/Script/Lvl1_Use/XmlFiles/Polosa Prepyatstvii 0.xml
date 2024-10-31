@@ -1,0 +1,68 @@
+<dialogue>
+	0<node>
+		<npctext> ... </npctext>
+		<answers>
+			<answer tonode = "1">
+				<text> Здравия желаю, товарищ *** </text>
+				<quests>
+					<quest>
+						<questEndAndDelete> Явиться на прохождение полосы препятсвия </questEndAndDelete>
+					</quest>
+				</quests>
+			</answer>
+		</answers>
+	</node>
+	
+	1<node>
+		<npctext> Здравия желаю, товарищи. Перед тем как начать прохождение полосы припятствий, вы усвоите несколько правил.</npctext>
+		<answers>
+			<answer tonode = "2">
+				<text> *Далее* </text>							
+			</answer>
+		</answers>
+	</node>
+	
+	2<node>
+		<npctext> Первое. Если вы начали проходить полосу препятсвий, то должны ее закончить.</npctext>
+		<answers>
+			<answer tonode = "3">
+				<text> *Далее* </text>							
+			</answer>
+		</answers>
+	</node>
+	
+	3<node>
+		<npctext> Второе. Все элементы маршрута выполняются в следуюей последовательности: бежите по лаберинту, перелазиете через стену, залазиете на разрушенный мост и проходите по нему, перепрыгнув через пропасть, далее проходим на корточках через преграду, затем полозем до финиша.</npctext>
+		<answers>
+			<answer tonode = "4">
+				<text> *Далее* </text>							
+			</answer>
+		</answers>
+	</node>
+
+	4<node>
+		<npctext> Третье. Если вы отклонитесь от маршрута, то будите начинать сначала. Вопросы есть?</npctext>
+		<answers>
+			<answer tonode = "5">
+				<text> Нет. </text>			
+			</answer>
+		</answers>
+	</node>
+	
+	5<node>
+			<npctext> Выполнять. </npctext>
+			<answers>
+				<answer tonode = "0">
+					<text> Есть. </text>
+					<quests>
+						<quest>
+							<textQuest> Сдать зачет по прохождению полосы препятствий </textQuest>
+							<gameObjectSetActiv>true</gameObjectSetActiv>
+						</quest>
+					</quests>
+					<dialend>true</dialend>				
+				</answer>
+			</answers>
+		</node>
+	
+</dialogue>

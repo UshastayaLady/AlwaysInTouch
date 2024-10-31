@@ -437,21 +437,13 @@ public class Auttomatic : MonoBehaviour
         //Running when pressing down W and Left Shift key
         if ((Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)))
         {
+            anim.SetBool("Run", true);
             isRunning = true;
         }
         else
         {
-            isRunning = false;
-        }
-
-        //Run anim toggle
-        if (isRunning == true)
-        {
-            anim.SetBool("Run", true);
-        }
-        else
-        {
             anim.SetBool("Run", false);
+            isRunning = false;
         }
     }
 

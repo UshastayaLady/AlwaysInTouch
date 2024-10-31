@@ -2,35 +2,46 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
-    [SerializeField] private Texture2D customCursor; // ѕеременна€ дл€ хранени€ текстуры курсора
-    private Vector2 hotSpot = new Vector2(0, 0); // “очка прив€зки курсора (если хочетс€ настроить добавить SerializeField)
+    private int countCursorsOpen = 0;
+    [SerializeField] private Texture2D cursorTexture; 
+    private Vector2 hotspot = new Vector2(0, 0);
 
-    public static CursorManager instance = null;
-    public bool cursorWork = true;
-
-    public void Start()
-    {
-        if (instance == null)
-        { instance = this; }
-        if(customCursor!=null)       
-            Cursor.SetCursor(customCursor, hotSpot, CursorMode.Auto); // ”становка кастомного курсора
+    private void Start()
+    {        
+        //Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
+        Cursor.visible = true;
     }
-   
-    void Update()
+
+    protected void OpenCursor()
     {
-        if (cursorWork)
-        { 
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        } else
+        countCursorsOpen++;
+        Debug.Log(countCursorsOpen);
+        if (countCursorsOpen == 1)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
     }
 
-    public void ClikButtonFalse()
+    protected void CloseCursor()
     {
-        cursorWork = false;
+        if (countCursorsOpen > 0)
+        {
+            countCursorsOpen--;
+            if (countCursorsOpen == 0)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Cursor.SetCursor(null, hotspot, CursorMode.Auto);
+            }
+        }
+    }
+
+    protected void ChangCursor(bool yes, Texture2D cursorNewTexture)
+    {
+        if (yes)
+            Cursor.SetCursor(cursorNewTexture, hotspot, CursorMode.Auto);
+        else
+            Cursor.SetCursor(cursorTexture, hotspot, CursorMode.Auto);
     }
 }

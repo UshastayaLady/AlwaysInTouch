@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Video;
 public class StartVideo : MonoBehaviour
 {
+    [SerializeField] private GameObject CloseObject;
     [SerializeField] private GameObject nextquest;
     [SerializeField] private GameObject buttonSkip;
     private bool skip = false;
@@ -21,7 +22,7 @@ public class StartVideo : MonoBehaviour
         buttonSkip.SetActive(true);
         skip = false;
     }
-        private void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !skip && videoPlayer.isPlaying)
         {
@@ -37,6 +38,7 @@ public class StartVideo : MonoBehaviour
             nextquest.SetActive(true);
         buttonSkip.SetActive(false);
         gameObject.SetActive(false);
+        CloseObject.SetActive(false);
     }
 
     private void play()

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponRezult : MonoBehaviour
+public class NpsWeaponRezult : MonoBehaviour
 {
     [SerializeField] private GameObject textNavigation3;
     [SerializeField] private GameObject buttonE;
@@ -22,8 +22,6 @@ public class WeaponRezult : MonoBehaviour
             nine.text = "Попаданий в '9': " + GreenTarget.nine;
             ten.text = "Попаданий в '10': " + GreenTarget.ten;
             sum.text = GreenTarget.scores + " очков";
-
-            //Weapon_trigg.ammo_bool = false;
             rezultImage.SetActive(true);
             
             

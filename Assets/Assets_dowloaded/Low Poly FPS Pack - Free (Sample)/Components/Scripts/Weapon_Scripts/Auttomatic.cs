@@ -415,7 +415,7 @@ public class Auttomatic : MonoBehaviour
         }
 
         //Reload 
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting && TriggerPalatka.StayPalatka)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting && ShootArenaTrigger.StayPalatka)
         {
             //Reload
             Reload();

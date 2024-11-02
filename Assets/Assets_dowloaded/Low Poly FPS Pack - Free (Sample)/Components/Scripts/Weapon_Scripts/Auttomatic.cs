@@ -95,8 +95,6 @@ public class Auttomatic : MonoBehaviour
 
     [Header("Muzzleflash Settings")]
     public bool randomMuzzleflash = false;
-    //min should always bee 1
-    private int minRandomValue = 1;
 
     [Range(2, 25)]
     public int maxRandomValue = 5;
@@ -266,15 +264,7 @@ public class Auttomatic : MonoBehaviour
 
             soundHasPlayed = false;
         }
-        //Aiming end
-
-        //If randomize muzzleflash is true, genereate random int values
-        if (randomMuzzleflash == true)
-        {
-            randomMuzzleflashValue = Random.Range(minRandomValue, maxRandomValue);
-        }
-
-      
+              
         //Set current ammo text from ammo int
         currentAmmoText.text = currentAmmo.ToString();
 
@@ -397,13 +387,6 @@ public class Auttomatic : MonoBehaviour
                     Spawnpoints.casingSpawnPoint.transform.rotation);
             }
         }
-
-        //Inspect weapon when T key is pressed
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            anim.SetTrigger("Inspect");
-        }
-
         //Holster anim toggle
         if (holstered == true)
         {
@@ -417,7 +400,6 @@ public class Auttomatic : MonoBehaviour
         //Reload 
         if (Input.GetKeyDown(KeyCode.R) && !isReloading && !isInspecting && ShootArenaTrigger.StayPalatka)
         {
-            //Reload
             Reload();
         }
 

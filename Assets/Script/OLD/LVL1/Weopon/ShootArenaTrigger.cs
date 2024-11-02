@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShootArenaTrigger : MonoBehaviour
 {
-    private bool enter;
+    private bool inTrgger;
     public static bool StayPalatka;
     public static bool strelba;
     [SerializeField] private GameObject buttonE;
@@ -27,10 +27,10 @@ public class ShootArenaTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enter && Input.GetKeyDown(KeyCode.E))
+        if (inTrgger && Input.GetKeyDown(KeyCode.E))
         {
             StayPalatka = true;
-            enter = false;
+            inTrgger = false;
 
             buttonE.SetActive(false);
             shootingInstructions.SetActive(true);
@@ -64,11 +64,11 @@ public class ShootArenaTrigger : MonoBehaviour
    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player"){enter = true; buttonE.SetActive(true); }
+        if (other.tag == "Player"){ inTrgger = true; buttonE.SetActive(true); }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player"){enter = false; buttonE.SetActive(false); }
+        if (other.tag == "Player"){ inTrgger = false; buttonE.SetActive(false); }
     }
 }

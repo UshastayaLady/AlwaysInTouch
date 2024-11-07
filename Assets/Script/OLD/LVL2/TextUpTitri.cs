@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class TextUpTitri : MonoBehaviour
 {
-    public AudioClip audio, din;
+    public AudioClip audio1, din;
     AudioSource Audio_Source;
     public GameObject Titri;
     private Text but;
@@ -33,7 +33,7 @@ public class TextUpTitri : MonoBehaviour
     IEnumerator playAudio()
     {
         Debug.Log("start");
-        yield return new WaitForSeconds(audio.length);
+        yield return new WaitForSeconds(audio1.length);
         SceneManager.LoadScene("SampleScene");
         Debug.Log("END END EDN");
     }

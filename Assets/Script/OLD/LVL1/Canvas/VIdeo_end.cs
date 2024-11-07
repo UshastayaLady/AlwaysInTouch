@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VIdeo_end : MonoBehaviour
@@ -8,11 +6,7 @@ public class VIdeo_end : MonoBehaviour
     public GameObject Button_sceap;
     
    public static int i = 0;
-    void Start()
-    {
-        
-    }
-
+    
     public void OnClickButton()
     {
         if (i == video_mass.Length - 1)
@@ -20,18 +14,14 @@ public class VIdeo_end : MonoBehaviour
             video_mass[i].SetActive(false);
             Button_sceap.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
-            Room_KID.enter = false;
             i++;
-            Achievements achievement = FindObjectOfType<Achievements>();
         }
 
         else
         {
             video_mass[i + 1].SetActive(true);
             video_mass[i].SetActive(false);
-            i++;
-            
-            
+            i++;            
         }
 
     }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class PlayerTakeItem : MonoBehaviour
 {
@@ -52,7 +51,10 @@ public class PlayerTakeItem : MonoBehaviour
     // Функция для визуализации радиуса поиска (можно удалить после отладки)
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(playerCamera.transform.position, interactRange);
+        if (playerCamera != null) // Проверяем, инициализирована ли камера
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(playerCamera.transform.position, interactRange);
+        }
     }
 }

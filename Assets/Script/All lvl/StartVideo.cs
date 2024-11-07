@@ -33,7 +33,6 @@ public class StartVideo : MonoBehaviour
     }
     private void VideoPlayer_loopPointReached(VideoPlayer source)
     {
-        Room_KID.enter = false;
         if(nextquest!=null)
             nextquest.SetActive(true);
         buttonSkip.SetActive(false);

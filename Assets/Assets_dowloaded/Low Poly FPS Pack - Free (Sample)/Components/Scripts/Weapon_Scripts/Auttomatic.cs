@@ -5,9 +5,8 @@ using UnityEngine.UI;
 // ----- Low Poly FPS Pack Free Version -----
 public class Auttomatic : MonoBehaviour
 {
-
     //Animator component attached to weapon
-
+    private FirstPersonController fps;
     Animator anim;
     Vector3 Hand;
 
@@ -164,7 +163,7 @@ public class Auttomatic : MonoBehaviour
 
     private void Awake()
     {
-
+        fps = FindObjectOfType<FirstPersonController>();
         //Set the animator component
         anim = GetComponent<Animator>();
         //Set current ammo to total ammo value
@@ -173,6 +172,13 @@ public class Auttomatic : MonoBehaviour
 
         muzzleflashLight.enabled = false;
     }
+
+    private void OnEnable()
+    {
+        fps.enableCrouch = false;
+        fps.enableLie = false;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -181,7 +187,6 @@ public class Auttomatic : MonoBehaviour
             if (ammo == 0 && proverka == 0)
             {
                 ammo += 10;
-
             }
         }
     }
@@ -226,7 +231,6 @@ public class Auttomatic : MonoBehaviour
 
     void Update()
     {
-       
         _Armo_currArmo.text = currentAmmo.ToString("D2") + "/" + ammo.ToString("D2");
 
         //Aiming
@@ -418,20 +422,7 @@ public class Auttomatic : MonoBehaviour
             anim.SetBool("Run", false);
             isRunning = false;
         }
-    }
-
-    private IEnumerator GrenadeSpawnDelay()
-    {
-
-        //Wait for set amount of time before spawning grenade
-        yield return new WaitForSeconds(grenadeSpawnDelay);
-        //Spawn grenade prefab at spawnpoint
-        Instantiate(Prefabs.grenadePrefab,
-            Spawnpoints.grenadeSpawnPoint.transform.position,
-            Spawnpoints.grenadeSpawnPoint.transform.rotation);
-    }
-
-   
+    }  
 
     //Reload
     private void Reload()
@@ -533,12 +524,19 @@ public class Auttomatic : MonoBehaviour
             enter = true;
 
         }
-
     }
     private void OnTriggerExit(Collider col)
     {
         enter = false;
 
     }
+
+    private void OnDisable()
+    {
+        fps.enableCrouch = true;
+        fps.enableLie = true;
+    }
 }
+
+
 // ----- Low Poly FPS Pack Free Version -----

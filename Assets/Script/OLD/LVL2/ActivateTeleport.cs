@@ -6,28 +6,20 @@ public class ActivateTeleport : MonoBehaviour
 {
     public GameObject Marker;
     public GameObject SignMove;
+    //CursorManager cursorManager;
 
     private void Start() {
         Marker.SetActive(false);
     }
 
-    public void ActivaTeteleport(){
-
-        FirstPersonController FPS = FindObjectOfType<FirstPersonController>();
-        FPS.setFreeze(true);
+    public void ActivaTeteleport()
+    {        
         Marker.SetActive(true);
         SignMove.SetActive(true);
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
     }
 
-    public void ButtonSkip()
-    {
-        FirstPersonController FPS = FindObjectOfType<FirstPersonController>();
-        FPS.setFreeze(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+    //public void ButtonSkip()
+    //{
+    //    cursorManager.CloseCursor();
+    //}
 }

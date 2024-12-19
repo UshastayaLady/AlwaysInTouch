@@ -7,6 +7,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private GameObject startOknoDia;
     [SerializeField] private TextAsset[] ta;
     [SerializeField] private int currentTa = 0;
+    [SerializeField] private KeyCode interactKey = KeyCode.E;
     private bool enter = false;
 
     [System.Serializable]
@@ -19,7 +20,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (enter && Input.GetKeyDown(KeyCode.Q))
+        if (enter && Input.GetKeyDown(interactKey))
         {
             DialogueManager.instance.StartDialogue();
             enter = false;

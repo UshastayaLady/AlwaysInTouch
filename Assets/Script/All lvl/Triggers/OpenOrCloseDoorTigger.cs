@@ -17,14 +17,14 @@ public class OpenOrCloseDoorTigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (blockDoorQuest != null & TaskBoardManager.instance.FindTaskFromBoard(blockDoorQuest) & blockOpenDoor != null)
+            if (blockDoorQuest != null & QuestsManager.instance.FindTaskFromBoard(blockDoorQuest) & blockOpenDoor != null)
             {
                 Close();
                 blockDoorQuest = null;
             }
               
 
-            if (nextDoorQuest != null & TaskBoardManager.instance.FindTaskFromBoard(nextDoorQuest) & nextOpenDoor != null)
+            if (nextDoorQuest != null & QuestsManager.instance.FindTaskFromBoard(nextDoorQuest) & nextOpenDoor != null)
             { 
                 nextOpenDoor.GetComponent<BoxCollider>().enabled = true;
                 nextDoorQuest = null;

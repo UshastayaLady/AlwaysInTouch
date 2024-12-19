@@ -1,0 +1,31 @@
+<dialogue>
+	<node>
+		<npctext> ... </npctext>
+		<answers>
+			<answer tonode = "1">
+				<text> Здравия желаю, товарищ полковник. Рядовой все необходимые зачеты сдал и готов для дальнейших указаний. </text>
+				<quests>
+					<quest>
+						<questEndAndDelete> Сдать результаты зачетов командиру </questEndAndDelete>
+						<textQuest> Сесть в комаз </textQuest>
+					</quest>
+				</quests>
+			</answer>
+		</answers>
+	</node>
+	
+	<node>
+		<npctext> Хорошие результаты. Молодец! Теперь отправляйся к камазу, поедешь на военный городок.</npctext>
+		<answers>
+			<answer tonode = "2">
+				<text> Есть. </text>
+				<quests>
+					<quest>
+						<gameObjectSetActiv>true</gameObjectSetActiv>
+					</quest>
+				</quests>
+				<dialend>true</dialend>				
+			</answer>
+		</answers>
+	</node>	
+</dialogue>

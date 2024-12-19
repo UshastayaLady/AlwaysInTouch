@@ -1,33 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class NextSceneButton : MonoBehaviour
 {
+    [SerializeField] protected string sceneName;
     void Start()
     {
-        Button exitButton = GetComponent<Button>();
-
-        if (exitButton != null)
+        Button button = GetComponent<Button>();
+        if (button != null)
         {
-            exitButton.onClick.AddListener(GoToNextScene);
-        }
-        else
-        {
-            Debug.LogError("Exit button not found!");
+            button.onClick.AddListener(() => GoToNextScene(sceneName));
         }
     }
 
 
     // Метод, вызываемый при нажатии кнопки
-    public void GoToNextScene()
+    public void GoToNextScene(string nameScene)
     {
-        // Получаем индекс текущей сцены
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-        // Переходим на следующую сцену
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        SceneManager.LoadScene(nameScene);
     }
 }

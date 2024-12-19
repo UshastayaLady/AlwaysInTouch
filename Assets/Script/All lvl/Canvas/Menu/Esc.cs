@@ -4,7 +4,8 @@ public class Esc : MonoBehaviour
 {
     private bool klavisha;
     public GameObject menuCanv;
-    
+    public GameObject [] atherCanvas;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -14,6 +15,10 @@ public class Esc : MonoBehaviour
             
             if (klavisha)
             {
+                for (int i = 0; i < atherCanvas.Length; i++)
+                {
+                    atherCanvas[i].GetComponent<Canvas>().enabled = false;
+                }
                 menuCanv.SetActive(true);
                 Time.timeScale = 0f;
             }
@@ -21,6 +26,10 @@ public class Esc : MonoBehaviour
             else if (!klavisha)
             {
                 menuCanv.SetActive(false);
+                for (int i = 0; i < atherCanvas.Length; i++)
+                {
+                    atherCanvas[i].GetComponent<Canvas>().enabled = true;
+                }
                 Time.timeScale = 1f;
             }
         }
@@ -29,6 +38,10 @@ public class Esc : MonoBehaviour
     public void Cont()
     {
         menuCanv.SetActive(false);
+        for (int i = 0; i < atherCanvas.Length; i++)
+        {
+            atherCanvas[i].GetComponent<Canvas>().enabled = true;
+        }
         Time.timeScale = 1f;
         klavisha = !klavisha;
     }

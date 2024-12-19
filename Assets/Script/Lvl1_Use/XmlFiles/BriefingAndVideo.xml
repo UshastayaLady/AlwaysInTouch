@@ -3,7 +3,7 @@
 		<npctext> ... </npctext>
 		<answers>
 			<answer tonode = "2">
-				<text> Здравия желаю, товарищ *** </text>
+				<text> Здравия желаю, товарищ полковник. </text>
 				<quests>
 					<quest>
 						<questDone> Взять форму </questDone>

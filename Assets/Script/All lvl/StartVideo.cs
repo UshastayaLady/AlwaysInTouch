@@ -24,7 +24,7 @@ public class StartVideo : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !skip && videoPlayer.isPlaying)
+        if (Input.anyKeyDown && !skip && videoPlayer.isPlaying)
         {
             videoPlayer.Stop();
             skip = true;

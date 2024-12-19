@@ -28,7 +28,13 @@ public class ShootArenaTrigger : MonoBehaviour
     void Update()
     {
         if (inTrgger && Input.GetKeyDown(KeyCode.E))
-        {
+        {   
+            for (int i = 0; i < wall.Length; i++)
+            {
+                wall[i].SetActive(true);
+            }
+            player.transform.position = Vector3.MoveTowards(player.transform.position, startPoint.transform.position, 100f);
+
             StayPalatka = true;
             inTrgger = false;
 
@@ -37,12 +43,7 @@ public class ShootArenaTrigger : MonoBehaviour
             textNavigation2.SetActive(false);
             scoreImage.SetActive(true);
 
-            player.transform.position = Vector3.MoveTowards(player.transform.position, startPoint.transform.position, 100f);
-                       
-            for(int i = 0; i < wall.Length; i++)
-            {
-                wall[i].SetActive(true);
-            }       
+                  
         }
         
         if (Auttomatic.currentAmmo == 0 && Auttomatic.ammo == 0)

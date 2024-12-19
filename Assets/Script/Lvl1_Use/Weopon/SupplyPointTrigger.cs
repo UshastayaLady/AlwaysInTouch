@@ -12,7 +12,7 @@ public class SupplyPointTrigger : MonoBehaviour
     [SerializeField] private GreenTarget greenTarget;
     [SerializeField] private GameObject npsInstructorPoligon, textNavigation3;
     private bool enter;
-    private bool one = true;
+    public bool one = true;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +31,13 @@ public class SupplyPointTrigger : MonoBehaviour
             closeExit.SetActive(true);
             textNavigashon2.SetActive(true);
             shootArenaTrigger.SetActive(true);
+            Auttomatic.ammo = 30;
             enter = false;
             this.gameObject.SetActive(false);
 
         }
 
-        if (Auttomatic.currentAmmo == 0 && Auttomatic.ammo == 0 )
+        if (Auttomatic.currentAmmo == 0 && Auttomatic.ammo == 0 && weapon.activeSelf)
         {
             if (one)
             {
@@ -69,6 +70,7 @@ public class SupplyPointTrigger : MonoBehaviour
                 weapon.SetActive(false);
                 
                 npsInstructorPoligon.GetComponent<SphereCollider>().enabled = true;
+                npsInstructorPoligon.GetComponent<NpsWeaponRezult>().enabled = true;
                 textNavigation3.SetActive(true);
                 
                 this.gameObject.SetActive(false);

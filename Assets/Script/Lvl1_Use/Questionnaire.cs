@@ -24,7 +24,7 @@ public class Questionnaire : MonoBehaviour
     private void ProverkaAnketa()
     {
         if (parametr1 & parametr2 & parametr3 & parametr4)
-            TaskBoardManager.instance.UpdateTaskStatus("Заполнить бумаги", "Выполнен");
-        else TaskBoardManager.instance.UpdateTaskStatus("Заполнить бумаги", "Не выполнен");
+            QuestsManager.instance.UpdateTaskStatus("Заполнить бумаги", "Выполнен");
+        else QuestsManager.instance.UpdateTaskStatus("Заполнить бумаги", "Не выполнен");
     }
 }

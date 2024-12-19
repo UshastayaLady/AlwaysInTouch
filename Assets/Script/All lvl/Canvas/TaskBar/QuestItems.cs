@@ -30,19 +30,19 @@ public class QuestItems : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (questText != null & TaskBoardManager.instance.FindTaskFromBoard(questText))
+        if (questText != null & QuestsManager.instance.FindTaskFromBoard(questText))
             if (InventoryManager.instance.FindItems(itemsQuest))
                 if (changeQuest & questNextText != null)
                 {
                     InventoryManager.instance.DeleteItems(itemsQuest);
-                    TaskBoardManager.instance.TaskEndAndDelete(questText.Trim());
-                    TaskBoardManager.instance.AddTask(questNextText.Trim());
+                    QuestsManager.instance.TaskEndAndDelete(questText.Trim());
+                    QuestsManager.instance.AddTask(questNextText.Trim());
                     DestroyObject();
                 }
                 else if (changeStatus)
                 {
                     InventoryManager.instance.DeleteItems(itemsQuest);
-                    TaskBoardManager.instance.UpdateTaskStatus(questText.Trim(), "Выполнен");
+                    QuestsManager.instance.UpdateTaskStatus(questText.Trim(), "Выполнен");
                     DestroyObject();
                 }        
     }
@@ -51,7 +51,7 @@ public class QuestItems : MonoBehaviour
     {
         if (deleteQuest)
         {
-            TaskBoardManager.instance.TaskDone(questText.Trim(), "Выполнен");
+            QuestsManager.instance.TaskDone(questText.Trim(), "Выполнен");
         }
         if (destroyGameObject)
             Destroy(this.gameObject);

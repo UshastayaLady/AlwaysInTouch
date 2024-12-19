@@ -12,7 +12,6 @@ using UnityEngine.UI;
 
 public class FirstPersonController : MonoBehaviour
 {
-    private bool isFreezed = false;
     private Rigidbody rb;
    
     #region Camera Movement Variables
@@ -197,7 +196,6 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
-        if (isFreezed) return;
         GameObject man;
         man = GameObject.FindGameObjectWithTag("Player");
         #region Camera
@@ -401,7 +399,6 @@ public class FirstPersonController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isFreezed) return;
         #region Movement
 
         if (playerCanMove)
@@ -523,7 +520,7 @@ public class FirstPersonController : MonoBehaviour
     #endregion
     private void Jump()
     {
-        if (isFreezed || isLie) return;
+        if (isLie) return;
             
         // Adds force to the player rigidbody to jump
         if (isGrounded)
@@ -541,7 +538,6 @@ public class FirstPersonController : MonoBehaviour
 
     private void Crouch()
     {
-        if (isFreezed) return;
         // Stands player up to full height
         // Brings walkSpeed back up to original speed
         if (isCrouched)
@@ -568,7 +564,6 @@ public class FirstPersonController : MonoBehaviour
 
     private void Lie()
     {
-        if (isFreezed) return;
         // Stands player up to full height
         // Brings walkSpeed back up to original speed
         if (isLie)
@@ -625,11 +620,6 @@ public class FirstPersonController : MonoBehaviour
             timer = 0;
             joint.localPosition = new Vector3(Mathf.Lerp(joint.localPosition.x, jointOriginalPos.x, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.y, jointOriginalPos.y, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.z, jointOriginalPos.z, Time.deltaTime * bobSpeed));
         }
-    }
-
-    public void setFreeze(bool state)
-    {
-        isFreezed = state;
     }
 }
 

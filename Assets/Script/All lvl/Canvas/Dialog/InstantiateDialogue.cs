@@ -8,7 +8,7 @@ public class InstantiateDialogue : MonoBehaviour
     #region variables
     public static InstantiateDialogue instance = null;
     [HideInInspector] public Dialogue dialogue;    
-    public TaskBoardManager questsManager;
+    public QuestsManager questsManager;
     [HideInInspector] public InventoryManager itemsManager;
 
     [SerializeField] private GameObject Window;

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Trigger : MonoBehaviour
 {
+    
     private bool enter;
     private bool oneActiveInUpdate = false;
     private bool buttonClickOne = false;
@@ -9,10 +10,11 @@ public class Trigger : MonoBehaviour
     [SerializeField] private bool onlyClose = false;
     [SerializeField] private bool onceOpenAndClose = false;    
     [SerializeField] private GameObject gameObjectOpen;
-    private void Update()
+    [SerializeField] private KeyCode interactKey = KeyCode.E;
+    private void Update() 
     {
-        if ((enter) && ((Input.GetKeyDown(KeyCode.Q) & button) || (!button & oneActiveInUpdate)))
-        {
+        if ((enter) && ((Input.GetKeyDown(interactKey) & button) || (!button & oneActiveInUpdate)))
+        {            
             gameObjectOpen.SetActive(!gameObjectOpen.activeSelf);
             buttonClickOne = true;
             oneActiveInUpdate = false;
@@ -20,7 +22,7 @@ public class Trigger : MonoBehaviour
 
         if (gameObjectOpen.activeSelf & button)
         {
-            if (Input.GetKeyDown(KeyCode.Q) & onlyClose)
+            if (Input.GetKeyDown(interactKey) & onlyClose)
             {
                 gameObjectOpen.SetActive(false);
                 Destroy(this);

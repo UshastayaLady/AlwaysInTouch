@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlaneBlack : MonoBehaviour
 {
-    public FirstPersonController FPS;
+    //private CursorManager cursorManager;
     public GameObject Object,AlphaObj;
     Image AlphaImage;
     public float AlphaA;
@@ -26,9 +26,6 @@ public class PlaneBlack : MonoBehaviour
             if (AlphaImage.color.a < 0.1)
             {
                 Object.SetActive(true);
-                FPS.setFreeze(true);
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
             }
         
 
@@ -40,9 +37,6 @@ public class PlaneBlack : MonoBehaviour
         Time.timeScale = 1f;
         GameObject script;
         script = GameObject.Find("MainCanvas");
-        FPS.setFreeze(false);
-        PressStart = true;
-        Cursor.lockState = CursorLockMode.Locked;
         GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().enabled = true;
         
     }

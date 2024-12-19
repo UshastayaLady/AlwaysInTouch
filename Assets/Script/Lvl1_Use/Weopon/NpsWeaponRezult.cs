@@ -9,6 +9,10 @@ public class NpsWeaponRezult : MonoBehaviour
     [SerializeField] private Text six, seven, eight, nine, ten, sum;
     [SerializeField] private GreenTarget GreenTarget;
     private bool enter;
+    private SupplyPointTrigger supplyPointTrigger;
+    [SerializeField] private GameObject neSdal;
+    [SerializeField] private GameObject sdal;
+    [SerializeField] private GameObject chekTwoQuests;
 
     void Update()
     {
@@ -23,8 +27,29 @@ public class NpsWeaponRezult : MonoBehaviour
             ten.text = "Попаданий в '10': " + GreenTarget.ten;
             sum.text = GreenTarget.scores + " очков";
             rezultImage.SetActive(true);
-            
-            
+
+            if (GreenTarget.scores > 80)
+            {
+                sdal.SetActive(false);
+                QuestsManager.instance.UpdateTaskStatus("Сдать зачет по стрельбе", "Выполнен");
+                if (QuestsManager.instance.FindStatusTaskFromBoard("Сдать зачет по прохождению полосы препятствий", "Выполнен"))
+                {
+                    chekTwoQuests.SetActive(true);
+                    QuestsManager.instance.TaskEndAndDelete("Сдать зачет по стрельбе");
+                    QuestsManager.instance.TaskEndAndDelete("Сдать зачет по прохождению полосы препятствий");
+                    QuestsManager.instance.AddTask("Сдать результаты зачетов командиру");
+                }
+                    
+                this.enabled = false;                
+            }
+            else 
+            {
+                neSdal.SetActive(true);
+                supplyPointTrigger = FindObjectOfType<SupplyPointTrigger>();
+                supplyPointTrigger.one = true;
+                gameObject.GetComponent<SphereCollider>().enabled = false;
+                this.enabled = false;
+            }
         }
     }
 

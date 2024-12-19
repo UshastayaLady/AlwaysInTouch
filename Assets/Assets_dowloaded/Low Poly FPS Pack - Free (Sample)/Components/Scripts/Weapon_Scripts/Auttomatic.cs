@@ -54,7 +54,6 @@ public class Auttomatic : MonoBehaviour
     public float fireRate;
     //Eanbles auto reloading when out of ammo
     [Tooltip("Enables auto reloading when out of ammo.")]
-    public bool autoReload;
     //Delay between shooting last bullet and reloading
     public float autoReloadDelay;
     //Check if reloading
@@ -179,7 +178,6 @@ public class Auttomatic : MonoBehaviour
 
         if (collision.transform.tag == "Box")
         {
-            Debug.Log("!!!");
             if (ammo == 0 && proverka == 0)
             {
                 ammo += 10;
@@ -276,15 +274,8 @@ public class Auttomatic : MonoBehaviour
 
         if (currentAmmo == 0)
         {
-            //Show out of ammo text
-            currentWeaponText.text = "OUT OF AMMO";
             //Toggle bool
             outOfAmmo = true;
-            //Auto reload if true
-            if (autoReload == true && !isReloading)
-            {
-                StartCoroutine(AutoReload());
-            }
         }
         else
         {
@@ -440,39 +431,7 @@ public class Auttomatic : MonoBehaviour
             Spawnpoints.grenadeSpawnPoint.transform.rotation);
     }
 
-    private IEnumerator AutoReload()
-    {
-        //Wait set amount of time
-        yield return new WaitForSeconds(autoReloadDelay);
-
-        if (outOfAmmo == true)
-        {
-            //Play diff anim if out of ammo
-            anim.Play("Reload Out Of Ammo", 0, 0f);
-
-            mainAudioSource.clip = SoundClips.reloadSoundOutOfAmmo;
-            mainAudioSource.Play();
-
-            //If out of ammo, hide the bullet renderer in the mag
-            //Do not show if bullet renderer is not assigned in inspector
-            if (bulletInMagRenderer != null)
-            {
-                bulletInMagRenderer.GetComponent
-                <SkinnedMeshRenderer>().enabled = false;
-                //Start show bullet delay
-                StartCoroutine(ShowBulletInMag());
-            }
-        }
-        //Restore ammo when reloading
-        int prevAmmo = currentAmmo;
-        currentAmmo = Mathf.Min(ammo, magazineAmmo);
-        ammo -= (currentAmmo - prevAmmo);
-        outOfAmmo = false;
-
-        currentAmmoText.text = currentAmmo.ToString();
-        totalAmmoText.text = ammo.ToString();
-
-    }
+   
 
     //Reload
     private void Reload()

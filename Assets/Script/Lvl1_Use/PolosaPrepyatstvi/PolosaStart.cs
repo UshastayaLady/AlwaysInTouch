@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PolosaStart : MonoBehaviour
 {
     [SerializeField] private Timer timer;
-    [SerializeField] private GameObject player, canvasStart, countingDown;
+    [SerializeField] private GameObject player, canvasStart, countingDown, finishMarker;
     [SerializeField] private GameObject triggersRules, triggersLimitations;
     [SerializeField] private Transform spawn;
     [SerializeField] private Text countingDownText;
@@ -22,6 +22,7 @@ public class PolosaStart : MonoBehaviour
     private void StartPolosa()
     {
         triggersLimitations.SetActive(true);
+        finishMarker.SetActive(true);
         Restart();
         StartCoroutine(CountingDown());
     }

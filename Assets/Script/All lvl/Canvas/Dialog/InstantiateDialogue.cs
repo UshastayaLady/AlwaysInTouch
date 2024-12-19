@@ -8,8 +8,8 @@ public class InstantiateDialogue : MonoBehaviour
     #region variables
     public static InstantiateDialogue instance = null;
     [HideInInspector] public Dialogue dialogue;    
-    public QuestsManager questsManager;
-    [HideInInspector] public InventoryManager itemsManager;
+    private QuestsManager questsManager;
+    private InventoryManager itemsManager;
 
     [SerializeField] private GameObject Window;
         
@@ -36,7 +36,10 @@ public class InstantiateDialogue : MonoBehaviour
     void Start()
     {
         if (instance == null)
-        { instance = this; }        
+        { instance = this; }
+
+        questsManager = FindObjectOfType<QuestsManager>();
+        itemsManager = FindObjectOfType<InventoryManager>();
 
         secondButton.enabled = false;
         thirdButton.enabled = false;

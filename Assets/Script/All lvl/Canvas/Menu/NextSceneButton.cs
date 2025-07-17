@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class NextSceneButton : MonoBehaviour
 {
-    [SerializeField] protected string sceneName;
+    [SerializeField] protected string sceneName; // Задаем нужную сцену в инспекторе
+
+    //Инициализация кнопки
     void Start()
     {
         Button button = GetComponent<Button>();
@@ -18,6 +20,6 @@ public class NextSceneButton : MonoBehaviour
     // Метод, вызываемый при нажатии кнопки
     public void GoToNextScene(string nameScene)
     {
-        SceneManager.LoadScene(nameScene);
+        SceneManager.LoadScene(nameScene); // Переход на следую сцену
     }
 }

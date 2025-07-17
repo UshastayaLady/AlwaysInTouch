@@ -14,6 +14,7 @@ public class WorkWithQuests : MonoBehaviour
     [SerializeField] private string[] delQuest;
     [SerializeField] private string[] newTextQuest;
     [SerializeField] private GameObject [] objectAktive;
+    [SerializeField] private GameObject notObjectAktive;
 
     [SerializeField] private bool noButton = false;
 
@@ -34,6 +35,8 @@ public class WorkWithQuests : MonoBehaviour
             if (chengQuests)
                 ChengQuestsMassiv();           
             one = false;
+
+            notObjectAktive.SetActive(false);
         }
     }
 

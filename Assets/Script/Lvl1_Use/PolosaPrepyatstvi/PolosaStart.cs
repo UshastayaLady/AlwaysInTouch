@@ -9,11 +9,7 @@ public class PolosaStart : MonoBehaviour
     [SerializeField] private GameObject triggersRules, triggersLimitations;
     [SerializeField] private Transform spawn;
     [SerializeField] private Text countingDownText;
-    private FirstPersonController FPS;
-    private void Start()
-    {
-        FPS = FindObjectOfType<FirstPersonController>();
-    }
+    
     public void Restart()
     {    
         player.transform.position = spawn.position;
@@ -24,12 +20,12 @@ public class PolosaStart : MonoBehaviour
         triggersLimitations.SetActive(true);
         finishMarker.SetActive(true);
         Restart();
-        StartCoroutine(CountingDown());
+        StartCoroutine(CountingDown());        
     }
     public void WorkoutStripe()
     {
         triggersRules.SetActive(true);
-        StartPolosa();
+        StartPolosa();        
     }
 
     public void TestStripe()
@@ -40,7 +36,7 @@ public class PolosaStart : MonoBehaviour
 
     private IEnumerator CountingDown()
     {
-        FPS.enabled = false;
+        
         float time = 3f;
         countingDown.SetActive(true);
         while (time >= 0)
@@ -50,6 +46,5 @@ public class PolosaStart : MonoBehaviour
             time -= Time.deltaTime;
         }
         countingDown.SetActive(false);
-        FPS.enabled = true;
     }       
 }

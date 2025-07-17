@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RandMusic : MonoBehaviour
 {
     
 
-    public AudioClip[] clips;
-    public AudioSource audioSourse;
+    public AudioClip[] clips; // массив аудиодорожек
+    public AudioSource audioSourse; // хвукопроизводитель
 
-private AudioClip GetRandomClip()
+    //Рандомайзер для музыки
+    private AudioClip GetRandomClip()
     {
         return clips[Random.Range(0, clips.Length)];
     }
+
     void Update()
 
     {

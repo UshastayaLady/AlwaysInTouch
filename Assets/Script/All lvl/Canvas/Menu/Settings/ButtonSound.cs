@@ -2,17 +2,25 @@ using UnityEngine;
 
 public class ButtonSound : MonoBehaviour
 {
-    public AudioSource Fx;
-    public AudioClip hoverClip;
-    public AudioClip ClicClip;
-    // Start is called before the first frame update
-
-    public void HoverAudioClip()
-    {
-        Fx.PlayOneShot(hoverClip);
-    }
+    [SerializeField] private AudioSource Fx;
+    [SerializeField] private AudioClip clip;
     public void ClicAudioClip()
     {
-        Fx.PlayOneShot(ClicClip);
+        Fx.PlayOneShot(clip);
+    }
+
+    public void StopAudioClip()
+    {
+        Fx.Stop(); // Останавливаем воспроизведение звукового клипа
+    }
+
+    private void OnEnable()
+    {
+        ClicAudioClip(); // Воспроизводим звук при включении объекта
+    }
+
+    private void OnDisable()
+    {
+        StopAudioClip(); // Останавливаем звук при выключении объекта
     }
 }

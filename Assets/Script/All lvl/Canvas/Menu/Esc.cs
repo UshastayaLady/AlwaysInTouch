@@ -3,9 +3,10 @@ using UnityEngine;
 public class Esc : MonoBehaviour
 {
     private bool klavisha;
-    public GameObject menuCanv;
-    public GameObject [] atherCanvas;
-
+    [SerializeField] private GameObject menuCanv;
+    [SerializeField] private GameObject musicGame;
+    [SerializeField] private GameObject [] atherCanvas;
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -19,7 +20,9 @@ public class Esc : MonoBehaviour
                 {
                     atherCanvas[i].GetComponent<Canvas>().enabled = false;
                 }
+                musicGame.SetActive(false);
                 menuCanv.SetActive(true);
+                
                 Time.timeScale = 0f;
             }
 
@@ -30,6 +33,7 @@ public class Esc : MonoBehaviour
                 {
                     atherCanvas[i].GetComponent<Canvas>().enabled = true;
                 }
+                musicGame.SetActive(true);
                 Time.timeScale = 1f;
             }
         }

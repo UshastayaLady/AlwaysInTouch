@@ -13,6 +13,7 @@ public class Questionnaire : MonoBehaviour
     private bool parametr3 = false;
     private bool parametr4 = false;
    
+    // Проверка по 4 параметрам
     private void Update()
     {
         parametr1 = Regex.IsMatch(size1.text, @"^[0-9]+$");
@@ -21,6 +22,8 @@ public class Questionnaire : MonoBehaviour
         parametr4 = text_name.text.Trim().ToLower() == text_name_reg.text.Trim().ToLower() && text_sename.text.Trim().ToLower() == text_sename_reg.text.Trim().ToLower();
         allredy.onClick.AddListener(ProverkaAnketa);
     }
+
+    // Смена статуса при пройденной проверки
     private void ProverkaAnketa()
     {
         if (parametr1 & parametr2 & parametr3 & parametr4)

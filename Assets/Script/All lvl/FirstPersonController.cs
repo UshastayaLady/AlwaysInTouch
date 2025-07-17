@@ -268,9 +268,11 @@ public class FirstPersonController : MonoBehaviour
         #endregion
         #endregion
 
+        CheckGround();
+
         #region Sprint
 
-        if(enableSprint)
+        if (enableSprint)
         {
             if(isSprinting)
             {
@@ -388,8 +390,7 @@ public class FirstPersonController : MonoBehaviour
         }
 
         #endregion
-
-        CheckGround();
+            
 
         if(enableHeadBob)
         {

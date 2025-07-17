@@ -176,6 +176,7 @@ public class Auttomatic : MonoBehaviour
     private void OnEnable()
     {
         fps.enableCrouch = false;
+        fps.enableJump = false;
         fps.enableLie = false;
     }
 
@@ -534,6 +535,7 @@ public class Auttomatic : MonoBehaviour
     private void OnDisable()
     {
         fps.enableCrouch = true;
+        fps.enableJump = true;
         fps.enableLie = true;
     }
 }

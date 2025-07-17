@@ -18,7 +18,7 @@
 						<textQuest>Взять форму </textQuest>							
 					</quest>
 					<quest>
-						<textQuest>Придти на инструктаж </textQuest>
+						<textQuest>Прийти на инструктаж </textQuest>
 					</quest>
 				</quests>
 				<dialend>true</dialend>

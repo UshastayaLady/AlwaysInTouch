@@ -24,7 +24,7 @@ public class FinishPolosa : MonoBehaviour
             else 
             {
                 timer.StopTimer();
-                if (timer.ReturnTimerSeconds() <= 200)
+                if (timer.ReturnTimerSeconds() <= 100)
                 {
                     QuestsManager.instance.UpdateTaskStatus("Сдать зачет по прохождению полосы препятствий", "Выполнен");
                     if (QuestsManager.instance.FindStatusTaskFromBoard("Сдать зачет по стрельбе", "Выполнен"))

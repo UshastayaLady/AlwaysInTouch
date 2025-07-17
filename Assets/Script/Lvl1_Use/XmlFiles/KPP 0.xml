@@ -3,10 +3,10 @@
 		<npctext> Добрый день. Чем могу помочь? </npctext>
 		<answers>
 			<answer tonode = "1">
-				<text> Здравствуйте! Я пришел по повестке, вступать в ряды курсантов! </text>
+				<text> Здравствуйте! Я пришел по повестке, вступать в ряды операторов! </text>
 				<quests>
 					<quest>
-						<questEndAndDelete> Необходимо явиться в Академию связи для прохождения военной службы </questEndAndDelete>
+						<questEndAndDelete> Необходимо явиться в Академию связи для прохождения срочной службы </questEndAndDelete>
 					</quest>					
 				</quests>				
 			</answer>

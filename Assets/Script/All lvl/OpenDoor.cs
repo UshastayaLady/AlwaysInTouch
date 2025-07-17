@@ -1,21 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
-    private Animator _anim;
+    private Animator _anim; 
     [SerializeField] private bool smenaOsy = false;
 
     
 
     private void Awake()
     {
-
-        _anim = GetComponentInChildren<Animator>();
-
+        _anim = GetComponentInChildren<Animator>(); //Инициализация аниматора
     }
 
+    //Триггер на вхождение игрока
     private void OnTriggerEnter(Collider other)
     {
 
@@ -25,6 +22,8 @@ public class OpenDoor : MonoBehaviour
         }
 
     }
+
+    //Триггер на выход игрока 
     private void OnTriggerExit(Collider other)
     {
 
@@ -33,6 +32,8 @@ public class OpenDoor : MonoBehaviour
             IsCloseDoor();
         }
     }
+
+    //Метод для открытия двери
     public void IsOpenDoor()
     {
         if (!smenaOsy)
@@ -40,6 +41,7 @@ public class OpenDoor : MonoBehaviour
         else
             _anim.SetBool("isOpenDoor1", true);
     }
+    //Метод для закрытия двери
     public void IsCloseDoor()
     {
         if (!smenaOsy)

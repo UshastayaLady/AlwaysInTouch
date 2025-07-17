@@ -3,7 +3,7 @@
 		<npctext> ... </npctext>
 		<answers>
 			<answer tonode = "1">
-				<text> Здравия желаю, товарищ *** </text>
+				<text> Здравия желаю, товарищ полковник. </text>
 				<quests>
 					<quest>
 						<questEndAndDelete> Явиться на полигон </questEndAndDelete>

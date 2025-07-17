@@ -5,7 +5,6 @@ public class StartVideo : MonoBehaviour
     [SerializeField] private GameObject CloseObject;
     [SerializeField] private GameObject nextquest;
     [SerializeField] private GameObject buttonSkip;
-    private bool skip = false;
     VideoPlayer videoPlayer;
      
     void Start()
@@ -14,20 +13,15 @@ public class StartVideo : MonoBehaviour
         videoPlayer.Prepare();
 
         videoPlayer.loopPointReached += VideoPlayer_loopPointReached;
-
-        Invoke("play", 1);   
+        videoPlayer.Play();
+        Invoke("Skip", 2);
     }
-    private void OnEnable()
-    {
-        buttonSkip.SetActive(true);
-        skip = false;
-    }
+    
     private void Update()
     {
-        if (Input.anyKeyDown && !skip && videoPlayer.isPlaying)
+        if (buttonSkip.activeSelf && videoPlayer.isPlaying && (Input.anyKeyDown))
         {
             videoPlayer.Stop();
-            skip = true;
             VideoPlayer_loopPointReached(videoPlayer);
         }
     }
@@ -40,12 +34,10 @@ public class StartVideo : MonoBehaviour
         CloseObject.SetActive(false);
     }
 
-    private void play()
+    private void Skip()
     {
-        videoPlayer.Play();
+        buttonSkip.SetActive(true);
     }
-
-   
 }
 
 

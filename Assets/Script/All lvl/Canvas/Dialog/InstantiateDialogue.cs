@@ -44,9 +44,9 @@ public class InstantiateDialogue : MonoBehaviour
         secondButton.enabled = false;
         thirdButton.enabled = false;
        
-        firstButton.onClick.AddListener(but1);
-        secondButton.onClick.AddListener(but2);
-        thirdButton.onClick.AddListener(but3);
+        firstButton.onClick.AddListener(but1); // 1 вариант ответа
+        secondButton.onClick.AddListener(but2); // 2 вариант ответа
+        thirdButton.onClick.AddListener(but3); // 3 вариант ответа
         
     }
 
@@ -58,7 +58,7 @@ public class InstantiateDialogue : MonoBehaviour
             {
                 if (!firstNodeShown)
                 {
-                    firstStart();
+                    firstStart(); // показ 1 нода
                 }
 
             }
@@ -66,7 +66,7 @@ public class InstantiateDialogue : MonoBehaviour
                    
     }
 
-    #region // Buttons
+    #region // Buttons Кнопки для переходы на ответы в зависимости от выбора игрока
     private void but1()
     {
         butClicked = 0;
@@ -111,7 +111,7 @@ public class InstantiateDialogue : MonoBehaviour
             secondAnswer.text = "";
         }
 
-        if (dialogue.nodes[currentNode].answers.Length == 3)
+        if (dialogue.nodes[currentNode].answers.Length == 3) // если ответа 3
         {
             thirdButton.enabled = true;
             thirdAnswer.text = dialogue.nodes[currentNode].answers[2].text;
@@ -123,6 +123,7 @@ public class InstantiateDialogue : MonoBehaviour
         }
     }
 
+    // просмотр наличия квестов, продолжения или конца диалога
     private void AnswerClicked(int numberOfButton)
     {
         if (!DialogueManager.instance.dialogueClosed)
@@ -154,6 +155,7 @@ public class InstantiateDialogue : MonoBehaviour
     }
     #endregion
    
+    //работа с квестами
     private void WorkWithQuests(int numberOfButton)
     {
 
@@ -205,6 +207,8 @@ public class InstantiateDialogue : MonoBehaviour
             }
         }
     }
+
+    // работа с инвентарем
     private void WorkWithItems(int numberOfButton, int questNumber)
     {
         Dictionary<string, int> items = new Dictionary<string, int>();
@@ -236,6 +240,7 @@ public class InstantiateDialogue : MonoBehaviour
         yield return new WaitForSeconds(time);     
     }  
 
+    //окончание диалога
     public void CloseDialogue()
     {
 
@@ -247,7 +252,7 @@ public class InstantiateDialogue : MonoBehaviour
         currentNode = 0; // Начинаем с первого узла
         firstNodeShown = false; // Сбрасываем флаг показа первого узла
     }
-
+    //очистка диалогового окна
     private void deleteDialogue()
     {
         secondButton.enabled = false;
